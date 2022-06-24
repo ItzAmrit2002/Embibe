@@ -193,10 +193,10 @@ const Login = () => {
                       alignItems: 'center',
                     }}
                   >
-                  <Link href="#" variant="body2" style={{textDecoration: 'none'}}>
+                  <Link href="/register" variant="body2" style={{textDecoration: 'none'}}>
                     Don't have an account?
                   </Link>
-                  <Link href="#" variant="body2">
+                  <Link href="/register" variant="body2">
                     Sign Up
                   </Link>
                   </Box>
