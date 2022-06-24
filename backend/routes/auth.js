@@ -76,7 +76,7 @@ router.get('/getuser', protect, (req, res) => {
 //Generate JWT
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.ACCESS_TOKEN_SECRET,{
-        expiresIn: '5h'
+        expiresIn: '2d'
     })
 }
 module.exports = router;
