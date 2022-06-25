@@ -16,6 +16,7 @@ import exams from '../assets/exams.json'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 function Copyright(props) {
     return (
@@ -29,6 +30,10 @@ function Copyright(props) {
         </Typography>
     );
 }
+
+const api = axios.create({
+    baseURL: 'http://localhost:3000/register'
+})
 
 const theme = createTheme();
 
@@ -48,12 +53,17 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            fname : data.get('fname'),
-            lname : data.get('lname'),
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        fname = data.get('fname')
+        lname = data.get('lname')
+        email = data.get('email')
+        password = data.get('password')
+        axios.post('http://localhost:3000/register', {
+            fname: fname,
+            lname: lname,
+            email: email,
+            password: password})
+            .then(res => showOutput(res))
+            .catch(err => console.log(err))
     };
 
     const [width, setWidth] = useState(550)
@@ -133,18 +143,18 @@ const Register = () => {
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    style={{
-                                        backgroundColor: "#cdf7e4"
-                                    }}
-                                    id="fname"
-                                    label="First Name"
-                                    name="fname"
-                                    autoComplete="fname"
-                                    autoFocus
-                                />
+                                margin="normal"
+                                required
+                                fullWidth
+                                style={{
+                                    backgroundColor: "#cdf7e4"
+                                }}
+                                id="fname"
+                                label="First Name"
+                                name="fname"
+                                autoComplete="fname"
+                                autoFocus
+                            />
                             <TextField
                                 margin="normal"
                                 required
