@@ -7,15 +7,19 @@ const {protect} = require('../middleware/authMiddleware')
 router.post('/register', async (req, res) => {
 
     const {firstname, secondname, email, password} = req.body
+    console.log(firstname + ' '  + secondname +' ' + email + ' ' + password)
 
     if(!firstname || !secondname || !email || !password){
         res.status(400).send("Please add all fields")
+        return
         // throw new Error("Please add all fields")
     }
+
     const userExists = await User.findOne({email})
     if(userExists)
     {
         res.status(400).send("User already exists")
+        return
         // throw new Error('User already exists')
     }
 
@@ -40,14 +44,17 @@ router.post('/register', async (req, res) => {
     catch(err){
         console.log(err)
         res.status(400).send(err);
+        return
     }
 })
+
 
 router.post('/login', async(req,res) => {
     const {email, password} = req.body
     if(!email || !password)
     {
         res.status(400).send('Please enter all the fields')
+        return
 
     }
 
@@ -55,15 +62,17 @@ router.post('/login', async(req,res) => {
 
     if(!userExists){
         res.status(400).send('Wrong email or password')
+        return
     }
 
     const validPass = await bcrypt.compare(password, userExists.password)
 
     if(!validPass){
         res.status(400).send('Wrong password')
+        return
     }
     const token = generateToken(userExists.id)
-    res.json({
+    res.status(200).json({
         _id: userExists.id,
         email: userExists.email,
         token: token,

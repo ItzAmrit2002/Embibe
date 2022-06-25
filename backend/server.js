@@ -4,7 +4,8 @@ const dotenv = require('dotenv').config()
 const mongoose = require('mongoose')
 const app = express()
 
-
+var cors = require('cors');
+app.use(cors());
 mongoose.connect( process.env.MONGO, () => {
 
 console.log('connected to MongoDB server')

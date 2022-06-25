@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import Lottie from "react-lottie";
 import exams from '../assets/exams.json'
+import { useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -31,15 +32,15 @@ function Copyright(props) {
     );
 }
 
-const api = axios.create({
-    baseURL: 'http://localhost:3000/register'
-})
+// const api = axios.create({
+//     baseURL: 'http://localhost:3000/register'
+// })
 
 const theme = createTheme();
 
 
 const Register = () => {
-
+    const navigate = useNavigate();
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -50,19 +51,30 @@ const Register = () => {
             preserveAspectRatio: "xMidYMid slice",
         },
     };
+    const [fname, setFirstName] = useState('');
+    const [lname, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        fname = data.get('fname')
-        lname = data.get('lname')
-        email = data.get('email')
-        password = data.get('password')
-        axios.post('http://localhost:3000/register', {
-            fname: fname,
-            lname: lname,
+        // const fname = data.get('fname')
+        // const lname = data.get('lname')
+        // const email = data.get('email')
+        // const password = data.get('password')
+        axios.post('http://localhost:8000/api/user/register', {
+            firstname: fname,
+            secondname: lname,
             email: email,
             password: password})
-            .then(res => showOutput(res))
+            .then((res) => {
+                console.log(res)
+                if(res.status == 201)
+                {
+                    navigate('/login')
+                }
+            })
             .catch(err => console.log(err))
     };
 
@@ -152,6 +164,9 @@ const Register = () => {
                                 id="fname"
                                 label="First Name"
                                 name="fname"
+                                onChange={(e) => {
+                                    setFirstName(e.target.value) 
+                                    }} 
                                 autoComplete="fname"
                                 autoFocus
                             />
@@ -165,6 +180,7 @@ const Register = () => {
                                 id="lname"
                                 label="Last Name"
                                 name="lname"
+                                onChange={e => setLastName(e.target.value)}
                                 autoComplete="lname"
                                 autoFocus
                             />
@@ -178,6 +194,7 @@ const Register = () => {
                                 id="email"
                                 label="Email Address"
                                 name="email"
+                                onChange={e => setEmail(e.target.value)}
                                 autoComplete="email"
                                 autoFocus
                             />
@@ -190,6 +207,7 @@ const Register = () => {
                                 style={{
                                     backgroundColor: "#cdf7e4"
                                 }}
+                                onChange={e => setPassword(e.target.value)}
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"

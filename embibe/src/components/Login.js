@@ -16,6 +16,8 @@ import exams from '../assets/exams.json'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 function Copyright(props) {
     return (
@@ -34,7 +36,9 @@ function Copyright(props) {
 
 
 const Login = () => {
-
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -48,10 +52,17 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
+        axios.post('http://localhost:8000/api/user/login', {
+          email: email,
+          password: password})
+          .then((res) => {
+              console.log(res)
+              if(res.status == 200)
+              {
+                  navigate('/dashboard')
+              }
+          })
+          .catch(err => console.log(err))
       };
     
       const [width, setWidth] = useState(550)
@@ -142,6 +153,7 @@ const Login = () => {
                 style={{
                     backgroundColor: "#cdf7e4"
                 }}
+                onChange={e => setEmail(e.target.value)}
                 id="email"
                 label="Email Address"
                 name="email"
@@ -157,6 +169,7 @@ const Login = () => {
                 style={{
                     backgroundColor: "#cdf7e4"
                 }}
+                onChange={e => setPassword(e.target.value)}
                 type="password"
                 id="password"
                 autoComplete="current-password"
