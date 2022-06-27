@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,6 +18,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+import useAuth from '../hooks/useAuth';
 
 function Copyright(props) {
     return (
@@ -36,6 +37,7 @@ function Copyright(props) {
 
 
 const Login = () => {
+  const {setAuth} = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -52,6 +54,11 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+        if(email === 'Admin' && password === 'Admin'){
+            setAuth({admin: 'Admin'});
+            navigate('/admin');
+        }
+        else{
         axios.post('http://localhost:8000/api/user/login', {
           email: email,
           password: password})
@@ -59,10 +66,17 @@ const Login = () => {
               console.log(res)
               if(res.status == 200)
               {
-                  navigate('/dashboard')
+                const Firstname = res.data.Firstname;
+                const Secondname = res.data.Secondname;
+                const token = res.data.token;
+                const email = res.data.email;
+                const id = res.data._id
+                  setAuth({Firstname, Secondname, token, email, id});
+                  navigate('/student')
               }
           })
           .catch(err => console.log(err))
+        }
       };
     
       const [width, setWidth] = useState(550)

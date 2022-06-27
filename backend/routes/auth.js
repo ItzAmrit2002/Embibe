@@ -76,6 +76,8 @@ router.post('/login', async(req,res) => {
         _id: userExists.id,
         email: userExists.email,
         token: token,
+        Firstname: userExists.Firstname,
+        Secondname: userExists.Secondname,
         message: "Successfully logged in"
     })})
 
