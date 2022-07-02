@@ -69,7 +69,7 @@ const Main = () => {
             <div className="charts__left__title">
               <div>
                 <h1>Daily Reports</h1>
-                <p>Cupertino, California, USA</p>
+                <p>Daily Student Interactions</p>
               </div>
               <i className="fa fa-usd" aria-hidden="true"></i>
             </div>
@@ -80,30 +80,30 @@ const Main = () => {
             <div className="charts__right__title">
               <div>
                 <h1>Stats Reports</h1>
-                <p>Cupertino, California, USA</p>
+                <p>Exam and Student Stats</p>
               </div>
               <i className="fa fa-usd" aria-hidden="true"></i>
             </div>
 
             <div className="charts__right__cards">
               <div className="card1">
-                <h1>Income</h1>
-                <p>$75,300</p>
+                <h1>Total Exams Conducted</h1>
+                <p>589</p>
               </div>
 
               <div className="card2">
-                <h1>Sales</h1>
-                <p>$124,200</p>
+                <h1>Total Students</h1>
+                <p>1245</p>
               </div>
 
               <div className="card3">
                 <h1>Users</h1>
-                <p>3900</p>
+                <p>1249</p>
               </div>
 
               <div className="card4">
-                <h1>Orders</h1>
-                <p>1881</p>
+                <h1>Total Exam Papers Created</h1>
+                <p>49</p>
               </div>
             </div>
           </div>
