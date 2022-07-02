@@ -50,6 +50,7 @@
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 5px;
+    cursor: pointer;
   }
   
   .active_menu_link {
@@ -76,6 +77,7 @@
     margin-top: 20px;
     padding: 10px;
     color: #e65061;
+    cursor: pointer;
   }
   
   .sidebar__logout > a {

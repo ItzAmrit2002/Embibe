@@ -11,7 +11,7 @@ const Main = () => {
         <div className="main__title">
           <img src={hello} alt="hello" />
           <div className="main__greeting">
-            <h1>Hello MobbyPark</h1>
+            <h1>Hello Admin</h1>
             <p>Welcome to your admin dashboard</p>
           </div>
         </div>
@@ -26,15 +26,15 @@ const Main = () => {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Number of Vehicles</p>
+              <p className="text-primary-p">Number of Users</p>
               <span className="font-bold text-title">578</span>
             </div>
           </div>
 
-          <div className="card">
+          {/* <div className="card">
             <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
             <div className="card_inner">
-              <p className="text-primary-p">Times of Parking</p>
+              <p className="text-primary-p">Number of Students Passed</p>
               <span className="font-bold text-title">2467</span>
             </div>
           </div>
@@ -45,10 +45,10 @@ const Main = () => {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Number of Vehicles</p>
+              <p className="text-primary-p">Number of Students Failed</p>
               <span className="font-bold text-title">340</span>
             </div>
-          </div>
+          </div> */}
 
           <div className="card">
             <i
@@ -56,8 +56,8 @@ const Main = () => {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Number of Users</p>
-              <span className="font-bold text-title">645</span>
+              <p className="text-primary-p">Number of Papers</p>
+              <span className="font-bold text-title">10</span>
             </div>
           </div>
         </div>
