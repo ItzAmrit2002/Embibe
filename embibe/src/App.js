@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        {auth.admin && <Route path="/admin" element={<AdminDashboard/>} />}
+        <Route path="/admin" element={<AdminDashboard/>} />
         {auth.admin && <Route path="/student" element={<StudentDashboard/>} />}
         {auth.admin && <Route path="/createpaper" element={<CreatePaper/>} />}
         {auth.admin && <Route path="/viewpaper" element={<ViewPapers/>} />}

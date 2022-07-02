@@ -11,7 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 /*  styling scrollbars  */
 ::-webkit-scrollbar {
@@ -25,12 +25,12 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3ea175;
+  background: #cdf7e4;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a5aaad;
+  background: #3088be;
 }
 
 * {
@@ -40,12 +40,12 @@ code {
 
 body {
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .text-primary-p {
   color: #a5aaad;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -70,14 +70,14 @@ body {
 }
 
 .text-green {
-  color: #3b9668;
+  color: #cdf7e4;
 }
 
 .container {
   display: grid;
   height: 100vh;
-  grid-template-columns: 0.8fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 3fr;
+  grid-template-columns: 0.6fr 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 100fr;
   grid-template-areas:
     "sidebar nav nav nav"
     "sidebar main main main";

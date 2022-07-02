@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import useAuth from "../../hooks/useAuth";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
@@ -14,7 +13,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
       <div className="sidebar__title">
         <div className="sidebar__img">
           {/* <img src={logo} alt="logo" /> */}
-          <h1>Admin</h1>
+          <h1>Embibe</h1>
         </div>
         <i
           onClick={() => closeSidebar()}

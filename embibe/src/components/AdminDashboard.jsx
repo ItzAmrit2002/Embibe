@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Main from "./main/Main";
-import Navbar from "./navbar/Navbar";
 import Sidebar from "./sidebar/Sidebar";
 
 const AdminDashboard = () => {
@@ -13,7 +12,6 @@ const AdminDashboard = () => {
   };
   return (
     <div className="container">
-      <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
       <Main />
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
     </div>

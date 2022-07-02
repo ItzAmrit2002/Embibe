@@ -1,33 +1,30 @@
 #sidebar {
-    background: #020509;
+    background: #121212;
     grid-area: sidebar;
     overflow-y: auto;
-    padding: 20px;
+    padding: 10px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
+    width: 18rem;
   }
-  
   .sidebar__title {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    color: #f3f4f6;
+    color: #cdf7e4;
     margin-bottom: 30px;
-    /* color: #E85B6B; */
-  }
-  
-  .sidebar__img {
-    display: flex;
-    align-items: center;
+    font-family: 'Cedarville Cursive';
+    font-size: 32;
+    font-weight: 'bold';
+    cursor: 'pointer';
   }
   
   .sidebar__title > div > img {
-    width: 75px;
     object-fit: contain;
   }
   
   .sidebar__title > div > h1 {
-    font-size: 18px;
+    font-size: 32px;
     display: inline;
   }
   
@@ -37,11 +34,12 @@
   }
   
   .sidebar__menu > h2 {
-    color: #3ea175;
+    color: #cdf7e4;
     font-size: 16px;
     margin-top: 15px;
     margin-bottom: 5px;
-    padding: 0 10px;
+    text-align: center;
+    padding: 10px;
     font-weight: 700;
   }
   
@@ -49,17 +47,23 @@
     color: #f3f4f6;
     padding: 10px;
     border-radius: 3px;
+    text-align: center;
     margin-bottom: 5px;
     cursor: pointer;
+  }
+
+  .sidebar__link:hover {
+    background: rgba(62, 161, 117, 0.1);
+    color: #121212;
   }
   
   .active_menu_link {
     background: rgba(62, 161, 117, 0.3);
-    color: #3ea175;
+    color: #cdf7e4;
   }
   
   .active_menu_link a {
-    color: #3ea175 !important;
+    color: #cdf7e4 !important;
   }
   
   .sidebar__link > a {
@@ -77,17 +81,20 @@
     margin-top: 20px;
     padding: 10px;
     color: #e65061;
+    text-align: center;
     cursor: pointer;
   }
   
   .sidebar__logout > a {
     text-decoration: none;
+    text-align: center;
     color: #e65061;
     font-weight: 700;
     text-transform: uppercase;
   }
   
   .sidebar__logout > i {
+    text-align: center;
     margin-right: 10px;
     font-size: 18px;
   }

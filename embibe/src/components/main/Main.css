@@ -1,5 +1,5 @@
 main {
-    background: #f3f4f6;
+    background: #fff;
     grid-area: main;
     overflow-y: auto;
   }
@@ -11,6 +11,7 @@ main {
   .main__title {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   
   .main__title > img {
@@ -21,21 +22,21 @@ main {
   
   .main__greeting > h1 {
     font-size: 24px;
-    color: #2e4a66;
+    color: #2f7a5a;
     margin-bottom: 5px;
   }
   
   .main__greeting > p {
     font-size: 14px;
     font-weight: 700;
-    color: #a5aaad;
+    color: #121212;
   }
   
   .main__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
     gap: 30px;
     margin: 20px 0;
+    justify-content: center;
   }
   
   .card {
@@ -53,10 +54,12 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding : 20px
   }
   
   .card_inner > span {
-    font-size: 25px;
+    font-size: 20px;
+    padding-left: 15px;
   }
   
   .charts {
