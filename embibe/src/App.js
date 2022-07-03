@@ -6,6 +6,7 @@ import CreatePaper from './components/CreatePaper';
 import ViewPapers from './components/ViewPapers';
 import StudentStats from './components/StudentStats';
 import AdminDashboard from './components/AdminDashboard';
+import AddQuestion from './components/AddQuestion';
 import StudentDashboard from './components/StudentDashboard';
 import { RequireAuth } from './auth/requireAuth';
 import useAuth from './hooks/useAuth';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/admin" element={<AdminDashboard/>} />
         {auth.admin && <Route path="/student" element={<StudentDashboard/>} />}
         <Route path="/createpaper" element= {<CreatePaper/>} />
+        <Route path = '/addquestion' element={<AddQuestion/>} />
         {auth.admin && <Route path="/viewpaper" element={<ViewPapers/>} />}
         {auth.admin && <Route path="/stats" element={<StudentStats/>} />}
         

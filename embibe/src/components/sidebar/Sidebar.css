@@ -9,6 +9,7 @@
   }
   .sidebar__title {
     display: flex;
+    margin-top: 1.2rem;
     justify-content: center;
     align-items: center;
     color: #cdf7e4;
@@ -35,7 +36,7 @@
   
   .sidebar__menu > h2 {
     color: #cdf7e4;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 15px;
     margin-bottom: 5px;
     text-align: center;
@@ -49,6 +50,7 @@
     border-radius: 3px;
     text-align: center;
     margin-bottom: 5px;
+    font-family: "Raleway";
     cursor: pointer;
   }
 
