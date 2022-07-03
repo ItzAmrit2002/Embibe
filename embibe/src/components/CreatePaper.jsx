@@ -10,16 +10,39 @@ import {
     Button,
     Icon
 } from "atomize";
-
+import back2 from '../assets/back2.json'
+import Lottie from "react-lottie";
 import TextField from '@mui/material/TextField';
+import {useState, useEffect} from 'react'
 const theme = {
     fontFamily: {
         primary: "Raleway",
     }
 };
-const createPaper = () => {
+const CreatePaper = () => {
+	const [width, setWidth]= useState(1000)
+	useEffect(() => {
+		window.addEventListener("resize", () =>
+		{
+			setWidth(window.innerWidth)
+		})
+	}, []);
+	const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        // here is where we will declare lottie animation
+        // "animation" is what we imported before animationData: animation,
+        animationData: back2,
+        rendererSettings: {
+           preserveAspectRatio: "xMidYMid slice",
+        },
+     };
     return (
         <ThemeProvider theme={theme}>
+			<Div position="fixed" h={{ xs: 'auto', md: '100vh' }}>
+			<Lottie options={defaultOptions} height={width} width={width} />
+
+			</Div>
             <Container d="flex" align="center" justify="center">
                 <Row align="center" justify="center" flexDir="column" shadow="4" rounded="lg" h="30rem" pos="fixed" top="20%" flexGrow="1" bg="gray200">
                     <Col sm="12" md="6" align="center" justify="center" flexDir="column" w="30rem">
@@ -59,4 +82,4 @@ const createPaper = () => {
         </ThemeProvider>
     );
 }
-export default createPaper;
+export default CreatePaper;
