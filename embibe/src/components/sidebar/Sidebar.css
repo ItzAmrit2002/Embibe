@@ -1,5 +1,5 @@
 #sidebar {
-    background: #121212;
+    background: #0d1814;
     grid-area: sidebar;
     overflow-y: auto;
     padding: 10px;
@@ -47,7 +47,7 @@
   .sidebar__link {
     color: #f3f4f6;
     padding: 10px;
-    border-radius: 3px;
+    border-radius: 10px;
     text-align: center;
     margin-bottom: 5px;
     font-family: "Raleway";
@@ -55,7 +55,7 @@
   }
 
   .sidebar__link:hover {
-    background: rgba(62, 161, 117, 0.1);
+    background: rgba(30, 56, 48, 0.704);
     color: #121212;
   }
   

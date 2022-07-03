@@ -1,4 +1,3 @@
-// Adding a custom border radius
 import {
 	ThemeProvider,
 	Div,
@@ -11,9 +10,6 @@ import {
 	Icon,
 } from "atomize";
 import axios from "axios";
-import exams from "../assets/exams.json";
-import Lottie from "react-lottie";
-import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 const theme = {
@@ -32,17 +28,6 @@ const CreatePaper = () => {
 			setWidth(window.innerHeight);
 		});
 	}, []);
-	const defaultOptions = {
-		loop: true,
-		autoplay: true,
-		// here is where we will declare lottie animation
-		// "animation" is what we imported before animationData: animation,
-		animationData: exams,
-		rendererSettings: {
-			preserveAspectRatio: "xMidYMid slice",
-		},
-	};
-
 	const handleSubmit = (event) => {
 		// event.preventDefault();
 		// const data = new FormData(event.currentTarget);
@@ -79,9 +64,7 @@ const CreatePaper = () => {
 				d="flex"
 				align="center"
 				justify="center"
-				bgImg="https://wallpaperaccess.com/full/13192.jpg"
-				bgSize="cover"
-				bgPos="center">
+			>
 				<Row
 					align="center"
 					justify="center"
@@ -92,7 +75,7 @@ const CreatePaper = () => {
 					pos="fixed"
 					top="20%"
 					flexGrow="1"
-					bg="gray200">
+					bg="success100">
 					<Col
 						sm="12"
 						md="6"
