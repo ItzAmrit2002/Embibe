@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const goalSchema = mongoose.Schema({
+const paperSchema = mongoose.Schema({
     
     name: {
         type: String,
@@ -17,4 +17,4 @@ const goalSchema = mongoose.Schema({
     timestamps: true,
 })
 
-module.exports = mongoose.model('Goal', goalSchema)
+module.exports = mongoose.model('Paper', paperSchema)

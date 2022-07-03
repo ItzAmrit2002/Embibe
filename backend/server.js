@@ -12,13 +12,14 @@ console.log('connected to MongoDB server')
 })
 
 const authRoute = require('./routes/auth')
-
+const paperRoute = require('./routes/createpaper')
 const port = process.env.PORT || 3500
 app.use(express.json())
 app.use(express.urlencoded({extended: "false"}))
 
 
 app.use('/api/user', authRoute)
+app.use('/api/paper', paperRoute)
 
 app.listen(port, ()=> {
     console.log("server running on port: ", port)
