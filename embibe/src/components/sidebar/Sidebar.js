@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
-  const {auth, setAuth} = useAuth();
+  const { auth, setAuth } = useAuth();
 
 
   const navigate = useNavigate();
@@ -28,28 +28,36 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-home"></i>
           <a href="/admin">Dashboard</a>
         </div>
-        
+
         <div className="sidebar__link">
           <i className="fa fa-user-secret" aria-hidden="true"></i>
-          
-          <a onClick={ ()=> {
+
+          <a onClick={() => {
             console.log(auth.admin)
             navigate("/createpaper")
-            }}>Create Paper</a>
+          }}>Create Paper</a>
+        </div>
+        <div className="sidebar__link">
+          <i className="fa fa-user-secret" aria-hidden="true"></i>
+
+          <a onClick={() => {
+            console.log(auth.admin)
+            navigate("/addquestion")
+          }}>Add Questions</a>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-building-o"></i>
-          <a onClick={ ()=> {
+          <a onClick={() => {
             console.log(auth.admin)
             navigate("/stats")
-            }}>Student Statistics</a>
+          }}>Student Statistics</a>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-wrench"></i>
-          <a onClick={ ()=> {
+          <a onClick={() => {
             console.log(auth.admin)
             navigate("/viewpaper")
-            }}>View Paper</a>
+          }}>View Paper</a>
         </div>
         {/* <div className="sidebar__link">
           <i className="fa fa-archive"></i>
@@ -59,10 +67,10 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-handshake-o"></i>
           <a href="#">Contracts</a>
         </div> */}
-        
+
         <div className="sidebar__logout">
           <i className="fa fa-power-off"></i>
-          <a onClick={()=> {
+          <a onClick={() => {
             setAuth({});
             navigate("/login");
             console.log("logout called")

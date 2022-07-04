@@ -28,4 +28,18 @@ router.post('/createpaper', async (req, res) => {
     }
 })
 
+router.post('/getpaper', async (req, res) => {
+    const id=req.body.id;
+    try {
+        const papers = await Paper.findById(id);
+        res.json(papers);
+        return 
+    }
+    catch(err){
+        console.log(err)
+        res.status(400).send(err);
+        return
+    }
+})
+
 module.exports = router;
