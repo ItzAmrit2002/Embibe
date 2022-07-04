@@ -19,6 +19,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
+// axios.defaults.withCredentials = true;
 
 function Copyright(props) {
     return (

@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   return (
     <div className="container">
       <Main />
-      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
+      {/* <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} /> */}
     </div>
   );
 }
