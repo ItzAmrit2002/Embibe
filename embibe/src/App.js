@@ -10,6 +10,7 @@ import AddQuestion from './components/AddQuestion';
 import StudentDashboard from './components/StudentDashboard';
 import { RequireAuth } from './auth/requireAuth';
 import useAuth from './hooks/useAuth';
+import CreateQues from './components/CreateQues';
 function App() {
   const {auth} = useAuth();
   return (
@@ -22,6 +23,7 @@ function App() {
         {auth.email && <Route path="/student" element={<StudentDashboard/>} />}
         <Route path="/createpaper" element= {<CreatePaper/>} />
         <Route path = '/addquestion' element={<AddQuestion/>} />
+        <Route path = '/createques' element={<CreateQues/>} />
         {auth.admin && <Route path="/viewpaper" element={<ViewPapers/>} />}
         {auth.admin && <Route path="/stats" element={<StudentStats/>} />}
         

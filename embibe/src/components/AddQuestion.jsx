@@ -9,6 +9,7 @@ import {
   Button,
   Icon,
 } from "atomize";
+import Card from "./cards/Card";
 import { useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -40,8 +41,8 @@ const AddQuestion = () => {
         bgSize="cover"
         // bgRepeat="no-repeat"
         bgPos="center"
-      />
-
+      >
+      </Div>
       <Container d="flex" align="center" justify="center">
         <Row
           align="center"
