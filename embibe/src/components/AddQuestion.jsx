@@ -21,6 +21,7 @@ const theme = {
 };
 
 const AddQuestion = () => {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const handleSubmit = (e) => {
     axios
@@ -28,6 +29,10 @@ const AddQuestion = () => {
         id: id
       })
       .then((res) => {
+        if(res.status === 200)
+        {
+          navigate(`/addquestion/${id}`)
+        }
         console.log(res)
       })
       .catch((err) => console.log(err));

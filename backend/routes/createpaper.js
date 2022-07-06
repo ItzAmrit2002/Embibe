@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Paper = require('../models/Paper')
+const Question = require('../models/Question')
 router.post('/createpaper', async (req, res) => {
     const {name, time, subject} = req.body;
     if (!name || !time || !subject) {
@@ -34,6 +35,42 @@ router.post('/getpaper', async (req, res) => {
         const papers = await Paper.findById(id);
         res.json(papers);
         return 
+    }
+    catch(err){
+        console.log(err)
+        res.status(400).send(err);
+        return
+    }
+})
+
+
+router.post('/addquestion', async(req, res) => {
+    const {question_dsc, ansA, ansB, ansC, ansD, optionA, optionB, optionC, optionD, paperId} = req.body;
+
+    if (!question_dsc || !ansA || !ansB || !paperId || !ansC || !ansD) {
+        res.status(400).send('Please enter all the fields');
+        return;
+    }
+    try {
+        const question = new Question({
+            paper: paperId,
+            question_dsc: question_dsc,
+            optionA: ansA,
+            optionB: ansB,
+            optionC: ansC,
+            optionD: ansD,
+            checkA: optionA,
+            checkB: optionB,
+            checkC: optionC,
+            checkD: optionD
+        });
+        const savedQuestion = await question.save();
+        res.status(201).json({
+            _id: question.id,
+            question: question.question_dsc,
+            paperid: question.paperid
+        });
+        return
     }
     catch(err){
         console.log(err)
