@@ -22,7 +22,7 @@ const theme = {
 	},
 };
 
-const Card = () => {
+const Card = ({count}) => {
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -76,7 +76,7 @@ const Card = () => {
 					textSize="title"
 					fontFamily="Raleway"
 					m={{ t: "1rem", x: "1rem" }}>
-					1.
+					{count}.
 					<Textarea
 						placeholder="Basic Input"
 						w={{ xs: "auto", md: "35vw" }}

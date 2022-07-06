@@ -11,6 +11,8 @@ import {
 } from "atomize";
 import Card from "./cards/Card";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 
@@ -20,22 +22,31 @@ const theme = {
   },
 };
 
+
 const AddQuestion = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
+  const notify = () => toast.error("Invalid Paper ID!", {
+    position: toast.POSITION.TOP_RIGHT
+  });;
   const handleSubmit = (e) => {
     axios
       .post("http://localhost:8000/api/paper/getpaper", {
         id: id
       })
       .then((res) => {
-        if(res.status === 200)
-        {
+        if (res.status === 200) {
           navigate(`/addquestion/${id}`)
+        }
+        else {
+          notify();
         }
         console.log(res)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        notify();
+        console.log(err)
+      });
   }
   return (
     <ThemeProvider theme={theme}>
@@ -47,6 +58,7 @@ const AddQuestion = () => {
         // bgRepeat="no-repeat"
         bgPos="center"
       >
+        <ToastContainer/>
       </Div>
       <Container d="flex" align="center" justify="center">
         <Row
