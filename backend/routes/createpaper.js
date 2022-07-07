@@ -33,8 +33,14 @@ router.post('/getpaper', async (req, res) => {
     const id=req.body.id;
     try {
         const papers = await Paper.findById(id);
+        if(!papers)
+        {
+            res.status(404).json({message: 'Paper not found'});
+            return;
+        }
+      
         res.json(papers);
-        return 
+
     }
     catch(err){
         console.log(err)
@@ -52,6 +58,10 @@ router.post('/addquestion', async(req, res) => {
         return;
     }
     try {
+        // const filter = { question_dsc: question_dsc }
+        // let doc = await Question.findOne(filter, function(err,obj) { console.log(obj); })
+        // console.log("doc")
+        // console.log(doc)
         const question = new Question({
             paper: paperId,
             question_dsc: question_dsc,

@@ -12,6 +12,8 @@ import {
 	Label,
 	Textarea,
 } from "atomize";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -43,7 +45,12 @@ const Card = ({count}) => {
         optionD: optd
     })
       .then((res) => {
-       
+       if(res.status == 201)
+	   {
+		toast.success("Question Submitted!", {
+			position: toast.POSITION.TOP_RIGHT
+		  })
+	   }
         console.log(res)
       })
       .catch((err) => console.log(err));
@@ -71,6 +78,7 @@ const Card = ({count}) => {
 				rounded="md"
 				shadow="2"
 				hoverShadow="5">
+					<ToastContainer/>
 				<Text
 					tag="h1"
 					textSize="title"

@@ -72,6 +72,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-power-off"></i>
           <a onClick={() => {
             setAuth({});
+            localStorage.removeItem("token_embibe");
             navigate("/login");
             console.log("logout called")
           }}>Log out</a>

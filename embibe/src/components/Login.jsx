@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 // import green from "@material-ui/core/colors/green";
 import Box from '@mui/material/Box';
 import {useState, useEffect} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Grid from '@mui/material/Grid';
 import Lottie from "react-lottie";
 import exams from '../assets/exams.json'
@@ -57,6 +59,7 @@ const Login = () => {
         const data = new FormData(event.currentTarget);
         if(email === 'Admin' && password === 'Admin'){
             setAuth({admin: 'Admin'});
+            localStorage.setItem('token_embibe', 'Admin');
             navigate('/admin');
         }
         else{
@@ -73,16 +76,51 @@ const Login = () => {
                 const email = res.data.email;
                 const id = res.data._id
                   setAuth({Firstname, Secondname, token, email, id});
+                  localStorage.setItem('token_embibe', token);
                   navigate('/student')
               }
           })
-          .catch(err => console.log(err))
+          .catch(err =>{
+            toast.error(err.response.data, {
+              position: toast.POSITION.TOP_RIGHT
+            })
+             console.log(err)
+          })
         }
       };
     
       const [width, setWidth] = useState(550)
 
       useEffect(() => {
+        if(localStorage.getItem('token_embibe')){
+          const token1 = localStorage.getItem('token_embibe');
+          if(token1 === 'Admin'){
+            setAuth({admin: 'Admin'});
+            navigate('/admin');
+          }
+          else{
+          const config = {
+            headers: {
+              Authorization: `Bearer ${token1}`,
+            },
+          }
+          axios.get('http://localhost:8000/api/user/getuser', config).then(res => {
+            if(res.status == 200)
+            {
+              console.log("persistent login possible");
+              // setAuth
+              console.log(res)
+                const Firstname = res.data.Firstname;
+                const Secondname = res.data.Secondname;
+                const email = res.data.email;
+                const id = res.data._id
+                setAuth({Firstname, Secondname, token1, email, id});
+                navigate('/student', {replace: true})
+            }
+            
+          })
+        }
+        }
         if(window.innerWidth > 900 && window.innerWidth <= 1400) 
         {
             setWidth(550)
@@ -111,6 +149,7 @@ const Login = () => {
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }} spacing={0}>
         <CssBaseline />
+        <ToastContainer/>
         <Grid
           item
           spacing={0}

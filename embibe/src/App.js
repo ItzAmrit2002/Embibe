@@ -19,11 +19,11 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/admin" element={<AdminDashboard/>} />
+        {auth.admin && <Route path="/admin" element={<AdminDashboard/>} />}
         {auth.email && <Route path="/student" element={<StudentDashboard/>} />}
-        <Route path="/createpaper" element= {<CreatePaper/>} />
-        <Route path = '/addquestion' element={<AddQuestion/>} />
-        <Route path = '/addquestion/:id' element={<CreateQues/>} />
+        {auth.admin && <Route path="/createpaper" element= {<CreatePaper/>} />}
+        {auth.admin && <Route path = '/addquestion' element={<AddQuestion/>} />}
+        {auth.admin && <Route path = '/addquestion/:id' element={<CreateQues/>} />}
         {auth.admin && <Route path="/viewpaper" element={<ViewPapers/>} />}
         {auth.admin && <Route path="/stats" element={<StudentStats/>} />}
         
