@@ -28,11 +28,14 @@ const Card = ({count}) => {
 
     const { id } = useParams();
     const navigate = useNavigate();
-
+	const cid = id+count;
+	const shuffled = cid
+	console.log(shuffled)
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
       .post("http://localhost:8000/api/paper/addquestion", {
+		uid : shuffled,
         paperId: id,
         question_dsc: question,
         ansA: ansa,

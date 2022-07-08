@@ -5,6 +5,10 @@ const questionSchema = mongoose.Schema({
         required: true,
         ref: 'Paper'
     },
+    uid: {
+        type: String,
+        required: [true, 'Please add a text value']
+    },
     question_dsc: {
         type: String,
         required: [true, 'Please add a text value']
