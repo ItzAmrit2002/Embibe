@@ -52,6 +52,7 @@
     margin-bottom: 5px;
     font-family: "Raleway";
     cursor: pointer;
+    transition: all 1s;
   }
 
   .sidebar__link:hover {
@@ -106,6 +107,12 @@
     z-index: 9999 !important;
     left: 0 !important;
     position: absolute;
+  }
+
+  .sidebar__menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   
   @media only screen and (max-width: 978px) {

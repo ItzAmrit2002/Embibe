@@ -24,40 +24,42 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
       </div>
 
       <div className="sidebar__menu">
+        <div className="sidebar__menu__links">
         <div className="sidebar__link active_menu_link">
           <i className="fa fa-home"></i>
           <a href="/admin">Dashboard</a>
         </div>
 
-        <div className="sidebar__link">
-          <i className="fa fa-user-secret" aria-hidden="true"></i>
-
-          <a onClick={() => {
+        <div className="sidebar__link" onClick={() => {
             console.log(auth.admin)
             navigate("/createpaper")
-          }}>Create Paper</a>
-        </div>
-        <div className="sidebar__link">
+          }}>
           <i className="fa fa-user-secret" aria-hidden="true"></i>
 
-          <a onClick={() => {
+          <a >Create Paper</a>
+        </div>
+        <div className="sidebar__link" onClick={() => {
             console.log(auth.admin)
             navigate("/addquestion")
-          }}>Add Questions</a>
+          }}>
+          <i className="fa fa-user-secret" aria-hidden="true"></i>
+
+          <a >Add Questions</a>
         </div>
-        <div className="sidebar__link">
-          <i className="fa fa-building-o"></i>
-          <a onClick={() => {
+        <div className="sidebar__link" onClick={() => {
             console.log(auth.admin)
             navigate("/stats")
-          }}>Student Statistics</a>
+          }}>
+          <i className="fa fa-building-o"></i>
+          <a >Student Statistics</a>
         </div>
-        <div className="sidebar__link">
-          <i className="fa fa-wrench"></i>
-          <a onClick={() => {
+        <div className="sidebar__link" onClick={() => {
             console.log(auth.admin)
             navigate("/viewpaper")
-          }}>View Paper</a>
+          }}>
+          <i className="fa fa-wrench"></i>
+          <a >View Paper</a>
+        </div>
         </div>
         {/* <div className="sidebar__link">
           <i className="fa fa-archive"></i>

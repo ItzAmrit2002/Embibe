@@ -51,9 +51,20 @@ const Card = ({count}) => {
 			position: toast.POSITION.TOP_RIGHT
 		  })
 	   }
+	   else{
+		toast.error("Question Submission Failed", {
+			position: toast.POSITION.TOP_RIGHT
+		  })
+	   }
         console.log(res)
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{ 
+		toast.error("Question Submission Failed", {
+			position: toast.POSITION.TOP_RIGHT
+		  })
+		  console.log("error")
+		console.log(err)
+	});
 
     }
 
@@ -187,7 +198,7 @@ const Card = ({count}) => {
 							bg="success700"
 							hoverBg="success600"
 							rounded="circle"
-							m={{ t: "1rem" }}
+							m={{ y: "1rem" }}
 							shadow="2"
 							hoverShadow="4">
 							<Icon name="Checked" size="20px" color="white" onClick={handleSubmit}/>
