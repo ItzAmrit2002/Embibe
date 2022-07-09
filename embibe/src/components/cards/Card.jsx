@@ -106,7 +106,7 @@ const Card = ({count}) => {
 							setQuestion(e.target.value);
 							console.log(question);
 						}}
-					/>
+					/>			
 					<Div m="2rem" rounded="lg">
 						<Label align="center" textWeight="600" m={{ b: "0.5rem" }}>
 							<Checkbox
