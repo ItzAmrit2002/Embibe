@@ -34,9 +34,9 @@ const StudentDashboard = () => {
 					textColor="#2b4641">
 					Dashboard
 				</Text>
-				<Icon name="Minus" size="20px" m={{ b: "1.5rem" }} />
-				<Div d="flex" align="center" justify="space-evenly">
-					<Div classname="hover-bar" h="16px" w="3px" bg="#2b4641" />
+				<Icon name="Minus" size="20px" m={{ b: "1.5rem" }} color="#2b4641" />
+				<Div d="flex" align="center" justify="space-between">
+					<Div classname="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
 						textAlign="center"
 						className="student-dashboard-links"
@@ -45,7 +45,7 @@ const StudentDashboard = () => {
 						//shadow="1"
 						hoverShadow="2"
 						bg="#f7fafa"
-						m={{ b: "0.3rem" }}
+						m={{ b: "0.3rem", r: "0.5rem" }}
 						cursor="pointer"
 						d="flex"
 						align="center"
@@ -55,7 +55,7 @@ const StudentDashboard = () => {
 						<Icon
 							name="Edit"
 							size="20px"
-							m={{ r: "1.2rem", l: "0.5rem" }}
+							m={{ r: "1.2rem" }}
 							color="#6ab5ab"
 						/>
 						<Text
@@ -67,8 +67,8 @@ const StudentDashboard = () => {
 						</Text>
 					</Div>
 				</Div>
-				<Div d="flex" align="center" justify="space-evenly">
-					<Div classname="hover-bar" h="16px" w="3px" bg="#2b4641" />
+				<Div d="flex" align="center" justify="space-between">
+					<Div classname="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
 						textAlign="center"
 						className="student-dashboard-links"
@@ -77,7 +77,7 @@ const StudentDashboard = () => {
 						//shadow="1"
 						hoverShadow="2"
 						bg="#f7fafa"
-						m={{ b: "0.3rem" }}
+						m={{ b: "0.3rem", r: "0.5rem" }}
 						d="flex"
 						cursor="pointer"
 						align="center"
@@ -87,7 +87,7 @@ const StudentDashboard = () => {
 						<Icon
 							name="Loading2"
 							size="20px"
-							m={{ r: "1.2rem", l: "0.5rem" }}
+							m={{ r: "1.2rem" }}
 							color="#6ab5ab"
 						/>
 						<Text
@@ -100,15 +100,21 @@ const StudentDashboard = () => {
 					</Div>
 				</Div>
 			</Div>
-			<Button
-				prefix={<Icon name="Logout" size="30px" color="#6ab5ab" />}
-				h="2.5rem"
-				w="2.5rem"
-				bg="#f7fafa"
-				hoverBg="#def3ee"
-				rounded="lg"
-				m={{ r: "1.2rem", l: "0.5rem", b: "1rem" }}
-				onClick={handleClick}></Button>
+			<Div
+				d="flex"
+				justify="center"
+				align="center">
+				<Button
+					prefix={<Icon name="Logout" size="30px" color="#6ab5ab" />}
+					h="2.5rem"
+					w="2.5rem"
+					bg="#f7fafa"
+					hoverBg="#def3ee"
+					rounded="lg"
+					m={{ r: "1.2rem", l: "0.5rem", b: "1rem" }}
+					onClick={handleClick}>
+				</Button>
+			</Div>
 		</Div>
 	);
 };
