@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const questionSchema = mongoose.Schema({
     paper: {
         type : mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: 'Paper'
     },
     uid: {

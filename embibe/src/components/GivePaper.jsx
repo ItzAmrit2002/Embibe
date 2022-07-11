@@ -18,26 +18,25 @@ const GivePaper = () => {
 		axios.get("http://localhost:8000/api/student/givepaper").then((res) => {
 			console.log(res.data);
 			setCount(res.data);
-            
-			
+
+
 		});
-        axios.get("http://localhost:8000/api/student/getpapers").then((res) => {
-            console.log(res)
-            setComponents(res.data);
-    })
-        
+		axios.get("http://localhost:8000/api/student/getpapers").then((res) => {
+			setComponents(res.data.papers);
+		})
 	}, []);
-    let itemList=[];
+	
+	let itemList = [];
+	for (let i = 0; i < count; i++) {
+		const name = components[i].name;
+		const time = components[i].time;
+		const subject = components[i].subject;
+		console.log(name)
+		itemList.push(<QuestionCards name={name} time={time} sub={subject} />)
+	}
 
-    for(let i=0; i<count; i++){
-        var name = components[i].name;
-        var time = components[i].time;
-        var subject = components[i].subject;
-        itemList.push( <QuestionCards name={name} time = {time} sub = {subject}/>)
-      }
 
 
-    
 	return (
 		<Div d="flex" bg="#f7fafa">
 			<SidebarStudent />
@@ -56,8 +55,7 @@ const GivePaper = () => {
         <QuestionCards/>
         <QuestionCards/>
         <QuestionCards/> */}
-				{/* {components.map((item, i) => item)} */}
-                {itemList}
+				{itemList}
 			</Container>
 		</Div>
 	);

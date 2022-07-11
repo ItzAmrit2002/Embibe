@@ -57,7 +57,7 @@ router.post('/addquestion', async (req, res) => {
         return;
     }
     try {
-        Question.findOneAndUpdate({ 'uid': uid }, { question_dsc: question_dsc, optionA: ansA, optionB: ansB, optionC: ansC, optionD: ansD, checkA: optionA, checkB: optionB, checkC: optionC, checkD: optionD, marks: marks }, { upsert: true }, function (err, doc) {
+        Question.findOneAndUpdate({ 'uid': uid }, {paper:paperId, question_dsc: question_dsc, optionA: ansA, optionB: ansB, optionC: ansC, optionD: ansD, checkA: optionA, checkB: optionB, checkC: optionC, checkD: optionD, marks: marks }, { upsert: true }, function (err, doc) {
             if (err) {
                 console.log(err)
                 res.status(400).send(err);
