@@ -9,6 +9,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AddQuestion from './components/AddQuestion';
 import StudentDashboard from './components/StudentDashboard';
 import { RequireAuth } from './auth/requireAuth';
+import GivePaper from './components/GivePaper';
 import useAuth from './hooks/useAuth';
 import CreateQues from './components/CreateQues';
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        {auth.email && <Route path="/givepaper" element={<GivePaper/>} />}
         {auth.admin && <Route path="/admin" element={<AdminDashboard/>} />}
         {auth.email && <Route path="/student" element={<StudentDashboard/>} />}
         {auth.admin && <Route path="/createpaper" element= {<CreatePaper/>} />}

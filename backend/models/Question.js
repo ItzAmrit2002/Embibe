@@ -45,6 +45,10 @@ const questionSchema = mongoose.Schema({
         type: Boolean,
         required: [true, 'Please add a boolean value']
     },
+    marks: {
+        type: Number,
+        required : [true, 'Please add a marks value']
+    }
 }, {
     timestamps: true,
 })

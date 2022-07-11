@@ -45,7 +45,8 @@ const Card = ({count}) => {
         optionA: opta,
         optionB: optb,
         optionC: optc,
-        optionD: optd
+        optionD: optd,
+		marks: marks
     })
       .then((res) => {
        if(res.status == 201)
@@ -81,6 +82,8 @@ const Card = ({count}) => {
 	const [ansc, setAnsc] = useState("");
 	const [ansd, setAnsd] = useState("");
 
+	const [marks, setMarks] = useState("");
+
 	const [question, setQuestion] = useState("");
 	return (
 		<ThemeProvider theme={theme}>
@@ -98,7 +101,17 @@ const Card = ({count}) => {
 					textSize="title"
 					fontFamily="Raleway"
 					m={{ t: "1rem", x: "1rem" }}>
+					<Div d="flex"
+					align="center"
+					justify="space-between"
+					m={{ b: "1rem" }}>
+					
 					{count}.
+					<Input placeholder="Marks" h="1.5rem" w="5rem" onChange={(e) => {
+							setMarks(e.target.value);
+							console.log(marks);
+						}}/>
+					</Div>
 					<Textarea
 						placeholder="Basic Input"
 						w={{ xs: "auto", md: "35vw" }}

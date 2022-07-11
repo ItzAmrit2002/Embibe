@@ -50,14 +50,14 @@ router.post('/getpaper', async (req, res) => {
 
 
 router.post('/addquestion', async (req, res) => {
-    const { question_dsc, ansA, ansB, ansC, ansD, optionA, optionB, optionC, optionD, paperId, uid } = req.body;
+    const { question_dsc, ansA, ansB, ansC, ansD, optionA, optionB, optionC, optionD, paperId, uid, marks } = req.body;
 
-    if (!question_dsc || !ansA || !ansB || !paperId || !ansC || !ansD || !uid) {
+    if (!question_dsc || !ansA || !ansB || !paperId || !ansC || !ansD || !uid || !marks) {
         res.status(400).send('Please enter all the fields');
         return;
     }
     try {
-        Question.findOneAndUpdate({ 'uid': uid }, { question_dsc: question_dsc, optionA: ansA, optionB: ansB, optionC: ansC, optionD: ansD, checkA: optionA, checkB: optionB, checkC: optionC, checkD: optionD }, { upsert: true }, function (err, doc) {
+        Question.findOneAndUpdate({ 'uid': uid }, { question_dsc: question_dsc, optionA: ansA, optionB: ansB, optionC: ansC, optionD: ansD, checkA: optionA, checkB: optionB, checkC: optionC, checkD: optionD, marks: marks }, { upsert: true }, function (err, doc) {
             if (err) {
                 console.log(err)
                 res.status(400).send(err);
@@ -77,7 +77,8 @@ router.post('/addquestion', async (req, res) => {
             checkA: optionA,
             checkB: optionB,
             checkC: optionC,
-            checkD: optionD
+            checkD: optionD,
+            marks: marks
         });
         //const savedQuestion = await question.save();
         res.status(201).json({
