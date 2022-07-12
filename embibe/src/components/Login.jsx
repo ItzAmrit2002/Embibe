@@ -147,12 +147,12 @@ const Login = () => {
       }, []);
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }} spacing={0}>
+      <Grid container component="main" sx={{ height: '100vh' }} >
         <CssBaseline />
         <ToastContainer/>
         <Grid
           item
-          spacing={0}
+          
           xs={false}
           sm={4}
           md={7}

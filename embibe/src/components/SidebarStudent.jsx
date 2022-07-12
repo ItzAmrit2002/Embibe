@@ -36,7 +36,7 @@ const SidebarStudent = () => {
 				</Text>
 				<Icon name="Minus" size="20px" m={{ b: "1.5rem" }} color="#2b4641" />
 				<Div d="flex" align="center" justify="space-between">
-					<Div classname="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
+					<Div className="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
                         onClick={()=> navigate("/givepaper")}
 						textAlign="center"
@@ -69,7 +69,7 @@ const SidebarStudent = () => {
 					</Div>
 				</Div>
 				<Div d="flex" align="center" justify="space-between">
-					<Div classname="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
+					<Div className="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
 						textAlign="center"
 						className="student-dashboard-links"
@@ -101,7 +101,7 @@ const SidebarStudent = () => {
 					</Div>
 				</Div>
                 <Div d="flex" align="center" justify="space-between">
-					<Div classname="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
+					<Div className="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
 						textAlign="center"
 						className="student-dashboard-links"
