@@ -10,8 +10,8 @@ const GivePaper = () => {
 	
 
 	const [count, setCount] = useState(0);
-	let itemList = [];
-
+	const [marks, setMarks] = useState(0);
+	const [nq, setNq] = useState(0);
 	const [result, setResult] = useState([]);
 
 	useEffect(() => {
@@ -30,6 +30,9 @@ const GivePaper = () => {
 	const getData = async () => {
 		let res =	 await axios.get("http://localhost:8000/api/student/getpapers");
 		setResult(res.data.papers);
+		setMarks(res.data.rep);
+		setNq(res.data.rex);
+		
 	};
 
 
@@ -47,6 +50,8 @@ const GivePaper = () => {
 						name={item.name}
 						sub={item.subject}
 						time={item.time}
+						marks={marks[index].total}
+						nq={nq[index].n}
 						key={index}
 					/>
 				))}
