@@ -23,20 +23,13 @@ const GivePaper = () => {
 
 	const getCount = async () => {
 		let res = await axios.get("http://localhost:8000/api/student/givepaper")
-
 		console.log(res.data)
-
 		setCount(res.data)
 	};
 
 	const getData = async () => {
 		let res =	 await axios.get("http://localhost:8000/api/student/getpapers");
-
-		// Setting the data i our usestate.
 		setResult(res.data.papers);
-
-
-		
 	};
 
 

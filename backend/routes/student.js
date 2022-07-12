@@ -10,6 +10,17 @@ router.get('/givepaper', async (req, res) => {
     });
 })
 
+function GetSortOrder(prop) {
+    return function (a, b) {
+        if (a[prop] > b[prop]) {
+            return 1;
+        } else if (a[prop] < b[prop]) {
+            return -1;
+        }
+        return 0;
+    }
+}
+
 router.get('/getpapers', async (req, res) => {
     const papers = await Paper.find();
     const questions = await Question.find();
@@ -28,12 +39,14 @@ router.get('/getpapers', async (req, res) => {
         }
     }])
         .then((rep) => {
-            markstot = rep
             Question.aggregate([
                 { $match: {} },
                 { $group: { _id: '$paper', n: { $sum: 1 } } }
             ]).then((rex) => {
-                res.json({ papers, markstot, rex })
+                papers.sort(GetSortOrder('_id'));
+                rep.sort(GetSortOrder('_id'));
+                rex.sort(GetSortOrder('_id'));
+                res.json({ papers, rep, rex })
             })
         });
 
