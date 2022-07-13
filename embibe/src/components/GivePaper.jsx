@@ -38,7 +38,7 @@ const GivePaper = () => {
 
 
 	return (
-		<Div d="flex" bg="#f7fafa">
+		<Div d="flex" bg="#f2f9f9">
 			<SidebarStudent />
 			{/* <div className="loader">Loading...</div> */}
 			

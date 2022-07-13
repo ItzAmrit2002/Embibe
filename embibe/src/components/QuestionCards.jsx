@@ -4,7 +4,7 @@ import "./QuestionCards.css";
 
 const QuestionCards = ({name, time, sub, marks, nq}) => {
     return (
-        <Div d="flex" shadow="1" hoverShadow="3" h="6rem" w="auto" rounded="lg" hoverBg="rgba(193, 226, 223,0.25)" m={{ t: "3rem" }} justify="space-between" align="center" className="main-card" cursor="pointer">
+        <Div d="flex" shadow="1" hoverShadow="3" h="6rem" w="auto" rounded="lg" hoverBg="rgba(193, 226, 223,0.6)" m={{ t: "3rem" }} justify="space-between" align="center" className="main-card" cursor="pointer">
             <Div d="flex" flexDir="column">
                 <Text textWeight="1000" fontFamily="Montserrat" textSize="heading" m={{ x: "2rem", y: "0.2rem" }} textColor="#2b4641">{name}</Text>
                 <Div d="flex">
