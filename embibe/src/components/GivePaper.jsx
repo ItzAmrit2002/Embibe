@@ -40,22 +40,28 @@ const GivePaper = () => {
 	return (
 		<Div d="flex" bg="#f7fafa">
 			<SidebarStudent />
+			{/* <div className="loader">Loading...</div> */}
+			
 			<Container
 				className="main-page"
 				overflow="scroll"
 				h="100vh"
 				flexGrow="1"
-				minW="85%">
-				{result.map((item, index) => (
-					<QuestionCards
+				minW="85%"
+				>
+					
+				{result.map((item, index) =>{ 
+					const mark = marks[index] ? marks[index].total : 0;
+					const nqi = nq[index] ? nq[index].n : 0;
+					return (<QuestionCards
 						name={item.name}
 						sub={item.subject}
 						time={item.time}
-						marks={100}
-						nq={25}
+						marks={mark}
+						nq={nqi}
 						key={index}
-					/>
-				))}
+					/>)
+				})}
 			</Container>
 		</Div>
 	);

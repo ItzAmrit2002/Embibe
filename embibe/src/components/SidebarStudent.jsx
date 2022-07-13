@@ -20,7 +20,7 @@ const SidebarStudent = () => {
 			d="flex"
 			justify="space-between"
 			// align="center"
-			bg="#f7fafa"
+			bg="#f2f9f9"
 			h="100vh"
 			w="15%"
 			shadow="4"
@@ -36,7 +36,7 @@ const SidebarStudent = () => {
 				</Text>
 				<Icon name="Minus" size="20px" m={{ b: "1.5rem" }} color="#2b4641" />
 				<Div d="flex" align="center" justify="space-between">
-					<Div className="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
+					<Div className="hover-bar" h="15px" w="4px" bg="#4abfa9" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
                         onClick={()=> navigate("/givepaper")}
 						textAlign="center"
@@ -45,7 +45,7 @@ const SidebarStudent = () => {
 						w="13vw"
 						//shadow="1"
 						hoverShadow="2"
-						bg="#f7fafa"
+						bg="#f2f9f9"
 						m={{ b: "0.3rem", r: "0.5rem" }}
 						cursor="pointer"
 						d="flex"
@@ -69,7 +69,7 @@ const SidebarStudent = () => {
 					</Div>
 				</Div>
 				<Div d="flex" align="center" justify="space-between">
-					<Div className="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
+					<Div className="hover-bar" h="15px" w="4px" bg="#4abfa9" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
 						textAlign="center"
 						className="student-dashboard-links"
@@ -77,7 +77,7 @@ const SidebarStudent = () => {
 						w="13vw"
 						//shadow="1"
 						hoverShadow="2"
-						bg="#f7fafa"
+						bg="#f2f9f9"
 						m={{ b: "0.3rem", r: "0.5rem" }}
 						d="flex"
 						cursor="pointer"
@@ -101,15 +101,16 @@ const SidebarStudent = () => {
 					</Div>
 				</Div>
                 <Div d="flex" align="center" justify="space-between">
-					<Div className="hover-bar" h="15px" w="4px" bg="#2b4641" m={{ l: "0.1rem" }} rounded="circle" />
+					<Div className="hover-bar" h="15px" w="4px" bg="#4abfa9" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
+						onClick={()=> navigate("/myprofile")}
 						textAlign="center"
 						className="student-dashboard-links"
 						p="0.5rem"
 						w="13vw"
 						//shadow="1"
 						hoverShadow="2"
-						bg="#f7fafa"
+						bg="#f2f9f9"
 						m={{ b: "0.3rem", r: "0.5rem" }}
 						d="flex"
 						cursor="pointer"
