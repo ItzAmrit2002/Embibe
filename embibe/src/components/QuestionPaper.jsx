@@ -32,11 +32,10 @@ const QuestionPaper = () => {
 					Paper Name
 				</Text>
 				<Text
-					tag="h1"
-					textSize="display1"
+					textSize="heading"
 					fontFamily="Montserrat"
 					m={{ r: "8%" }}>
-					Time remaining: {120 - Math.round(time / 1000 / 60)} minutes.
+					Time remaining: {120 - Math.ceil(time / 1000 / 60)} minutes, {60 - Math.round((time / 1000) % 60)} seconds.
 				</Text>
 			</Div>
 			<QuesDisplay />
