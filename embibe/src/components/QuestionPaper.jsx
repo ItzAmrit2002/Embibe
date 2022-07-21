@@ -1,8 +1,17 @@
 import { Div, Button, Text, Icon, Container, Label, Checkbox } from "atomize";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import QuesDisplay from "./QuesDisplay";
+
 const QuestionPaper = () => {
+	const [begtime, setBegtime] = useState(new Date());
+	const [time, setTime] = useState(() => {
+		const teme = new Date()
+		return teme
+	});
+	useEffect(() => {
+		setTime(new Date() - begtime)
+	}, [time]);
 	return (
 		<Div>
 			<Div
@@ -27,7 +36,7 @@ const QuestionPaper = () => {
 					textSize="display1"
 					fontFamily="Montserrat"
 					m={{ r: "8%" }}>
-					Timer{" "}
+					Time remaining: {120 - Math.round(time / 1000 / 60)} minutes.
 				</Text>
 			</Div>
 			<QuesDisplay />
