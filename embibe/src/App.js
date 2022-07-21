@@ -22,9 +22,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/myprofile" element={<StudentProfile/>} />
+        {auth.email && <Route path="/myprofile" element={<StudentProfile/>} />}
         {auth.email && <Route path="/givepaper" element={<GivePaper/>} />}
-        <Route path="/questionpaper/:pid/:sid" element={<QuestionPaper/>}/>
+        {auth.email && <Route path="/questionpaper/:pid/:sid" element={<QuestionPaper/>}/>}
         {auth.admin && <Route path="/admin" element={<AdminDashboard/>} />}
         {auth.email && <Route path="/student" element={<StudentDashboard/>} />}
         {auth.admin && <Route path="/createpaper" element= {<CreatePaper/>} />}

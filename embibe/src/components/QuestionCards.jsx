@@ -1,8 +1,12 @@
 import React from 'react'
 import { Div, Button, Text, Icon, Container } from "atomize";
 import "./QuestionCards.css";
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
-const QuestionCards = ({name, time, sub, marks, nq}) => {
+const QuestionCards = ({name, time, sub, marks, nq, id}) => {
+    const navigate = useNavigate();
+    const {auth} = useAuth();
     return (
         <Div d="flex" shadow="1" hoverShadow="3" h="6rem" w="auto" rounded="lg" hoverBg="rgba(193, 226, 223,0.6)" m={{ t: "3rem" }} justify="space-between" align="center" className="main-card" cursor="pointer">
             <Div d="flex" flexDir="column">
@@ -20,6 +24,11 @@ const QuestionCards = ({name, time, sub, marks, nq}) => {
                 bg="rgba(193, 226, 223,0)"
                 hoverBg="rgba(193, 226, 223,0.75)"
                 rounded="lg"
+                onClick={() => {
+                    
+                    navigate(`/questionpaper/${id}/${auth.id}`);
+                }
+                }
                 m={{ r: "1rem" }}
             >
                 <Icon

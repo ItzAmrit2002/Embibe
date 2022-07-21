@@ -58,6 +58,7 @@ const GivePaper = () => {
 						sub={item.subject}
 						time={item.time}
 						marks={mark}
+						id={item._id}
 						nq={nqi}
 						key={index}
 					/>)
