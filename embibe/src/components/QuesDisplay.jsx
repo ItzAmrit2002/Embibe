@@ -25,9 +25,11 @@ const QuesDisplay = ({
 					flexDir="column"
 					shadow="2"
 					hoverShadow="3"
+					bg="#212121"
 					h="auto"
 					w="auto"
 					rounded="lg"
+					textColor="#eeeeee"
 					m={{ t: "3rem", b: "3rem" }}
 					p="5%">
 					<Div d="flex" justify="space-between">
@@ -52,7 +54,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsA(e.target.checked)}
 								checked={isA}
 								inactiveColor="success400"
-								activeColor="success700"
+								activeColor="rgb(20, 255, 236)"
 								size="24px"
 							/>
 						</Label>
@@ -70,7 +72,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsB(e.target.checked)}
 								checked={isB}
 								inactiveColor="success400"
-								activeColor="success700"
+								activeColor="rgb(20, 255, 236)"
 								size="24px"
 							/>
 						</Label>
@@ -88,7 +90,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsC(e.target.checked)}
 								checked={isC}
 								inactiveColor="success400"
-								activeColor="success700"
+								activeColor="rgb(20, 255, 236)"
 								size="24px"
 							/>
 						</Label>
@@ -106,7 +108,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsD(e.target.checked)}
 								checked={isD}
 								inactiveColor="success400"
-								activeColor="success700"
+								activeColor="rgb(20, 255, 236)"
 								size="24px"
 							/>
 						</Label>
@@ -117,29 +119,29 @@ const QuesDisplay = ({
 							m={{ l: "1%" }}>
 							{optionD}
 						</Text>
-                        
+
 					</Div>
-                    <Div d="flex" flexDir="colum" align="center" textAlign="center" justify="center">
-					<Button
-						prefix={
-							<Icon
-								name="Checked"
-								size="16px"
-								color="white"
-								m={{ r: "0.5rem" }}
-							/>
-						}
-						bg="success700"
-						hoverBg="success800"
-						rounded="circle"
-						p={{ r: "1.5rem", l: "1rem" }}
-						shadow="3"
-						hoverShadow="4">
-						Submit Answer
-					</Button>
+					<Div d="flex" flexDir="colum" align="center" textAlign="center" justify="center">
+						<Button
+							prefix={
+								<Icon
+									name="Checked"
+									size="16px"
+									color="white"
+									m={{ r: "0.5rem" }}
+								/>
+							}
+							bg="rgb(13, 115, 119)"
+							hoverBg="rgb(13, 115, 119,0.8)"
+							rounded="circle"
+							p={{ r: "1.5rem", l: "1rem" }}
+							shadow="3"
+							hoverShadow="4">
+							Submit Answer
+						</Button>
+					</Div>
 				</Div>
-                </Div>
-                
+
 			</Container>
 		</Div>
 	);

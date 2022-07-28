@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const SidebarStudent = () => {
-    const { setAuth } = useAuth();
+	const { setAuth } = useAuth();
 	const navigate = useNavigate();
 	const handleClick = () => {
 		localStorage.removeItem("token_embibe");
@@ -20,7 +20,7 @@ const SidebarStudent = () => {
 			d="flex"
 			justify="space-between"
 			// align="center"
-			bg="#f2f9f9"
+			bg="#323232"
 			h="100vh"
 			w="15%"
 			shadow="4"
@@ -31,27 +31,27 @@ const SidebarStudent = () => {
 					textSize="heading"
 					fontFamily="Montserrat"
 					m={{ t: "3rem" }}
-					textColor="#2b4641">
+					textColor="#ffffff">
 					Dashboard
 				</Text>
-				<Icon name="Minus" size="20px" m={{ b: "1.5rem" }} color="#2b4641" />
+				<Icon name="Minus" size="20px" m={{ b: "1.5rem" }} color="#ffffff" />
 				<Div d="flex" align="center" justify="space-between">
 					<Div className="hover-bar" h="15px" w="4px" bg="#4abfa9" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
-                        onClick={()=> navigate("/givepaper")}
+						onClick={() => navigate("/givepaper")}
 						textAlign="center"
 						className="student-dashboard-links"
 						p="0.5rem"
 						w="13vw"
 						//shadow="1"
 						hoverShadow="2"
-						bg="#f2f9f9"
+						bg="#323232"
 						m={{ b: "0.3rem", r: "0.5rem" }}
 						cursor="pointer"
 						d="flex"
 						align="center"
 						//justify="space-evenly"
-						hoverBg="#def3ee"
+						hoverBg="rgba(33, 33, 33,0.6)"
 						rounded="xl">
 						<Icon
 							name="Edit"
@@ -63,7 +63,7 @@ const SidebarStudent = () => {
 							textSize="subheader"
 							textWeight="1000"
 							fontFamily="Montserrat"
-							textColor="#2b4641">
+							textColor="#6ad1bf">
 							Attempt a Paper
 						</Text>
 					</Div>
@@ -77,13 +77,13 @@ const SidebarStudent = () => {
 						w="13vw"
 						//shadow="1"
 						hoverShadow="2"
-						bg="#f2f9f9"
+						bg="#323232"
 						m={{ b: "0.3rem", r: "0.5rem" }}
 						d="flex"
 						cursor="pointer"
 						align="center"
 						//justify="space-evenly"
-						hoverBg="#def3ee"
+						hoverBg="rgba(33, 33, 33,0.6)"
 						rounded="xl">
 						<Icon
 							name="Loading2"
@@ -95,28 +95,28 @@ const SidebarStudent = () => {
 							textSize="subheader"
 							textWeight="1000"
 							fontFamily="Montserrat"
-							textColor="#2b4641">
+							textColor="#6ad1bf">
 							View Statistics
 						</Text>
 					</Div>
 				</Div>
-                <Div d="flex" align="center" justify="space-between">
+				<Div d="flex" align="center" justify="space-between">
 					<Div className="hover-bar" h="15px" w="4px" bg="#4abfa9" m={{ l: "0.1rem" }} rounded="circle" />
 					<Div
-						onClick={()=> navigate("/myprofile")}
+						onClick={() => navigate("/myprofile")}
 						textAlign="center"
 						className="student-dashboard-links"
 						p="0.5rem"
 						w="13vw"
 						//shadow="1"
 						hoverShadow="2"
-						bg="#f2f9f9"
+						bg="#323232"
 						m={{ b: "0.3rem", r: "0.5rem" }}
 						d="flex"
 						cursor="pointer"
 						align="center"
 						//justify="space-evenly"
-						hoverBg="#def3ee"
+						hoverBg="rgba(33, 33, 33,0.6)"
 						rounded="xl">
 						<Icon
 							name="User"
@@ -128,7 +128,7 @@ const SidebarStudent = () => {
 							textSize="subheader"
 							textWeight="1000"
 							fontFamily="Montserrat"
-							textColor="#2b4641">
+							textColor="#6ad1bf">
 							My Profile
 						</Text>
 					</Div>
@@ -142,8 +142,8 @@ const SidebarStudent = () => {
 					prefix={<Icon name="Logout" size="30px" color="#6ab5ab" />}
 					h="2.5rem"
 					w="2.5rem"
-					bg="#f7fafa"
-					hoverBg="#def3ee"
+					bg="#323232"
+					hoverBg="rgba(33, 33, 33,0.6)"
 					rounded="lg"
 					m={{ r: "1.2rem", l: "0.5rem", b: "1rem" }}
 					onClick={handleClick}>

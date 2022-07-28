@@ -7,7 +7,7 @@ import axios from "axios";
 // import "./GivePaper.css"
 
 const GivePaper = () => {
-	
+
 
 	const [count, setCount] = useState(0);
 	const [marks, setMarks] = useState(0);
@@ -19,7 +19,7 @@ const GivePaper = () => {
 		getCount();
 	}, []);
 
-	
+
 
 	const getCount = async () => {
 		let res = await axios.get("http://localhost:8000/api/student/givepaper")
@@ -28,29 +28,39 @@ const GivePaper = () => {
 	};
 
 	const getData = async () => {
-		let res =	 await axios.get("http://localhost:8000/api/student/getpapers");
+		let res = await axios.get("http://localhost:8000/api/student/getpapers");
 		console.log(res.data)
 		setResult(res.data.papers);
 		setMarks(res.data.rep);
 		setNq(res.data.rex);
-		
+
 	};
 
 
 	return (
-		<Div d="flex" bg="#f2f9f9">
+		<Div d="flex" bg="#212121">
 			<SidebarStudent />
 			{/* <div className="loader">Loading...</div> */}
-			
+
 			<Container
 				className="main-page"
 				overflow="scroll"
 				h="100vh"
 				flexGrow="1"
 				minW="85%"
-				>
-					
-				{result.map((item, index) =>{ 
+			>
+				<Div textAlign="center"
+					align="center"
+					justify="center">
+					<Text
+						m={{t: "2%"}}
+						fontFamily="Cedarville Cursive"
+						textSize="display3"
+						textColor="#6ad1bf">
+						Embibe
+					</Text>
+				</Div>
+				{result.map((item, index) => {
 					const mark = marks[index] ? marks[index].total : 0;
 					const nqi = nq[index] ? nq[index].n : 0;
 					return (<QuestionCards

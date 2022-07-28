@@ -32,7 +32,7 @@ const StudentProfile = () => {
     setName(res.data.Firstname + " " + res.data.Secondname)
   };
   return (
-    <Div d="flex" bg="#f2f9f9">
+    <Div d="flex" bg="#212121">
       <Sidebar />
       <Container d="flex" align="center" justify="center">
         <Row
@@ -45,7 +45,7 @@ const StudentProfile = () => {
           pos="fixed"
           top="25%"
           flexGrow="1"
-          bg="success100">
+          bg="#323232">
           <Col
             sm="12"
             md="6"
@@ -64,7 +64,7 @@ const StudentProfile = () => {
                 textSize="display1"
                 textWeight="1000"
                 fontFamily="Montserrat"
-                textColor="#2b4641"
+                textColor="#ffffff"
                 m={{ t: "1rem", b: "2rem" }}>
                 My Profile
               </Text>
@@ -73,7 +73,7 @@ const StudentProfile = () => {
                 textSize="title"
                 textWeight="600"
                 fontFamily="Montserrat"
-                textColor="#2b4641"
+                textColor="#6ad1bf"
                 m={{ t: "1rem", b: "1rem" }}>
                 Name: {name}
               </Text>
@@ -82,7 +82,7 @@ const StudentProfile = () => {
                 textSize="title"
                 textWeight="600"
                 fontFamily="Montserrat"
-                textColor="#2b4641"
+                textColor="#6ad1bf"
                 m={{ t: "1rem", b: "4rem" }}>
                 Email: {email}
               </Text>
@@ -95,8 +95,8 @@ const StudentProfile = () => {
                     m={{ r: "1rem" }}
                   />
                 }
-                bg="#6ab5ab"
-                hoverBg="#6ab5ab"
+                bg="rgba(13, 115, 119,0.5)"
+                hoverBg="rgb(13, 115, 119)"
                 rounded="lg"
                 shadow="3"
                 hoverShadow="4"
