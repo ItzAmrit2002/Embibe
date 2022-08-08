@@ -10,7 +10,7 @@ const QuestionPaper = () => {
 	const [ques, setQues] = useState([]);
 	const [paperName, setPaperName] = useState("");
 	const [subject, setSubject] = useState("");
-	const { pid } = useParams();
+	const { pid, sid } = useParams();
 
 
 	useEffect(() => {
@@ -71,7 +71,7 @@ const QuestionPaper = () => {
 			<QuesDisplay />
 			<QuesDisplay /> */}
 			{ques.map((item, index) => {
-
+				console.log(item)
 				return (<QuesDisplay
 					question_dsc={item.question_dsc}
 					marks={item.marks}
@@ -80,6 +80,7 @@ const QuestionPaper = () => {
 					optionB={item.optionB}
 					optionC={item.optionC}
 					optionD={item.optionD}
+					qid = {item._id}
 				/>)
 			})}
 			<Div d="flex" flexDir="column" justify="center" align="center" textAlign="center" m={{ b: "1.5rem" }}>

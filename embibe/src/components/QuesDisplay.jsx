@@ -1,6 +1,10 @@
 import { Div, Button, Text, Icon, Container, Label, Checkbox } from "atomize";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { Routes, Route, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const QuesDisplay = ({
 	question_dsc,
@@ -10,13 +14,52 @@ const QuesDisplay = ({
 	optionB,
 	optionC,
 	optionD,
+	qid,
 }) => {
 	const { auth } = useAuth();
-
+	const { pid, sid } = useParams();
 	const [isA, setIsA] = useState(false);
 	const [isB, setIsB] = useState(false);
 	const [isC, setIsC] = useState(false);
 	const [isD, setIsD] = useState(false);
+	const [submitted, setSubmitted] = useState(false);
+
+	const handlesubmit = () => {
+		axios
+			.post("http://localhost:8000/api/student/postanswer", {
+				pid: pid,
+				sid: sid,
+				qid: qid,
+				checkA: isA,
+				checkB: isB,
+				checkC: isC,
+				checkD: isD,
+			})
+			.then((res) => {
+				if (res.status == 201) {
+					toast.success("Answer Submitted!", {
+						position: toast.POSITION.TOP_RIGHT,
+					});
+				} else {
+					toast.error("Answer Submission Failed", {
+						position: toast.POSITION.TOP_RIGHT,
+					});
+				}
+				console.log(res);
+				setSubmitted(true);
+
+				// setId(res.data._id);
+				// setOpen(true);
+				// navigate('/addquestion')
+			})
+			.catch((err) =>{ 
+				toast.error("Answer Submission Failed", {
+					position: toast.POSITION.TOP_RIGHT
+				  })
+				  console.log("error")
+				console.log(err)
+			});
+	};
 	return (
 		<Div>
 			<Container>
@@ -32,6 +75,7 @@ const QuesDisplay = ({
 					textColor="#eeeeee"
 					m={{ t: "3rem", b: "3rem" }}
 					p="5%">
+						<ToastContainer/>
 					<Div d="flex" justify="space-between">
 						<Text
 							textSize="heading"
@@ -119,10 +163,14 @@ const QuesDisplay = ({
 							m={{ l: "1%" }}>
 							{optionD}
 						</Text>
-
 					</Div>
-					<Div d="flex" flexDir="colum" align="center" textAlign="center" justify="center">
-						<Button
+					<Div
+						d="flex"
+						flexDir="colum"
+						align="center"
+						textAlign="center"
+						justify="center">
+					{ !submitted &&	<Button
 							prefix={
 								<Icon
 									name="Checked"
@@ -136,12 +184,29 @@ const QuesDisplay = ({
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"
+							onClick={handlesubmit}
 							hoverShadow="4">
 							Submit Answer
-						</Button>
+						</Button>}
+						{ submitted &&	<Button
+							prefix={
+								<Icon
+									name="Checked"
+									size="16px"
+									color="white"
+									m={{ r: "0.5rem" }}
+								/>
+							}
+							bg="rgb(77,247,62)"
+							hoverBg="rgba(77,247,62, 0.8)"
+							rounded="circle"
+							p={{ r: "1.5rem", l: "1rem" }}
+							shadow="3"
+							hoverShadow="4">
+							Answer Submitted
+						</Button>}
 					</Div>
 				</Div>
-
 			</Container>
 		</Div>
 	);

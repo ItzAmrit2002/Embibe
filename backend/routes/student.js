@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const Paper = require("../models/Paper");
 const Question = require("../models/Question");
-
+const User = require("../models/User");
+const Answer = require("../models/Answer")
 router.get("/givepaper", async (req, res) => {
 	const count = Paper.countDocuments(function (err, c) {
 		console.log("Count is " + c);
@@ -86,5 +87,37 @@ router.get("/getpapers", async (req, res) => {
 
 	return;
 });
+
+router.post("/postanswer", async (req, res) => {
+	const { pid, sid, qid, checkA, checkB, checkC, checkD } = req.body;
+    if (!pid || !sid || !qid) {
+        res.status(400).send('Please enter all the fields');
+        return;
+    }
+    try {
+        const answer = new Answer({
+            paper: pid,
+			question: qid,
+			user: sid,
+            checkA: checkA,
+			checkB: checkB,
+			checkC: checkC,
+			checkD: checkD,
+        });
+        const savedQues = await answer.save();
+        res.status(201).json({
+            _id: answer.id,
+            question: answer.qid,
+            user: answer.sid,
+            paper: answer.pid
+        });
+        return
+    }
+    catch (err) {
+        console.log(err)
+        res.status(400).send(err);
+        return
+    }
+})
 //run loop to get total marks of each paper, concat that with papers response in json and send
 module.exports = router;

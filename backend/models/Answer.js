@@ -12,7 +12,22 @@ const answerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Question'
     },
-    
+    checkA: {
+        type: Boolean,
+        required: [true, 'Please add a Boolean value']
+    },
+    checkB: {
+        type: Boolean,
+        required: [true, 'Please add a Boolean value']
+    },
+    checkC: {
+        type: Boolean,
+        required: [true, 'Please add a Boolean value']
+    },
+    checkD: {
+        type: Boolean,
+        required: [true, 'Please add a boolean value']
+    }
 }, {
     timestamps: true,
 })
