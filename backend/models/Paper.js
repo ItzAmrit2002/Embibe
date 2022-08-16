@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const paperSchema = mongoose.Schema({
-    
     name: {
         type: String,
         required: [true, 'Please add a text value']
