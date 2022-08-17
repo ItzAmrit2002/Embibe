@@ -14,7 +14,7 @@ const Timer = () => {
 	});
   return (
     <Div>
-        <Text textSize="heading" fontFamily="Montserrat" m={{ r: "8%" }} textColor="rgb(20, 255, 236)">
+        <Text textSize="title" fontFamily="Itim" m={{ r: "8%" }} textColor="#FCE2DB">
 					Time remaining: {120 - Math.ceil(time / 1000 / 60)} minutes,{" "}
 					{60 - Math.round((time / 1000) % 60)} seconds.
 				</Text>

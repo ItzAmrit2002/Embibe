@@ -68,26 +68,26 @@ const QuesDisplay = ({
 					flexDir="column"
 					shadow="2"
 					hoverShadow="3"
-					bg="#212121"
+					bg="#f4decb"
 					h="auto"
 					w="auto"
 					rounded="lg"
-					textColor="#eeeeee"
+					textColor="#121212"
 					m={{ t: "3rem", b: "3rem" }}
 					p="5%">
 						<ToastContainer/>
 					<Div d="flex" justify="space-between">
 						<Text
 							textSize="heading"
-							fontFamily="Montserrat"
-							textWeight="600"
+							fontFamily="Itim"
+							textWeight="400"
 							m={{ l: "5%" }}>
 							{slno}. {question_dsc}
 						</Text>
 						<Text
 							textSize="subheader"
-							fontFamily="Montserrat"
-							textWeight="600"
+							fontFamily="Itim"
+							textWeight="400"
 							m={{ r: "5%" }}>
 							({marks} marks)
 						</Text>
@@ -97,15 +97,15 @@ const QuesDisplay = ({
 							<Checkbox
 								onChange={(e) => setIsA(e.target.checked)}
 								checked={isA}
-								inactiveColor="success400"
-								activeColor="rgb(20, 255, 236)"
+								inactiveColor="#b270a2"
+								activeColor="#94618e"
 								size="24px"
 							/>
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Montserrat"
-							textWeight="600"
+							fontFamily="Itim"
+							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionA}
 						</Text>
@@ -115,15 +115,15 @@ const QuesDisplay = ({
 							<Checkbox
 								onChange={(e) => setIsB(e.target.checked)}
 								checked={isB}
-								inactiveColor="success400"
-								activeColor="rgb(20, 255, 236)"
+								inactiveColor="#b270a2"
+								activeColor="#94618e"
 								size="24px"
 							/>
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Montserrat"
-							textWeight="600"
+							fontFamily="Itim"
+							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionB}
 						</Text>
@@ -133,15 +133,15 @@ const QuesDisplay = ({
 							<Checkbox
 								onChange={(e) => setIsC(e.target.checked)}
 								checked={isC}
-								inactiveColor="success400"
-								activeColor="rgb(20, 255, 236)"
+								inactiveColor="#b270a2"
+								activeColor="#94618e"
 								size="24px"
 							/>
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Montserrat"
-							textWeight="600"
+							fontFamily="Itim"
+							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionC}
 						</Text>
@@ -151,15 +151,15 @@ const QuesDisplay = ({
 							<Checkbox
 								onChange={(e) => setIsD(e.target.checked)}
 								checked={isD}
-								inactiveColor="success400"
-								activeColor="rgb(20, 255, 236)"
+								inactiveColor="#b270a2"
+								activeColor="#94618e"
 								size="24px"
 							/>
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Montserrat"
-							textWeight="600"
+							fontFamily="Itim"
+							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionD}
 						</Text>
@@ -179,8 +179,8 @@ const QuesDisplay = ({
 									m={{ r: "0.5rem" }}
 								/>
 							}
-							bg="rgb(13, 115, 119)"
-							hoverBg="rgb(13, 115, 119,0.8)"
+							bg="#B270A2"
+							hoverBg="#7A4495"
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"
@@ -197,8 +197,8 @@ const QuesDisplay = ({
 									m={{ r: "0.5rem" }}
 								/>
 							}
-							bg="rgb(77,247,62)"
-							hoverBg="rgba(77,247,62, 0.8)"
+							bg="#7A4495"
+							hoverBg="#7A4495"
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"

@@ -44,28 +44,29 @@ const QuestionPaper = () => {
 			.catch((err) => console.log(err));
 	};
 	return (
-		<Div bg="#323232">
+		<Div bg="#fce2db" h="100%">
 			<Div
 				d="flex"
 				shadow="2"
-				hoverShadow="3"
 				h="5rem"
 				w="auto"
 				justify="space-between"
 				align="center"
 				className="navbar"
-				bg="#212121"
+				bg="#ff8fb1"
 				textAlign="center">
 				<Text
-					tag="h1"
-					textSize="display1"
-					textColor="rgba(20, 255, 236,0.8)"
-					fontFamily="Montserrat"
-					m={{ l: "8%" }}>
+					tag="h2"
+					textSize="heading"
+					textWeight = "500"
+					textColor="#FCE2DB"
+					fontFamily="Itim"
+					m={{ l: "3%" }}
+					>
 					{paperName} ({subject})
 				</Text>
 				<Timer />
-			</Div>
+			</Div >
 			{/* <QuesDisplay />
 			<QuesDisplay />
 			<QuesDisplay />
@@ -93,8 +94,8 @@ const QuestionPaper = () => {
 							m={{ r: "0.5rem" }}
 						/>
 					}
-					bg="rgba(13, 115, 119,0.8)"
-					hoverBg="rgb(13, 115, 119)"
+					bg="#7A4495"
+					hoverBg="#7A4495"
 					rounded="circle"
 					p={{ r: "1.5rem", l: "1rem" }}
 					shadow="3"
