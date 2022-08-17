@@ -73,14 +73,16 @@ const QuesDisplay = ({
 					w="auto"
 					rounded="lg"
 					textColor="#121212"
-					m={{ t: "3rem", b: "3rem" }}
-					p="5%">
+					border="1px solid"
+					borderColor="#94618e"
+					m={{ t: "3rem", b: "3rem" }}>
 						<ToastContainer/>
-					<Div d="flex" justify="space-between">
+					<Div d="flex" justify="space-between" bg ="#49274a" align="center" w="100%" p="4%" rounded="lg">
 						<Text
 							textSize="heading"
 							fontFamily="Itim"
 							textWeight="400"
+							textColor="#eeeeee"
 							m={{ l: "5%" }}>
 							{slno}. {question_dsc}
 						</Text>
@@ -88,11 +90,12 @@ const QuesDisplay = ({
 							textSize="subheader"
 							fontFamily="Itim"
 							textWeight="400"
+							textColor="#eeeeee"
 							m={{ r: "5%" }}>
 							({marks} marks)
 						</Text>
 					</Div>
-					<Div m={{ l: "10%", t: "4vh" }} d="flex" align="center">
+					<Div m={{ x: "3%", t: "4vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsA(e.target.checked)}
@@ -110,7 +113,7 @@ const QuesDisplay = ({
 							{optionA}
 						</Text>
 					</Div>
-					<Div m={{ l: "10%", t: "3vh" }} d="flex" align="center">
+					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsB(e.target.checked)}
@@ -128,7 +131,7 @@ const QuesDisplay = ({
 							{optionB}
 						</Text>
 					</Div>
-					<Div m={{ l: "10%", t: "3vh" }} d="flex" align="center">
+					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsC(e.target.checked)}
@@ -146,7 +149,7 @@ const QuesDisplay = ({
 							{optionC}
 						</Text>
 					</Div>
-					<Div m={{ l: "10%", t: "3vh" }} d="flex" align="center">
+					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsD(e.target.checked)}
@@ -180,10 +183,11 @@ const QuesDisplay = ({
 								/>
 							}
 							bg="#B270A2"
-							hoverBg="#7A4495"
+							hoverBg="#49274a"
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"
+							m={{ y: "1.5rem" }}
 							onClick={handlesubmit}
 							hoverShadow="4">
 							Submit Answer
@@ -197,11 +201,11 @@ const QuesDisplay = ({
 									m={{ r: "0.5rem" }}
 								/>
 							}
-							bg="#7A4495"
-							hoverBg="#7A4495"
+							bg="#49274a"
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"
+							m={{ y: "1.5rem" }}
 							hoverShadow="4">
 							Answer Submitted
 						</Button>}

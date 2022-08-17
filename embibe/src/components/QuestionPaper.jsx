@@ -44,7 +44,7 @@ const QuestionPaper = () => {
 			.catch((err) => console.log(err));
 	};
 	return (
-		<Div bg="#fce2db" h="100%">
+		<Div bg="#FCE2DB" h="100%">
 			<Div
 				d="flex"
 				shadow="2"
@@ -53,16 +53,17 @@ const QuestionPaper = () => {
 				justify="space-between"
 				align="center"
 				className="navbar"
-				bg="#ff8fb1"
-				textAlign="center">
+				bg="#49274a"
+				textAlign="center"
+				p="2%">
 				<Text
 					tag="h2"
-					textSize="heading"
-					textWeight = "500"
-					textColor="#FCE2DB"
+					textSize="display1"
+					textWeight="500"
+					textColor="#f8eee7"
 					fontFamily="Itim"
 					m={{ l: "3%" }}
-					>
+				>
 					{paperName} ({subject})
 				</Text>
 				<Timer />
@@ -71,19 +72,42 @@ const QuestionPaper = () => {
 			<QuesDisplay />
 			<QuesDisplay />
 			<QuesDisplay /> */}
-			{ques.map((item, index) => {
-				console.log(item)
-				return (<QuesDisplay
-					question_dsc={item.question_dsc}
-					marks={item.marks}
-					slno={index + 1}
-					optionA={item.optionA}
-					optionB={item.optionB}
-					optionC={item.optionC}
-					optionD={item.optionD}
-					qid = {item._id}
-				/>)
-			})}
+			<Div
+				d="flex" flexDir="column" w="100%" justify="center" textAlign="center">
+				<Text
+					textSize="display1"
+					textWeight="500"
+					textColor="#121212"
+					fontFamily="Itim"
+					m={{t:"2%"}}
+				>
+					Questions answered: 10
+				</Text>
+				<Text
+					textSize="display1"
+					textWeight="500"
+					textColor="#121212"
+					fontFamily="Itim"
+				>
+					Questions aired: 10
+				</Text>
+				{ques.map((item, index) => {
+					console.log(item)
+					return (<QuesDisplay
+						question_dsc={item.question_dsc}
+						marks={item.marks}
+						slno={index + 1}
+						optionA={item.optionA}
+						optionB={item.optionB}
+						optionC={item.optionC}
+						optionD={item.optionD}
+						qid={item._id}
+					/>)
+				})}
+			</Div>
+			<Div>
+				hi
+			</Div>
 			<Div d="flex" flexDir="column" justify="center" align="center" textAlign="center" m={{ b: "1.5rem" }}>
 				<Button
 					prefix={
