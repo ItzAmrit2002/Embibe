@@ -1,6 +1,6 @@
 import React from "react";
-import SidebarStudent from "./SidebarStudent";
-import { Div, Button, Text, Icon, Container } from "atomize";
+import SidebarStudent from "./NavbarStudent";
+import { Div, Button, Text, Icon, Container, Row, Col } from "atomize";
 import QuestionCards from "./QuestionCards";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -38,13 +38,12 @@ const GivePaper = () => {
 
 
 	return (
-		<Div d="flex" bg="#212121">
+		<Div d="flex" bg="#FCE2DB" flexDir="column">
 			<SidebarStudent />
 			{/* <div className="loader">Loading...</div> */}
 
 			<Container
 				className="main-page"
-				overflow="scroll"
 				h="100vh"
 				flexGrow="1"
 				minW="85%"
@@ -53,28 +52,44 @@ const GivePaper = () => {
 					align="center"
 					justify="center">
 					<Text
-						m={{t: "2%"}}
-						fontFamily="Cedarville Cursive"
+						m={{ t: "2%" }}
+						fontFamily="Montserrat"
+						textWeight="700"
 						textSize="display3"
-						textColor="#6ad1bf">
-						Embibe
+						textColor="#121212">
+						Papers
+					</Text>
+					<Text
+						fontFamily="Montserrat"
+						textWeight="700"
+						textSize="display1"
+						textColor="#121212">
+						___
 					</Text>
 				</Div>
-				{result.map((item, index) => {
-					const mark = marks[index] ? marks[index].total : 0;
-					const nqi = nq[index] ? nq[index].n : 0;
-					return (<QuestionCards
-						name={item.name}
-						sub={item.subject}
-						time={item.time}
-						marks={mark}
-						id={item._id}
-						nq={nqi}
-						key={index}
-					/>)
-				})}
+				<Row>
+
+					{result.map((item, index) => {
+						const mark = marks[index] ? marks[index].total : 0;
+						const nqi = nq[index] ? nq[index].n : 0;
+						return (
+							<Col>
+								<QuestionCards
+									name={item.name}
+									sub={item.subject}
+									time={item.time}
+									marks={mark}
+									id={item._id}
+									nq={nqi}
+									key={index}
+								/>
+							</Col>
+						)
+					})}
+
+				</Row>
 			</Container>
-		</Div>
+		</Div >
 	);
 };
 

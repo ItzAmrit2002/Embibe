@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './SidebarStudent'
+import Sidebar from './NavbarStudent'
 import { Div, Button, Text, Icon, Container, Row, Col } from "atomize";
 import axios from 'axios';
 import { useEffect } from 'react';
