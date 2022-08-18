@@ -24,8 +24,8 @@ const QuesDisplay = ({
 	const [isD, setIsD] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 
-	const handlesubmit = () => {
-		axios
+	const handlesubmit = async() => {
+		await axios
 			.post("http://localhost:8000/api/student/postanswer", {
 				pid: pid,
 				sid: sid,
@@ -59,6 +59,26 @@ const QuesDisplay = ({
 				  console.log("error")
 				console.log(err)
 			});
+			
+		await axios.post('http://localhost:8000/api/tally/tallymarks', {
+          paper_id: pid,
+          user_id: sid,
+		  question_id : qid,
+		  checkA: isA,
+		  checkB: isB,
+		  checkC: isC,
+		  checkD: isD,
+		})
+          .then((res) => {
+              console.log(res)
+              
+          })
+          .catch(err =>{
+            toast.error(err.response.data, {
+              position: toast.POSITION.TOP_RIGHT
+            })
+             console.log(err)
+          })
 	};
 	return (
 		<Div>

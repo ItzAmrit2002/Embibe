@@ -1,7 +1,7 @@
 import { Div, Button, Text, Icon, Container, Label, Checkbox } from "atomize";
 import { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import QuesDisplay from "./QuesDisplay";
 import Timer from "./Timer";
 import axios from "axios";
@@ -12,7 +12,7 @@ const QuestionPaper = () => {
 	const [subject, setSubject] = useState("");
 	const { pid, sid } = useParams();
 
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		getData();
 	}, []);
@@ -125,6 +125,9 @@ const QuestionPaper = () => {
 					bg="#7A4495"
 					hoverBg="#7A4495"
 					rounded="circle"
+					onClick={() => {
+						navigate(`/results/${pid}/${sid}`);
+					}}
 					p={{ r: "1.5rem", l: "1rem" }}
 					shadow="3"
 					hoverShadow="4">

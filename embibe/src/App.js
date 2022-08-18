@@ -13,6 +13,7 @@ import GivePaper from './components/GivePaper';
 import StudentProfile from './components/StudentProfile';
 import useAuth from './hooks/useAuth';
 import CreateQues from './components/CreateQues';
+import Results from './components/Results';
 import QuestionPaper from './components/QuestionPaper';
 function App() {
   const {auth} = useAuth();
@@ -25,6 +26,7 @@ function App() {
         {auth.email && <Route path="/myprofile" element={<StudentProfile/>} />}
         {auth.email && <Route path="/givepaper" element={<GivePaper/>} />}
         {auth.email && <Route path="/questionpaper/:pid/:sid" element={<QuestionPaper/>}/>}
+        {auth.email && <Route path="/results/:pid/:sid" element={<Results/>}/>}
         {auth.admin && <Route path="/admin" element={<AdminDashboard/>} />}
         {auth.email && <Route path="/student" element={<StudentDashboard/>} />}
         {auth.admin && <Route path="/createpaper" element= {<CreatePaper/>} />}
