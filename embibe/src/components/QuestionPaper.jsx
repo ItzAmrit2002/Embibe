@@ -55,7 +55,8 @@ const QuestionPaper = () => {
 				className="navbar"
 				bg="#49274a"
 				textAlign="center"
-				p="2%">
+				p="2%"
+				pos="relative">
 				<Text
 					tag="h2"
 					textSize="display1"
@@ -79,8 +80,9 @@ const QuestionPaper = () => {
 					textWeight="500"
 					textColor="#121212"
 					fontFamily="Itim"
-					m={{t:"2%"}}
+					m={{ t: "2%" }}
 				>
+					<Icon name="Checked" size="20px" color="#121212" m={{ x: "0.5rem" }} />
 					Questions answered: 10
 				</Text>
 				<Text
@@ -88,7 +90,9 @@ const QuestionPaper = () => {
 					textWeight="500"
 					textColor="#121212"
 					fontFamily="Itim"
+					textAlign="center"
 				>
+					<Icon name="Cross" size="20px" color="#121212" m={{ x: "0.5rem" }} />
 					Questions aired: 10
 				</Text>
 				{ques.map((item, index) => {
