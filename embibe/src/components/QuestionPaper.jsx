@@ -106,6 +106,7 @@ const QuestionPaper = () => {
 						optionC={item.optionC}
 						optionD={item.optionD}
 						qid={item._id}
+						key={index}
 					/>)
 				})}
 			</Div>

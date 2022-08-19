@@ -1,3 +1,8 @@
 .student-dashboard-links{
     transition: all 0.7s;
+    background-image: url("../assets/scribble.png");
+}
+.scribble{
+    background-image: url("../assets/scribble.png");
+    background-repeat: no-repeat;
 }

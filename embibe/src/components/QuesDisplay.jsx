@@ -74,9 +74,7 @@ const QuesDisplay = ({
               
           })
           .catch(err =>{
-            toast.error(err.response.data, {
-              position: toast.POSITION.TOP_RIGHT
-            })
+           
              console.log(err)
           })
 	};

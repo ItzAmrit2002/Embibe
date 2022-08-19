@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import "./StudentDashboard.css";
 import { Div, Button, Text, Icon, Container } from "atomize";
 import useAuth from "../hooks/useAuth";
@@ -23,8 +23,7 @@ const SidebarStudent = () => {
 			h="auto"
 			w="100%"
 			shadow="4"
-			textAlign="center"
-		>
+			textAlign="center">
 			<Div>
 				<Text
 					textWeight="1000"
@@ -48,13 +47,8 @@ const SidebarStudent = () => {
 					bg="#FF8FB1"
 					p="0.5rem"
 					hoverBg="rgba(255, 143, 177, 0.5)"
-					rounded="xl"
-				>
-					<Icon
-						name="Edit"
-						size="20px"
-						color="#121212"
-					/>
+					rounded="xl">
+					<Icon name="Edit" size="20px" color="#121212" />
 					<Text
 						textSize="subheader"
 						textWeight="1000"
@@ -75,19 +69,17 @@ const SidebarStudent = () => {
 					className="student-dashboard-links"
 					cursor="pointer"
 					bg="#FF8FB1"
+					// bg="#ffffff"
 					p="0.5rem"
 					hoverBg="rgba(255, 143, 177, 0.5)"
 					rounded="xl"
-				>
-					<Icon
-						name="Loading2"
-						size="20px"
-						color="#121212"
-					/>
+					>
+					<Icon name="Loading2" size="20px" color="#121212" />
 					<Text
 						textSize="subheader"
 						textWeight="1000"
 						fontFamily="Montserrat"
+						className="scribble"
 						textColor="#121212">
 						View Stats
 					</Text>
@@ -95,7 +87,7 @@ const SidebarStudent = () => {
 			</Div>
 			<Div d="flex" align="center" justify="space-around">
 				<Div
-					onClick={() => navigate("/givepaper")}
+					onClick={() => navigate("/myprofile")}
 					textAlign="center"
 					align="center"
 					hoverShadow="4"
@@ -106,13 +98,8 @@ const SidebarStudent = () => {
 					bg="#FF8FB1"
 					p="0.5rem"
 					hoverBg="rgba(255, 143, 177, 0.5)"
-					rounded="xl"
-				>
-					<Icon
-						name="User"
-						size="20px"
-						color="#121212"
-					/>
+					rounded="xl">
+					<Icon name="User" size="20px" color="#121212" />
 					<Text
 						textSize="subheader"
 						textWeight="1000"
@@ -122,21 +109,17 @@ const SidebarStudent = () => {
 					</Text>
 				</Div>
 			</Div>
-			<Div
-				d="flex"
-				justify="center"
-				align="center">
+			<Div d="flex" justify="center" align="center">
 				<Button
 					prefix={<Icon name="Logout" size="40px" color="#121212" />}
 					m={{ x: "1rem", y: "1.5rem" }}
 					bg="#FF8FB1"
 					hoverShadow="4"
 					rounded="md"
-					onClick={handleClick}>
-				</Button>
+					onClick={handleClick}></Button>
 			</Div>
 		</Div>
 	);
-}
+};
 
-export default SidebarStudent
+export default SidebarStudent;

@@ -73,7 +73,7 @@ const GivePaper = () => {
 						const mark = marks[index] ? marks[index].total : 0;
 						const nqi = nq[index] ? nq[index].n : 0;
 						return (
-							<Col>
+							<Col key={index}>
 								<QuestionCards
 									name={item.name}
 									sub={item.subject}
@@ -81,7 +81,8 @@ const GivePaper = () => {
 									marks={mark}
 									id={item._id}
 									nq={nqi}
-									key={index}
+									
+									
 								/>
 							</Col>
 						)
