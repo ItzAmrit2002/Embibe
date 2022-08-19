@@ -5,12 +5,30 @@ import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import QuesDisplay from "./QuesDisplay";
 import Timer from "./Timer";
 import axios from "axios";
+import Lottie from "react-lottie";
+import patterns from "../assets/pattern_dots.json";
+
 
 const QuestionPaper = () => {
+	const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        // here is where we will declare lottie animation
+        // "animation" is what we imported before animationData: animation,
+        animationData: patterns,
+        rendererSettings: {
+           preserveAspectRatio: "xMidYMid slice",
+        },
+     };
 	const [ques, setQues] = useState([]);
 	const [paperName, setPaperName] = useState("");
 	const [subject, setSubject] = useState("");
 	const { pid, sid } = useParams();
+	const [count, setCount] = useState(0);
+	const callback = () => {
+		setCount(count + 1);
+	}
+	const [totalmarks, setTotalmarks] = useState(0);
 
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -42,9 +60,28 @@ const QuestionPaper = () => {
 				// navigate('/addquestion')
 			})
 			.catch((err) => console.log(err));
+
+		await axios
+			.post("http://localhost:8000/api/tally/countmarks", {
+
+				paper_id: pid,
+			})
+			.then((res) => {
+				console.log("totalmarks", res);
+				setTotalmarks(res.data);
+				// navigate('/addquestion')
+			})
+			.catch((err) => console.log(err));
 	};
+	// for (let i = 0; i < ques.length; i++) {
+	// 	setTotalmarks(totalmarks + ques[i].marks);
+	//   }
 	return (
+		
+
 		<Div bg="#FCE2DB" h="100%">
+			            
+
 			<Div
 				d="flex"
 				shadow="2"
@@ -57,6 +94,7 @@ const QuestionPaper = () => {
 				textAlign="center"
 				p="2%"
 				pos="relative">
+					
 				<Text
 					tag="h2"
 					textSize="display1"
@@ -83,7 +121,7 @@ const QuestionPaper = () => {
 					m={{ t: "2%" }}
 				>
 					<Icon name="Checked" size="20px" color="#121212" m={{ x: "0.5rem" }} />
-					Questions answered: 10
+					Questions answered: {count}
 				</Text>
 				<Text
 					textSize="display1"
@@ -93,10 +131,12 @@ const QuestionPaper = () => {
 					textAlign="center"
 				>
 					<Icon name="Cross" size="20px" color="#121212" m={{ x: "0.5rem" }} />
-					Questions aired: 10
+					Questions aired: {ques.length-count}
 				</Text>
+				
 				{ques.map((item, index) => {
 					console.log(item)
+					// setTotalmarks(totalmarks + item.marks);
 					return (<QuesDisplay
 						question_dsc={item.question_dsc}
 						marks={item.marks}
@@ -106,12 +146,13 @@ const QuestionPaper = () => {
 						optionC={item.optionC}
 						optionD={item.optionD}
 						qid={item._id}
+						callback = {callback}
 						key={index}
 					/>)
 				})}
 			</Div>
 			<Div>
-				hi
+				
 			</Div>
 			<Div d="flex" flexDir="column" justify="center" align="center" textAlign="center" m={{ b: "1.5rem" }}>
 				<Button
@@ -127,7 +168,7 @@ const QuestionPaper = () => {
 					hoverBg="#7A4495"
 					rounded="circle"
 					onClick={() => {
-						navigate(`/results/${pid}/${sid}`);
+						navigate(`/results/${pid}/${sid}/${totalmarks}`);
 					}}
 					p={{ r: "1.5rem", l: "1rem" }}
 					shadow="3"

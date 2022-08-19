@@ -4,7 +4,7 @@ import axios from "axios";
 import { Chart } from 'react-charts'
 import { PieChart } from 'react-minimal-pie-chart';
 import "./PieCharts.css";
-const PieCharts = () => {
+const PieCharts = ({marks, totalmarks}) => {
     return (
         <Div
             d="flex"
@@ -32,8 +32,8 @@ const PieCharts = () => {
             <Div d="flex" maxW="20vw" justify="space-between" align="center">
                 <PieChart
                     data={[
-                        { title: 'One', value: 360, color: '#f8eee7' },
-                        { title: 'Two', value: 200, color: '#B270A2' },
+                        { title: 'One', value: `${totalmarks}`, color: '#f8eee7' },
+                        { title: 'Two', value: `${marks}`, color: '#B270A2' },
                     ]}
                     animate={true}
                     animationDuration={500}
@@ -47,7 +47,7 @@ const PieCharts = () => {
                     className="text-marks"
                     m={{ x: "1rem" }}
                 >
-                    200/360
+                    {marks}/{totalmarks}
                 </Text>
             </Div>
         </Div>

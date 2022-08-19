@@ -14,6 +14,7 @@ const QuesDisplay = ({
 	optionB,
 	optionC,
 	optionD,
+	callback,
 	qid,
 }) => {
 	const { auth } = useAuth();
@@ -40,6 +41,7 @@ const QuesDisplay = ({
 					toast.success("Answer Submitted!", {
 						position: toast.POSITION.TOP_RIGHT,
 					});
+					callback()
 				} else {
 					toast.error("Answer Submission Failed", {
 						position: toast.POSITION.TOP_RIGHT,
