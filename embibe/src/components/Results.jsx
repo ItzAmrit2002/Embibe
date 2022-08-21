@@ -32,7 +32,7 @@ const Results = () => {
 
   }
   return (
-    <Div d="flex" bg="#FCE2DB" flexDir="column" h="100vh">
+    <Div d="flex" bg="#FCE2DB" flexDir="column" h="100%">
       <Div d="flex" bg="#94618e" h="10vh" w="100%" align="center" justify="center" textAlign="center" shadow="3" p="2%">
         <Text
           fontFamily="Cedarville Cursive"
@@ -42,17 +42,30 @@ const Results = () => {
           Embibe
         </Text>
       </Div>
-      <Row>
-        <Col size="3">
-          <PieCharts marks={marks} totalmarks={totalmarks} />
-          <PieCharts marks={marks} totalmarks={totalmarks} />
-          <PieCharts marks={marks} totalmarks={totalmarks} />
-          <PieCharts marks={marks} totalmarks={totalmarks} />
-          <PieCharts marks={marks} totalmarks={totalmarks} />
-          <PieCharts marks={marks} totalmarks={totalmarks} />
-        </Col>
+     
+      <Row w="100%" h="100%">
+        <Col h="100%" w="100%" >
+          <PieCharts marks={marks} totalmarks={totalmarks} heading={"Marks"}/>
+          </Col>
+          <Col h="100%" w="100%" >
+          <PieCharts marks={marks} totalmarks={totalmarks} heading={"Questions Answered"}/>
+          </Col>
+          <Col h="100%" w="100%">
+          <PieCharts marks={marks} totalmarks={totalmarks} heading={"Marks"}/>
+          </Col>
+          <Col h="100%" w="100%">
+          <PieCharts marks={marks} totalmarks={totalmarks} heading={"Marks"}/>
+          </Col>
+          <Col h="100%" w="100%">
+          <PieCharts marks={marks} totalmarks={totalmarks} heading={"Marks"}/>
+          </Col>
+          <Col h="100%" w="100%">
+          <PieCharts marks={marks} totalmarks={totalmarks} heading={"Marks"}/>
+          </Col>
+          
       </Row>
-    </Div>
+      </Div>
+    
   )
 }
 

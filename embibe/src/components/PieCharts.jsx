@@ -4,13 +4,13 @@ import axios from "axios";
 import { Chart } from 'react-charts'
 import { PieChart, PieArcSeries } from 'reaviz';
 import "./PieCharts.css";
-const PieCharts = ({ marks, totalmarks }) => {
+const PieCharts = ({ marks, totalmarks, heading }) => {
     return (
         <Div
             d="flex"
             bg="#f4decb"
-            h="30vh"
-            w="25vw"
+            h="12%"
+            w="55%"
             align="center"
             m="4rem"
             shadow="3"
@@ -19,13 +19,14 @@ const PieCharts = ({ marks, totalmarks }) => {
             rounded="lg"
             flexDir="column"
         >
-            <Div bg="#94618e" w="100%" rounded="md" shadow="3" textAlign="center" maxW="25vw" pos="relative" top="0%">
+            <Div bg="#94618e" w="100%" rounded="md" shadow="3" textAlign="center" pos="relative" top="0%">
                 <Text
                     fontFamily="Itim"
-                    textSize="display3"
+                    textSize="display2"
                     textColor="#f8eee7"
+                    w="100%"
                 >
-                    Marks
+                    {heading}
                 </Text>
             </Div>
             <Div d="flex" flexDir="row" justify='space-evenly' align='center' h="100%" w="100%">
