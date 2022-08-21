@@ -29,6 +29,7 @@
     "react-timer-hook": "^3.0.5",
     "react-toastify": "^9.0.5",
     "react-vis": "^1.11.7",
+    "reaviz": "^13.1.6",
     "recharts": "^2.1.13",
     "styled-components": "^5.3.5",
     "styletron-engine-atomic": "^1.4.8",

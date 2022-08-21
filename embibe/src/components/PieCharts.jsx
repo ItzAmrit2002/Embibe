@@ -2,9 +2,9 @@ import { Div, Button, Text, Icon, Container, Label, Checkbox } from "atomize";
 import { useState } from "react";
 import axios from "axios";
 import { Chart } from 'react-charts'
-import { PieChart } from 'react-minimal-pie-chart';
+import { PieChart, PieArcSeries } from 'reaviz';
 import "./PieCharts.css";
-const PieCharts = ({marks, totalmarks}) => {
+const PieCharts = ({ marks, totalmarks }) => {
     return (
         <Div
             d="flex"
@@ -12,7 +12,6 @@ const PieCharts = ({marks, totalmarks}) => {
             h="30vh"
             w="25vw"
             align="center"
-            justify="center"
             m="4rem"
             shadow="3"
             border="1px solid"
@@ -20,7 +19,7 @@ const PieCharts = ({marks, totalmarks}) => {
             rounded="lg"
             flexDir="column"
         >
-            <Div bg="#FF8FB1" w="100%" textAlign="center" rounded="lg" shadow="3">
+            <Div bg="#94618e" w="100%" rounded="md" shadow="3" textAlign="center" maxW="25vw" pos="relative" top="0%">
                 <Text
                     fontFamily="Itim"
                     textSize="display3"
@@ -29,15 +28,15 @@ const PieCharts = ({marks, totalmarks}) => {
                     Marks
                 </Text>
             </Div>
-            <Div d="flex" maxW="20vw" justify="space-between" align="center">
+            <Div d="flex" flexDir="row" justify='space-evenly' align='center' h="100%" w="100%">
                 <PieChart
+                    height={180}
+                    width={200}
                     data={[
-                        { title: 'One', value: `${totalmarks}`, color: '#f8eee7' },
-                        { title: 'Two', value: `${marks}`, color: '#B270A2' },
+                        { key: 'Score', data: `${marks}` },
+                        { key: 'Total', data: `${totalmarks}` },
                     ]}
-                    animate={true}
-                    animationDuration={500}
-                    radius={40}
+                    series={<PieArcSeries colorScheme={["#94618e", "#f8eee7"]} />}
                 />
                 <Text
                     fontFamily="Itim"
