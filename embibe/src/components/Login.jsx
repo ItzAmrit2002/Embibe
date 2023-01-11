@@ -77,7 +77,7 @@ const Login = () => {
                 const id = res.data._id
                   setAuth({Firstname, Secondname, token, email, id});
                   localStorage.setItem('token_embibe', token);
-                  navigate('/student')
+                  navigate('/givepaper')
               }
           })
           .catch(err =>{

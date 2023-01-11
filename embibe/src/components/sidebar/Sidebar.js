@@ -58,7 +58,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
             navigate("/viewpaper")
           }}>
           <i className="fa fa-wrench"></i>
-          <a >View Paper</a>
+          <a >View Papers</a>
         </div>
         </div>
         {/* <div className="sidebar__link">
