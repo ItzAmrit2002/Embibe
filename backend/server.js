@@ -8,6 +8,7 @@ app.use(cookieParser());
 
 var cors = require('cors');
 app.use(cors());
+console.log(process.env.MONGO)
 mongoose.connect( process.env.MONGO, () => {
 
 console.log('connected to MongoDB server')
