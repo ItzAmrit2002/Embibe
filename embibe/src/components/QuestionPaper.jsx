@@ -174,6 +174,7 @@ const QuestionPaper = () => {
           hoverBg="#7A4495"
           rounded="circle"
           onClick={() => {
+            localStorage.removeItem("startTime");
             navigate(`/results/${pid}/${sid}/${totalmarks}`);
           }}
           p={{ r: "1.5rem", l: "1rem" }}
