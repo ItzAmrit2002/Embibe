@@ -99,7 +99,7 @@ const QuestionPaper = () => {
         >
           {paperName} ({subject})
         </Text>
-        <Timer minutes={1} pid={pid} sid={sid} totalmarks={totalmarks} />
+        <Timer minutes={time} pid={pid} sid={sid} totalmarks={totalmarks} />
       </Div>
       {/* <QuesDisplay />
 			<QuesDisplay />
