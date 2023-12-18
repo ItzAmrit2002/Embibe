@@ -15,6 +15,7 @@ import useAuth from './hooks/useAuth';
 import CreateQues from './components/CreateQues';
 import Results from './components/Results';
 import QuestionPaper from './components/QuestionPaper';
+import PaperStats from './components/PaperStats';
 function App() {
   const {auth} = useAuth();
   return (
@@ -33,7 +34,8 @@ function App() {
         {auth.admin && <Route path = '/addquestion' element={<AddQuestion/>} />}
         {auth.admin && <Route path = '/addquestion/:id' element={<CreateQues/>} />}
         {auth.admin && <Route path="/viewpaper" element={<ViewPapers/>} />}
-        {auth.admin && <Route path="/stats" element={<StudentStats/>} />}
+        {auth.email && <Route path="/stats" element={<StudentStats/>} />}
+        {auth.email && <Route path="/stats/:sid/:pid" element={<PaperStats/>}/>}
         
         <Route path="*" element={<Navigate to={auth.email? '/student' : 'login'}/>} />
       </Routes>

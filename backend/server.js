@@ -6,6 +6,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 const Answer = require("./models/Answer")
+const Marks = require("./models/Marks")
 
 var cors = require("cors");
 app.use(cors());
@@ -14,11 +15,11 @@ mongoose.connect(process.env.MONGO, () => {
 	console.log("connected to MongoDB server");
 });
 
-//FOR CLEARING COLLECTIONS
-// const answer = mongoose.model("Answer"); // Replace 'Answer' with the actual model name
+
+// const marks = mongoose.model("Marks"); // Replace 'Answer' with the actual model name
 
 // // Use the deleteMany method to delete all documents from the collection
-// answer.deleteMany({}, (err) => {
+// marks.deleteMany({}, (err) => {
 // 	if (err) {
 // 		console.error("Error deleting documents:", err);
 // 	} else {

@@ -60,7 +60,7 @@ const SidebarStudent = () => {
 			</Div>
 			<Div d="flex" align="center" justify="space-around">
 				<Div
-					onClick={() => navigate("/givepaper")}
+					onClick={() => navigate("/stats")}
 					textAlign="center"
 					align="center"
 					hoverShadow="4"

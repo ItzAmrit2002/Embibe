@@ -3,6 +3,7 @@ const Paper = require("../models/Paper");
 const Question = require("../models/Question");
 const User = require("../models/User");
 const Answer = require("../models/Answer")
+const Marks = require("../models/Marks")
 router.get("/givepaper", async (req, res) => {
 	const count = Paper.countDocuments(function (err, c) {
 		console.log("Count is " + c);
@@ -119,5 +120,22 @@ router.post("/postanswer", async (req, res) => {
         return
     }
 })
+
+router.post('/getmarks', async (req, res) => {
+	try {
+	  const {userid} = req.body;
+  
+	  // Query the Marks collection based on the provided userid and paperid
+	  const marks = await Marks.find({ userid: userid});
+		console.log(userid)
+		console.log(marks)
+	  res.status(200).json(marks);
+	} catch (error) {
+	  console.error(error);
+	  res.status(500).json({ message: 'Server Error' });
+	}
+  });
+
+
 //run loop to get total marks of each paper, concat that with papers response in json and send
 module.exports = router;
