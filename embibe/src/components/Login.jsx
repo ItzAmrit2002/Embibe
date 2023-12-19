@@ -115,7 +115,7 @@ const Login = () => {
                 const email = res.data.email;
                 const id = res.data._id
                 setAuth({Firstname, Secondname, token1, email, id});
-                navigate('/student', {replace: true})
+                navigate('/givepaper', {replace: true})
             }
             
           })

@@ -16,10 +16,10 @@ mongoose.connect(process.env.MONGO, () => {
 });
 
 
-// const marks = mongoose.model("Marks"); // Replace 'Answer' with the actual model name
+// const answers = mongoose.model("Answer"); // Replace 'Answer' with the actual model name
 
 // // Use the deleteMany method to delete all documents from the collection
-// marks.deleteMany({}, (err) => {
+// answers.deleteMany({}, (err) => {
 // 	if (err) {
 // 		console.error("Error deleting documents:", err);
 // 	} else {

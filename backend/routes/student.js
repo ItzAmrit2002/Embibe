@@ -136,6 +136,31 @@ router.post('/getmarks', async (req, res) => {
 	}
   });
 
-
+  router.post('/getpaperdetails', async (req, res) => {
+	try {
+	  const { paperId } = req.body;
+  
+	  // Use Mongoose to query the Question collection
+	  const questions = await Question.find({ paper:paperId });
+  
+	  // Calculate the total number of questions and total marks
+	  const totalQuestions = questions.length;
+	  const totalMarks = questions.reduce((sum, question) => sum + question.marks, 0);
+  
+	  // Create the response object
+	  const paperDetails = {
+		paperId,
+		totalQuestions,
+		totalMarks,
+	  };
+  
+	  // Send the response
+	  res.json(paperDetails);
+	} catch (error) {
+	  // Handle any errors that occur during the process
+	  console.error(error);
+	  res.status(500).json({ error: 'Internal Server Error' });
+	}
+  });
 //run loop to get total marks of each paper, concat that with papers response in json and send
 module.exports = router;

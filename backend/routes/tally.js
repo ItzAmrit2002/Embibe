@@ -5,40 +5,101 @@ const User = require("../models/User");
 const Answer = require("../models/Answer");
 const Question = require("../models/Question");
 
+// router.post("/tallymarks", async (req, res) => {
+// 	const { paper_id, user_id, checkA, checkB, checkC, checkD, question_id } =
+// 		req.body;
+// 	const ques = await Question.findById(question_id);
+// 	const marks = await Marks.findOne({ userid: user_id, paperid: paper_id });
+// 	console.log(ques);
+// 	console.log(req.body);
+// 	if (
+// 		ques.checkA === checkA &&
+// 		ques.checkB === checkB &&
+// 		ques.checkC === checkC &&
+// 		ques.checkD === checkD
+// 	) {
+		
+// 		let doc = await Marks.findOneAndUpdate(
+// 			{ userid: user_id, paperid: paper_id },
+// 			{attempted: marks.attempted+1},
+// 			{ marks: marks.marks + ques.marks },
+// 			{correct: marks.correct+1},
+// 			{ upsert: true },
+// 			function (err, doc) {
+// 				if (err) {
+// 					throw err;
+// 				} else {
+// 					console.log(doc);
+// 					res.status(200).send(doc);
+// 				}
+// 			}
+// 		)
+// 			.clone()
+// 			.catch(function (err) {
+// 				console.log(err);
+// 			});
+// 	} else {
+// 		let doc = await Marks.findOneAndUpdate(
+// 			{attempted: marks.attempted+1},
+// 			{incorrect: marks.incorrect+1},
+// 			{ upsert: true },
+// 			function (err, doc) {
+// 				if (err) {
+// 					throw err;
+// 				} else {
+// 					console.log(doc);
+// 					res.status(400).send(doc);
+// 				}
+// 			}
+// 		)
+// 			.clone()
+// 			.catch(function (err) {
+// 				console.log(err);
+// 			});
+// 		// res.status(400).send("wrong answer");
+// 	}
+// });
 router.post("/tallymarks", async (req, res) => {
 	const { paper_id, user_id, checkA, checkB, checkC, checkD, question_id } =
-		req.body;
+	  req.body;
 	const ques = await Question.findById(question_id);
+	const marks = await Marks.findOne({ userid: user_id, paperid: paper_id });
 	console.log(ques);
 	console.log(req.body);
 	if (
-		ques.checkA === checkA &&
-		ques.checkB === checkB &&
-		ques.checkC === checkC &&
-		ques.checkD === checkD
+	  ques.checkA === checkA &&
+	  ques.checkB === checkB &&
+	  ques.checkC === checkC &&
+	  ques.checkD === checkD
 	) {
-		const marks = await Marks.findOne({ userid: user_id, paperid: paper_id });
-		let doc = await Marks.findOneAndUpdate(
-			{ userid: user_id, paperid: paper_id },
-			{ marks: marks.marks + ques.marks },
-			{ upsert: true },
-			function (err, doc) {
-				if (err) {
-					throw err;
-				} else {
-					console.log(doc);
-					res.status(200).send(doc);
-				}
-			}
-		)
-			.clone()
-			.catch(function (err) {
-				console.log(err);
-			});
+	  let doc = await Marks.findOneAndUpdate(
+		{ userid: user_id, paperid: paper_id },
+		{
+		  $inc: {
+			marks: ques.marks,
+			attempted: 1,
+			correct: 1,
+		  },
+		},
+		{ upsert: true },
+	  );
+	  console.log(doc);
+	  res.status(200).send(doc);
 	} else {
-		res.status(400).send("wrong answer");
+	  let doc = await Marks.findOneAndUpdate(
+		{ userid: user_id, paperid: paper_id },
+		{
+		  $inc: {
+			attempted: 1,
+			incorrect: 1,
+		  },
+		},
+		{ upsert: true },
+	  );
+	  console.log(doc);
+	  res.status(400).send(doc);
 	}
-});
+  });
 
 router.post("/createmarks", async (req, res) => {
 	const { paper_id, user_id } = req.body;

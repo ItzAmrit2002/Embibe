@@ -40,12 +40,12 @@ const StudentStats = () => {
     <Sidebar />
     <Div d="flex" align="center" justify="center" flexDir="column"  w="100%">
     {papers.map((item, index) => {
-          console.log(item);
-          // setTotalmarks(totalmarks + item.marks);
-          return (  
-            <StatBox pid={item.paperid}/>
-          );
-        })}
+  console.log(item);
+  // setTotalmarks(totalmarks + item.marks);
+  return item.updatedAt ? (
+    <StatBox pid={item.paperid} timeC={item.updatedAt} marks={item.marks} uid={item.userid} key={index} attempted={item.attempted} incorrect={item.incorrect} correct={item.correct}/>
+  ) : null;
+})}
       
       
     </Div>
