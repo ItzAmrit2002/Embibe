@@ -1,6 +1,6 @@
 // Import React and useState and useEffect hooks from React library
 import React, { useEffect, useState } from "react";
-
+import axios from "axios"; // Import axios library
 // Import Div and Text components from Atomize library
 import { Div, Text } from "atomize";
 import { useNavigate } from "react-router-dom"; // Corrected import
@@ -20,11 +20,22 @@ const Timer = ({ minutes, pid, sid, totalmarks }) => {
   });
 
   const navigate = useNavigate(); // Corrected navigate function
-
+  const setfinished = async () => {
+    await axios
+      .post("http://localhost:8000/api/student/setfinished", {
+        paperid: pid,
+        userid: sid,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
   // Define what should happen when the timer ends
   const onEnd = () => {
     console.log("Timer ended");
     localStorage.removeItem("startTime");
+    setfinished();
     navigate(`/results/${pid}/${sid}/${totalmarks}`);
   };
 

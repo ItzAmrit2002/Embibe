@@ -35,6 +35,18 @@ const QuestionPaper = () => {
     getData();
   }, []);
 
+  const setfinished = async () => {
+    await axios
+      .post("http://localhost:8000/api/student/setfinished", {
+        paperid: pid,
+        userid: sid,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const getData = async () => {
     await axios
       .post("http://localhost:8000/api/student/getquestions", {
@@ -175,6 +187,7 @@ const QuestionPaper = () => {
           rounded="circle"
           onClick={() => {
             localStorage.removeItem("startTime");
+            setfinished();
             navigate(`/results/${pid}/${sid}/${totalmarks}`);
           }}
           p={{ r: "1.5rem", l: "1rem" }}
