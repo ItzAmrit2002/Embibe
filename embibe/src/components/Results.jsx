@@ -17,7 +17,7 @@ const Results = () => {
 
   const getData = async () => {
     await axios
-      .post("http://testhubbknd.onrender.com/api/tally/getmarks", {
+      .post("https://testhubbknd.onrender.com/api/tally/getmarks", {
         paper_id: pid,
         user_id: sid,
 

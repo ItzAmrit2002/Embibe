@@ -31,7 +31,7 @@ function Copyright(props) {
 }
 
 // const api = axios.create({
-//     baseURL: 'http://localhost:3000/register'
+//     baseURL: 'https://localhost:3000/register'
 // })
 
 const theme = createTheme();
@@ -61,7 +61,7 @@ const Register = () => {
         // const lname = data.get('lname')
         // const email = data.get('email')
         // const password = data.get('password')
-        axios.post('http://testhubbknd.onrender.com/api/user/register', {
+        axios.post('https://testhubbknd.onrender.com/api/user/register', {
             firstname: fname,
             secondname: lname,
             email: email,

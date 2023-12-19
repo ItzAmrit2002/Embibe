@@ -63,7 +63,7 @@ const Login = () => {
             navigate('/admin');
         }
         else{
-        axios.post('http://testhubbknd.onrender.com/api/user/login', {
+        axios.post('https://testhubbknd.onrender.com/api/user/login', {
           email: email,
           password: password})
           .then((res) => {
@@ -104,7 +104,7 @@ const Login = () => {
               Authorization: `Bearer ${token1}`,
             },
           }
-          axios.get('http://testhubbknd.onrender.com/api/user/getuser', config).then(res => {
+          axios.get('https://testhubbknd.onrender.com/api/user/getuser', config).then(res => {
             if(res.status == 200)
             {
               console.log("persistent login possible");

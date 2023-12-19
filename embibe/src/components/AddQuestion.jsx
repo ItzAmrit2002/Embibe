@@ -31,7 +31,7 @@ const AddQuestion = () => {
   });;
   const handleSubmit = (e) => {
     axios
-      .post("http://testhubbknd.onrender.com/api/paper/getpaper", {
+      .post("https://testhubbknd.onrender.com/api/paper/getpaper", {
         id: id
       })
       .then((res) => {
