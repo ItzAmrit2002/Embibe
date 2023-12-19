@@ -40,7 +40,7 @@ const CreatePaper = () => {
 		// const data = new FormData(event.currentTarget);
 
 		axios
-			.post("http://localhost:8000/api/paper/createpaper", {
+			.post("http://testhubbknd.onrender.com/api/paper/createpaper", {
 				name: name,
 				time: time,
 				subject: subject,

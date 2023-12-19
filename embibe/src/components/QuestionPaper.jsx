@@ -37,7 +37,7 @@ const QuestionPaper = () => {
 
   const setfinished = async () => {
     await axios
-      .post("http://localhost:8000/api/student/setfinished", {
+      .post("http://testhubbknd.onrender.com/api/student/setfinished", {
         paperid: pid,
         userid: sid,
       })
@@ -49,7 +49,7 @@ const QuestionPaper = () => {
 
   const getData = async () => {
     await axios
-      .post("http://localhost:8000/api/student/getquestions", {
+      .post("http://testhubbknd.onrender.com/api/student/getquestions", {
         paperid: pid,
       })
       .then((res) => {
@@ -60,7 +60,7 @@ const QuestionPaper = () => {
       .catch((err) => console.log(err));
 
     await axios
-      .post("http://localhost:8000/api/student/paperinfo", {
+      .post("http://testhubbknd.onrender.com/api/student/paperinfo", {
         paperid: pid,
       })
       .then((res) => {
@@ -73,7 +73,7 @@ const QuestionPaper = () => {
       .catch((err) => console.log(err));
 
     await axios
-      .post("http://localhost:8000/api/tally/countmarks", {
+      .post("http://testhubbknd.onrender.com/api/tally/countmarks", {
         paper_id: pid,
       })
       .then((res) => {

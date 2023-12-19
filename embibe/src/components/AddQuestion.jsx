@@ -31,7 +31,7 @@ const AddQuestion = () => {
   });;
   const handleSubmit = (e) => {
     axios
-      .post("http://localhost:8000/api/paper/getpaper", {
+      .post("http://testhubbknd.onrender.com/api/paper/getpaper", {
         id: id
       })
       .then((res) => {

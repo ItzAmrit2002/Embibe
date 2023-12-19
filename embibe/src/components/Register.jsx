@@ -61,7 +61,7 @@ const Register = () => {
         // const lname = data.get('lname')
         // const email = data.get('email')
         // const password = data.get('password')
-        axios.post('http://localhost:8000/api/user/register', {
+        axios.post('http://testhubbknd.onrender.com/api/user/register', {
             firstname: fname,
             secondname: lname,
             email: email,

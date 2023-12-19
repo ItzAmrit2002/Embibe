@@ -22,7 +22,7 @@ const StudentProfile = () => {
   }, []);
 
   const getDeets = async () => {
-    let res = await axios.get("http://localhost:8000/api/user/getuser", config)
+    let res = await axios.get("http://testhubbknd.onrender.com/api/user/getuser", config)
     if (res.request.status !== 200) {
       localStorage.removeItem("token_embibe");
       setAuth({});

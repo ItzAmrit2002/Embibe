@@ -15,7 +15,7 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     const [paperDetails, setPaperDetails] = useState({})
     const getPaper = async () => {
         await axios
-      .post("http://localhost:8000/api/paper/getpaper", {
+      .post("http://testhubbknd.onrender.com/api/paper/getpaper", {
         id: pid
       })
       .then((res) => {
@@ -30,7 +30,7 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     
     const getPaperDetails = async () => {
         await axios
-      .post("http://localhost:8000/api/student/getpaperdetails", {
+      .post("http://testhubbknd.onrender.com/api/student/getpaperdetails", {
         paperId: pid
       })
       .then((res) => {
