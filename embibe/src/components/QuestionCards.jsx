@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const QuestionCards = ({ name, time, sub, marks, nq, id }) => {
     const createMarks = async() => {
-        await axios.post('http://localhost:8000/api/tally/createmarks', {
+        await axios.post('http://testhubbknd.onrender.com/api/tally/createmarks', {
           paper_id: id,
           user_id: auth.id})
           .then((res) => {

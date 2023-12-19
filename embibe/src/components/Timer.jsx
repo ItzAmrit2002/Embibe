@@ -22,7 +22,7 @@ const Timer = ({ minutes, pid, sid, totalmarks }) => {
   const navigate = useNavigate(); // Corrected navigate function
   const setfinished = async () => {
     await axios
-      .post("http://localhost:8000/api/student/setfinished", {
+      .post("http://testhubbknd.onrender.com/api/student/setfinished", {
         paperid: pid,
         userid: sid,
       })

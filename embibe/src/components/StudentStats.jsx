@@ -18,7 +18,7 @@ const StudentStats = () => {
   const [papers, setPapers] = useState([]);
   const getMarks = async () => {
     await axios
-      .post("http://localhost:8000/api/student/getmarks", {
+      .post("http://testhubbknd.onrender.com/api/student/getmarks", {
         userid: auth.id,
       })
       .then((res) => {
