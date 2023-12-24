@@ -34,7 +34,7 @@ const StudentStats = () => {
       getMarks();
       console.log("hii");
     };
-  }, []);
+  });
   return (
     <Div d="flex" bg="#FCE2DB" flexDir="column" h="100%" minH="100vh">
       <Sidebar />
