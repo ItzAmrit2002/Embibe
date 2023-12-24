@@ -17,24 +17,23 @@ const StudentStats = () => {
   };
   const [papers, setPapers] = useState([]);
   const getMarks = async () => {
-    await axios
-      .post("https://testhubbknd.onrender.com/api/student/getmarks", {
+    try {
+      const res = await axios.post("https://testhubbknd.onrender.com/api/student/getmarks", {
         userid: auth.id,
-      })
-      .then((res) => {
-        console.log("Marks res= ", res);
-        setPapers(res.data);
-        console.log(auth.id);
-        // navigate('/addquestion')
-      })
-      .catch((err) => console.log(err));
+      });
+      console.log("Marks res= ", res);
+      setPapers(res.data);
+      console.log(auth.id);
+    } catch (err) {
+      console.error("Error fetching marks:", err);
+      // Handle the error appropriately, e.g., display an error message
+    }
   };
+  
   useEffect(() => {
-    return () => {
-      getMarks();
-      console.log("hii");
-    };
-  });
+    getMarks();
+    console.log("hii");
+  }, []); // Empty dependency array removed
   return (
     <Div d="flex" bg="#FCE2DB" flexDir="column" h="100%" minH="100vh">
       <Sidebar />
