@@ -17,7 +17,7 @@ const Results = () => {
 
   const getData = async () => {
     await axios
-      .post("https://embibe-backend.vercel.app/api/tally/getmarks", {
+      .post("https://embibefrontend.onrender.com/api/tally/getmarks", {
         paper_id: pid,
         user_id: sid,
 

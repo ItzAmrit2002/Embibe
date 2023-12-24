@@ -22,7 +22,7 @@ const Timer = ({ minutes, pid, sid, totalmarks }) => {
   const navigate = useNavigate(); // Corrected navigate function
   const setfinished = async () => {
     await axios
-      .post("https://embibe-backend.vercel.app/api/student/setfinished", {
+      .post("https://localhost:8000/api/student/setfinished", {
         paperid: pid,
         userid: sid,
       })

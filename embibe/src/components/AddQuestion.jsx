@@ -31,7 +31,7 @@ const AddQuestion = () => {
   });;
   const handleSubmit = (e) => {
     axios
-      .post("https://embibe-backend.vercel.app/api/paper/getpaper", {
+      .post("https://embibefrontend.onrender.com/api/paper/getpaper", {
         id: id
       })
       .then((res) => {

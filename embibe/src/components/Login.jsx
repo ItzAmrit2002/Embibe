@@ -63,7 +63,7 @@ const Login = () => {
             navigate('/admin');
         }
         else{
-        axios.post('https://embibe-backend.vercel.app/api/user/login', {
+        axios.post('http://localhost:8000/api/user/login', {
           email: email,
           password: password})
           .then((res) => {
@@ -104,7 +104,7 @@ const Login = () => {
               Authorization: `Bearer ${token1}`,
             },
           }
-          axios.get('https://embibe-backend.vercel.app/api/user/getuser', config).then(res => {
+          axios.get('https://embibefrontend.onrender.com/api/user/getuser', config).then(res => {
             if(res.status == 200)
             {
               console.log("persistent login possible");
