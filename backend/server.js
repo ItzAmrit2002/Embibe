@@ -9,7 +9,9 @@ const Answer = require("./models/Answer")
 const Marks = require("./models/Marks")
 
 var cors = require("cors");
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 console.log(process.env.MONGO);
 mongoose.connect(process.env.MONGO, () => {
 	console.log("connected to MongoDB server");
