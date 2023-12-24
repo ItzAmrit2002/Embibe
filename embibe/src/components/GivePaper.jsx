@@ -22,13 +22,13 @@ const GivePaper = () => {
 
 
 	const getCount = async () => {
-		let res = await axios.get("https://embibefrontend.onrender.com/api/student/givepaper")
+		let res = await axios.get("https://testhubbknd.onrender.com/api/student/givepaper")
 		console.log(res.data)
 		setCount(res.data)
 	};
 
 	const getData = async () => {
-		let res = await axios.get("https://embibefrontend.onrender.com/api/student/getpapers");
+		let res = await axios.get("https://testhubbknd.onrender.com/api/student/getpapers");
 		console.log(res.data)
 		setResult(res.data.papers);
 		setMarks(res.data.rep);
