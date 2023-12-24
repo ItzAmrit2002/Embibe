@@ -18,7 +18,7 @@ const Timer = ({ minutes, pid, sid, totalmarks }) => {
       return 0; // initialize time state to 0 if there isn't a start time in local storage
     }
   });
-
+  const test = 2;
   const navigate = useNavigate(); // Corrected navigate function
   const setfinished = async () => {
     await axios
