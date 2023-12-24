@@ -104,7 +104,7 @@ const Login = () => {
               Authorization: `Bearer ${token1}`,
             },
           }
-          axios.get('https://embibefrontend.onrender.com/api/user/getuser', config).then(res => {
+          axios.get('https://testhubbknd.onrender.com/api/user/getuser', config).then(res => {
             if(res.status == 200)
             {
               console.log("persistent login possible");
