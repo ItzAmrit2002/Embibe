@@ -40,7 +40,7 @@ const CreatePaper = () => {
 		// const data = new FormData(event.currentTarget);
 
 		axios
-			.post("https://testhubbknd.onrender.com/api/paper/createpaper", {
+			.post("https://embibe-backend.vercel.app/api/paper/createpaper", {
 				name: name,
 				time: time,
 				subject: subject,

@@ -15,7 +15,7 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     const [paperDetails, setPaperDetails] = useState({})
     const getPaper = async () => {
         await axios
-      .post("https://testhubbknd.onrender.com/api/paper/getpaper", {
+      .post("https://embibe-backend.vercel.app/api/paper/getpaper", {
         id: pid
       })
       .then((res) => {
@@ -30,7 +30,7 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     
     const getPaperDetails = async () => {
         await axios
-      .post("https://testhubbknd.onrender.com/api/student/getpaperdetails", {
+      .post("https://embibe-backend.vercel.app/api/student/getpaperdetails", {
         paperId: pid
       })
       .then((res) => {

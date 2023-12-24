@@ -37,7 +37,7 @@ const QuestionPaper = () => {
 
   const setfinished = async () => {
     await axios
-      .post("https://testhubbknd.onrender.com/api/student/setfinished", {
+      .post("https://embibe-backend.vercel.app/api/student/setfinished", {
         paperid: pid,
         userid: sid,
       })
@@ -49,7 +49,7 @@ const QuestionPaper = () => {
 
   const getData = async () => {
     await axios
-      .post("https://testhubbknd.onrender.com/api/student/getquestions", {
+      .post("https://embibe-backend.vercel.app/api/student/getquestions", {
         paperid: pid,
       })
       .then((res) => {
@@ -60,7 +60,7 @@ const QuestionPaper = () => {
       .catch((err) => console.log(err));
 
     await axios
-      .post("https://testhubbknd.onrender.com/api/student/paperinfo", {
+      .post("https://embibe-backend.vercel.app/api/student/paperinfo", {
         paperid: pid,
       })
       .then((res) => {
@@ -73,7 +73,7 @@ const QuestionPaper = () => {
       .catch((err) => console.log(err));
 
     await axios
-      .post("https://testhubbknd.onrender.com/api/tally/countmarks", {
+      .post("https://embibe-backend.vercel.app/api/tally/countmarks", {
         paper_id: pid,
       })
       .then((res) => {
