@@ -14,42 +14,38 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     const navigate = useNavigate();
     const [paperDetails, setPaperDetails] = useState({})
     const getPaper = async () => {
-        await axios
-      .post("https://testhubbknd.onrender.com/api/paper/getpaper", {
-        id: pid
-      })
-      .then((res) => {
-        
-        // navigate('/addquestion')
-        setName(res.data.name)
-        setSubject(res.data.subject)
+      try {
+        const res = await axios.post("https://testhubbknd.onrender.com/api/paper/getpaper", {
+          id: pid,
+        });
+        setName(res.data.name);
+        setSubject(res.data.subject);
         console.log("Stats res= ", res.data);
-      })
-      .catch((err) => console.log(err));
-    }
+      } catch (err) {
+        console.error("Error fetching paper:", err);
+        // Handle the error appropriately
+      }
+    };
     
     const getPaperDetails = async () => {
-        await axios
-      .post("https://testhubbknd.onrender.com/api/student/getpaperdetails", {
-        paperId: pid
-      })
-      .then((res) => {
-        
-        // navigate('/addquestion')
-        setPaperDetails(res.data)
+      try {
+        const res = await axios.post("https://testhubbknd.onrender.com/api/student/getpaperdetails", {
+          paperId: pid,
+        });
+        setPaperDetails(res.data);
         console.log("Paper res= ", res.data);
-      })
-      .catch((err) => console.log(err));
-    }
-    useEffect(() => {
-      
-    
-      return () => {
-        getPaper()
-        getPaperDetails()
-        console.log(timeC)
+      } catch (err) {
+        console.error("Error fetching paper details:", err);
+        // Handle the error appropriately
       }
-    }, [])
+    };
+    
+    useEffect(() => {
+      getPaper();
+      getPaperDetails();
+      console.log(timeC);
+    }, []); // Empty dependency array to run on every render
+    
     
   return (
     <>
