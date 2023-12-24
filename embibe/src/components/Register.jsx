@@ -61,7 +61,7 @@ const Register = () => {
         // const lname = data.get('lname')
         // const email = data.get('email')
         // const password = data.get('password')
-        axios.post('https://testhubbknd.onrender.com/api/user/register', {
+        axios.post('https://embibe-backend.vercel.app/api/user/register', {
             firstname: fname,
             secondname: lname,
             email: email,

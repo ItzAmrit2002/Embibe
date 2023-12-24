@@ -27,7 +27,7 @@ const QuesDisplay = ({
 
 	const handlesubmit = async() => {
 		await axios
-			.post("https://testhubbknd.onrender.com/api/student/postanswer", {
+			.post("https://embibe-backend.vercel.app/api/student/postanswer", {
 				pid: pid,
 				sid: sid,
 				qid: qid,
@@ -62,7 +62,7 @@ const QuesDisplay = ({
 				console.log(err)
 			});
 			
-		await axios.post('https://testhubbknd.onrender.com/api/tally/tallymarks', {
+		await axios.post('https://embibe-backend.vercel.app/api/tally/tallymarks', {
           paper_id: pid,
           user_id: sid,
 		  question_id : qid,
