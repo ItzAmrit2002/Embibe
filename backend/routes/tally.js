@@ -118,7 +118,7 @@ router.post("/tallymarks", async (req, res) => {
 	//   res.status(400).send(doc);
 	const existingDoc = await Marks.findOne({ userid: user_id, paperid: paper_id, finished:false });
 
-		if (!existingDoc || existingDoc.finished==true) {
+		if (!existingDoc || existingDoc.finished==false) {
 		  // Update existing document or create a new one if not found
 		  let doc = await Marks.findOneAndUpdate(
 			{ userid: user_id, paperid: paper_id, finished:false },
