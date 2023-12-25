@@ -40,6 +40,7 @@ const QuestionPaper = () => {
       .post("https://testhubbknd.onrender.com/api/student/setfinished", {
         paperid: pid,
         userid: sid,
+        count: count
       })
       .then((res) => {
         console.log(res);

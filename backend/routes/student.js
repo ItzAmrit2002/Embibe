@@ -122,11 +122,11 @@ router.post("/postanswer", async (req, res) => {
 
 router.post("/setfinished", async (req, res) => {
   // Set the finished field of the Marks collection to true
-  const { userid, paperid } = req.body;
+  const { userid, paperid, count } = req.body;
   try {
     const marks = await Marks.findOneAndUpdate(
       { userid: userid, paperid: paperid },
-      { finished: true }
+      { finished: true}
     );
     res.status(200).json(marks);
   } catch (error) {
