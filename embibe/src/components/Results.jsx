@@ -55,7 +55,6 @@ const Results = () => {
       <Div
         d="flex"
         flexDir="row"
-        p="2%"
         minH="100vh"
         h="auto"
         align="center"
@@ -70,46 +69,55 @@ const Results = () => {
             flexDir="column"
           >
             <Text
-              textSize="display1"
+              textSize="display3"
+              fontFamily="Itim"
               textWeight="500"
               textColor="#333"
               textAlign="center"
             >
-              Paper {index + 1} Results
+              Results
             </Text>
 
             {/* Display each chart in a 2x2 grid */}
             <Container className="center" d="flex" flexDir="column">
               <Row>
                 <Col size="6">
-                  <PieCharts
-                    marks={item.marks}
-                    totalmarks={totalmarks}
-                    heading={`Marks`}
-                  />
+                  <Div size={{ w: "50%", h: "50%" }}>
+                    <PieCharts
+                      marks={item.marks}
+                      totalmarks={totalmarks}
+                      heading={`Marks`}
+                    />
+                  </Div>
                 </Col>
                 <Col size="6">
-                  <PieCharts
-                    marks={item.attempted}
-                    totalmarks={totalmarks}
-                    heading={`Attempted`}
-                  />
+                  <Div size={{ w: "50%", h: "50%" }}>
+                    <PieCharts
+                      marks={item.attempted}
+                      totalmarks={totalmarks}
+                      heading={`Attempted`}
+                    />
+                  </Div>
                 </Col>
               </Row>
               <Row>
                 <Col size="6">
-                  <PieCharts
-                    marks={item.correct}
-                    totalmarks={totalmarks}
-                    heading={`Correct`}
-                  />
+                  <Div size={{ w: "50%", h: "50%" }}>
+                    <PieCharts
+                      marks={item.correct}
+                      totalmarks={totalmarks}
+                      heading={`Correct`}
+                    />
+                  </Div>
                 </Col>
                 <Col size="6">
-                  <PieCharts
-                    marks={item.incorrect}
-                    totalmarks={totalmarks}
-                    heading={`Incorrect`}
-                  />
+                  <Div size={{ w: "50%", h: "50%" }}>
+                    <PieCharts
+                      marks={item.incorrect}
+                      totalmarks={totalmarks}
+                      heading={`Incorrect`}
+                    />
+                  </Div>
                 </Col>
               </Row>
             </Container>
