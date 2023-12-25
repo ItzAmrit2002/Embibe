@@ -125,7 +125,7 @@ router.post("/setfinished", async (req, res) => {
   const { userid, paperid, count } = req.body;
   try {
     const marks = await Marks.findOneAndUpdate(
-      { userid: userid, paperid: paperid },
+      { userid: userid, paperid: paperid, finished: false },
       { finished: true}
     );
     res.status(200).json(marks);
@@ -140,7 +140,7 @@ router.post("/getmarks", async (req, res) => {
     const { userid } = req.body;
 
     // Query the Marks collection based on the provided userid and paperid
-    const marks = await Marks.find({ userid: userid });
+    const marks = await Marks.find({ userid: userid, finished: true });
     console.log(userid);
     console.log(marks);
     res.status(200).json(marks);

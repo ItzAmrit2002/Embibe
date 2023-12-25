@@ -74,10 +74,10 @@ router.post("/tallymarks", async (req, res) => {
 	) {
 		const existingDoc = await Marks.findOne({ userid: user_id, paperid: paper_id, finished:false });
 
-		if (!existingDoc || !existingDoc.finished) {
+		if (!existingDoc || existingDoc.finished==false) {
 		  // Update existing document or create a new one if not found
 		  let doc = await Marks.findOneAndUpdate(
-			{ userid: user_id, paperid: paper_id },
+			{ userid: user_id, paperid: paper_id, finished:false },
 			{
 			  $inc: {
 				marks: ques.marks,
@@ -118,14 +118,14 @@ router.post("/tallymarks", async (req, res) => {
 	//   res.status(400).send(doc);
 	const existingDoc = await Marks.findOne({ userid: user_id, paperid: paper_id, finished:false });
 
-		if (!existingDoc || !existingDoc.finished) {
+		if (!existingDoc || existingDoc.finished==true) {
 		  // Update existing document or create a new one if not found
 		  let doc = await Marks.findOneAndUpdate(
-			{ userid: user_id, paperid: paper_id },
+			{ userid: user_id, paperid: paper_id, finished:false },
 			{
 			  $inc: {
 				attempted: 1,
-				correct: 1,
+				incorrect: 1,
 			  },
 			},
 			{ upsert: true },
@@ -134,7 +134,8 @@ router.post("/tallymarks", async (req, res) => {
 		  res.status(200).send(doc);
 		}
 	}
-  });
+  }
+  );
 
 // router.post("/createmarks", async (req, res) => {
 // 	const { paper_id, user_id } = req.body;
