@@ -35,7 +35,7 @@ useEffect(() => {
   console.log("hii");
 }, []); // Empty dependency array removed
   return (
-    <Div d="flex" bg="#FCE2DB" flexDir="column" h="100%" minH="100vh">
+    <Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" minH="100vh">
       <Sidebar />
       <Div d="flex" align="center" justify="center" flexDir="column" w="100%">
         {papers.map((item, index) => {

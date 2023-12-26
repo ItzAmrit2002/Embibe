@@ -87,7 +87,7 @@ const QuestionPaper = () => {
   // 	setTotalmarks(totalmarks + ques[i].marks);
   //   }
   return (
-    <Div bg="#FCE2DB" h="100%">
+    <Div bg="#ECFBFB" h="100%">
       <Div
         d="flex"
         shadow="2"

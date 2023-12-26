@@ -92,15 +92,15 @@ const QuesDisplay = ({
 					h="auto"
 					w="auto"
 					rounded="lg"
-					textColor="#121212"
+					textColor="#1C0F13"
 					border="1px solid"
 					borderColor="#94618e"
 					m={{ t: "3rem", b: "3rem" }}>
 						<ToastContainer/>
-					<Div d="flex" justify="space-between" bg ="#49274a" align="center" w="100%" p="4%" rounded="lg">
+					<Div d="flex" justify="space-between" bg ="#2C666E" align="center" w="100%" p="4%" rounded="lg">
 						<Text
 							textSize="heading"
-							fontFamily="Itim"
+							fontFamily="Poppins"
 							textWeight="400"
 							textColor="#eeeeee"
 							m={{ l: "5%" }}>
@@ -108,7 +108,7 @@ const QuesDisplay = ({
 						</Text>
 						<Text
 							textSize="subheader"
-							fontFamily="Itim"
+							fontFamily="Poppins"
 							textWeight="400"
 							textColor="#eeeeee"
 							m={{ r: "5%" }}>
@@ -127,7 +127,7 @@ const QuesDisplay = ({
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Itim"
+							fontFamily="Poppins"
 							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionA}
@@ -145,7 +145,7 @@ const QuesDisplay = ({
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Itim"
+							fontFamily="Poppins"
 							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionB}
@@ -163,7 +163,7 @@ const QuesDisplay = ({
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Itim"
+							fontFamily="Poppins"
 							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionC}
@@ -181,7 +181,7 @@ const QuesDisplay = ({
 						</Label>
 						<Text
 							textSize="subheader"
-							fontFamily="Itim"
+							fontFamily="Poppins"
 							textWeight="400"
 							m={{ l: "1%" }}>
 							{optionD}

@@ -19,7 +19,7 @@ const SidebarStudent = () => {
 			d="flex"
 			justify="space-around"
 			align="center"
-			bg="#FF8FB1"
+			bg="#6DCE96"
 			h="auto"
 			w="100%"
 			shadow="4"
@@ -44,9 +44,8 @@ const SidebarStudent = () => {
 					w="auto"
 					className="student-dashboard-links"
 					cursor="pointer"
-					bg="#FF8FB1"
+					bg="#6DCE96"
 					p="0.5rem"
-					hoverBg="rgba(255, 143, 177, 0.5)"
 					rounded="xl">
 					<Icon name="Edit" size="20px" color="#121212" />
 					<Text
@@ -68,10 +67,9 @@ const SidebarStudent = () => {
 					w="auto"
 					className="student-dashboard-links"
 					cursor="pointer"
-					bg="#FF8FB1"
+					bg="#6DCE96"
 					// bg="#ffffff"
 					p="0.5rem"
-					hoverBg="rgba(255, 143, 177, 0.5)"
 					rounded="xl"
 					>
 					<Icon name="Loading2" size="20px" color="#121212" />
@@ -95,9 +93,8 @@ const SidebarStudent = () => {
 					w="auto"
 					className="student-dashboard-links"
 					cursor="pointer"
-					bg="#FF8FB1"
+					bg="#6DCE96"
 					p="0.5rem"
-					hoverBg="rgba(255, 143, 177, 0.5)"
 					rounded="xl">
 					<Icon name="User" size="20px" color="#121212" />
 					<Text
@@ -113,7 +110,7 @@ const SidebarStudent = () => {
 				<Button
 					prefix={<Icon name="Logout" size="40px" color="#121212" />}
 					m={{ x: "1rem", y: "1.5rem" }}
-					bg="#FF8FB1"
+					bg="#6DCE96"
 					hoverShadow="4"
 					rounded="md"
 					onClick={handleClick}></Button>
