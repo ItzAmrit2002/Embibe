@@ -122,11 +122,11 @@ router.post("/postanswer", async (req, res) => {
 
 router.post("/setfinished", async (req, res) => {
   // Set the finished field of the Marks collection to true
-  const { userid, paperid } = req.body;
+  const { userid, paperid, count } = req.body;
   try {
     const marks = await Marks.findOneAndUpdate(
-      { userid: userid, paperid: paperid },
-      { finished: true }
+      { userid: userid, paperid: paperid, finished: false },
+      { finished: true}
     );
     res.status(200).json(marks);
   } catch (error) {
@@ -140,7 +140,7 @@ router.post("/getmarks", async (req, res) => {
     const { userid } = req.body;
 
     // Query the Marks collection based on the provided userid and paperid
-    const marks = await Marks.find({ userid: userid });
+    const marks = await Marks.find({ userid: userid, finished: true });
     console.log(userid);
     console.log(marks);
     res.status(200).json(marks);
