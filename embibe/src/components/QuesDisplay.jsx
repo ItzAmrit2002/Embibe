@@ -88,40 +88,40 @@ const QuesDisplay = ({
 					flexDir="column"
 					shadow="2"
 					hoverShadow="3"
-					bg="#f4decb"
+					bg="#CCF7E3"
 					h="auto"
 					w="auto"
 					rounded="lg"
 					textColor="#1C0F13"
 					border="1px solid"
-					borderColor="#94618e"
+					borderColor="#6DCE96"
 					m={{ t: "3rem", b: "3rem" }}>
 						<ToastContainer/>
-					<Div d="flex" justify="space-between" bg ="#2C666E" align="center" w="100%" p="4%" rounded="lg">
+					<Div d="flex" justify="space-between" bg ="#6DCE96" align="center" w="100%" p="4%" rounded="lg">
 						<Text
 							textSize="heading"
 							fontFamily="Poppins"
 							textWeight="400"
-							textColor="#eeeeee"
+							textColor="#1C0F13"
 							m={{ l: "5%" }}>
 							{slno}. {question_dsc}
 						</Text>
 						<Text
 							textSize="subheader"
 							fontFamily="Poppins"
-							textWeight="400"
-							textColor="#eeeeee"
+							textWeight="700"
+							textColor="#1C0F13"
 							m={{ r: "5%" }}>
 							({marks} marks)
 						</Text>
 					</Div>
-					<Div m={{ x: "3%", t: "4vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
+					<Div m={{ x: "3%", t: "4vh" }} d="flex" align="center" border="1px dashed" borderColor="#6DCE96" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsA(e.target.checked)}
 								checked={isA}
-								inactiveColor="#b270a2"
-								activeColor="#94618e"
+								inactiveColor="#6DCE96"
+								activeColor="#6DCE96"
 								size="24px"
 							/>
 						</Label>
@@ -133,13 +133,13 @@ const QuesDisplay = ({
 							{optionA}
 						</Text>
 					</Div>
-					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
+					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#6DCE96" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsB(e.target.checked)}
 								checked={isB}
-								inactiveColor="#b270a2"
-								activeColor="#94618e"
+								inactiveColor="#6DCE96"
+								activeColor="#6DCE96"
 								size="24px"
 							/>
 						</Label>
@@ -151,13 +151,13 @@ const QuesDisplay = ({
 							{optionB}
 						</Text>
 					</Div>
-					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
+					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#6DCE96" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsC(e.target.checked)}
 								checked={isC}
-								inactiveColor="#b270a2"
-								activeColor="#94618e"
+								inactiveColor="#6DCE96"
+								activeColor="#6DCE96"
 								size="24px"
 							/>
 						</Label>
@@ -169,13 +169,13 @@ const QuesDisplay = ({
 							{optionC}
 						</Text>
 					</Div>
-					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#B270A2" rounded="md" p="0.5%">
+					<Div m={{ x: "3%", t: "3vh" }} d="flex" align="center" border="1px dashed" borderColor="#6DCE96" rounded="md" p="0.5%">
 						<Label align="center" textWeight="600">
 							<Checkbox
 								onChange={(e) => setIsD(e.target.checked)}
 								checked={isD}
-								inactiveColor="#b270a2"
-								activeColor="#94618e"
+								inactiveColor="#6DCE96"
+								activeColor="#6DCE96"
 								size="24px"
 							/>
 						</Label>
@@ -198,17 +198,17 @@ const QuesDisplay = ({
 								<Icon
 									name="Checked"
 									size="16px"
-									color="white"
+									color="#1C0F13"
 									m={{ r: "0.5rem" }}
 								/>
 							}
-							bg="#B270A2"
-							hoverBg="#49274a"
+							bg="#6DCE96"
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"
 							m={{ y: "1.5rem" }}
 							onClick={handlesubmit}
+							textColor="#1C0F13"
 							hoverShadow="4">
 							Submit Answer
 						</Button>}
@@ -221,7 +221,7 @@ const QuesDisplay = ({
 									m={{ r: "0.5rem" }}
 								/>
 							}
-							bg="#49274a"
+							bg="#2c666e"
 							rounded="circle"
 							p={{ r: "1.5rem", l: "1rem" }}
 							shadow="3"

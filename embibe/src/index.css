@@ -29,12 +29,12 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FF8FB1;
+  background: #2c666eff;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3088be;
+  background: #2c666eff;
 }
 
 body {

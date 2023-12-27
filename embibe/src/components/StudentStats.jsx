@@ -17,27 +17,50 @@ const StudentStats = () => {
   };
   const [papers, setPapers] = useState([]);
   const getMarks = async () => {
-  try {
-    const res = await axios.post("https://testhubbknd.onrender.com/api/student/getmarks", {
-      userid: auth.id,
-    });
-    console.log("Marks res= ", res);
-    setPapers(res.data);
-    console.log(auth.id);
-  } catch (err) {
-    console.error("Error fetching marks:", err);
-    // Handle the error appropriately, e.g., display an error message
-  }
-};
+    try {
+      const res = await axios.post(
+        "https://testhubbknd.onrender.com/api/student/getmarks",
+        {
+          userid: auth.id,
+        }
+      );
+      console.log("Marks res= ", res);
+      setPapers(res.data);
+      console.log(auth.id);
+    } catch (err) {
+      console.error("Error fetching marks:", err);
+      // Handle the error appropriately, e.g., display an error message
+    }
+  };
 
-useEffect(() => {
-  getMarks();
-  console.log("hii");
-}, []); // Empty dependency array removed
+  useEffect(() => {
+    getMarks();
+    console.log("hii");
+  }, []); // Empty dependency array removed
   return (
     <Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" minH="100vh">
       <Sidebar />
+
       <Div d="flex" align="center" justify="center" flexDir="column" w="100%">
+        <Div d = "flex" flexDir="column" align="center" justify="space-around" w="100%">
+          <Text
+            m={{ t: "2%" }}
+            fontFamily="Montserrat"
+            textWeight="700"
+            textSize="display3"
+            textColor="#1C0F13"
+          >
+            Your Stats
+          </Text>
+          <Text
+            fontFamily="Montserrat"
+            textWeight="700"
+            textSize="display1"
+            textColor="#1C0F13"
+          >
+            ___
+          </Text>
+        </Div>
         {papers.map((item, index) => {
           console.log(item);
           // setTotalmarks(totalmarks + item.marks);

@@ -88,7 +88,7 @@ const QuestionPaper = () => {
   // 	setTotalmarks(totalmarks + ques[i].marks);
   //   }
   return (
-    <Div bg="#ECFBFB" h="100%">
+    <Div bg="#CCF7E3" h="100%" overflow="auto">
       <Div
         d="flex"
         shadow="2"
@@ -97,7 +97,7 @@ const QuestionPaper = () => {
         justify="space-between"
         align="center"
         className="navbar"
-        bg="#49274a"
+        bg="#6DCE96"
         textAlign="center"
         p="2%"
         pos="relative"
@@ -106,8 +106,8 @@ const QuestionPaper = () => {
           tag="h2"
           textSize="display1"
           textWeight="500"
-          textColor="#f8eee7"
-          fontFamily="Itim"
+          textColor="#1C0F13"
+          fontFamily="Poppins"
           m={{ l: "3%" }}
         >
           {paperName} ({subject})
@@ -129,7 +129,7 @@ const QuestionPaper = () => {
           textSize="display1"
           textWeight="500"
           textColor="#121212"
-          fontFamily="Itim"
+          fontFamily="Poppins"
           m={{ t: "2%" }}
         >
           <Icon
@@ -144,7 +144,7 @@ const QuestionPaper = () => {
           textSize="display1"
           textWeight="500"
           textColor="#121212"
-          fontFamily="Itim"
+          fontFamily="Poppins"
           textAlign="center"
         >
           <Icon name="Cross" size="20px" color="#121212" m={{ x: "0.5rem" }} />
@@ -181,11 +181,11 @@ const QuestionPaper = () => {
       >
         <Button
           prefix={
-            <Icon name="Logout" size="16px" color="white" m={{ r: "0.5rem" }} />
+            <Icon name="Logout" size="16px" color="#1C0F13" m={{ r: "0.5rem" }} />
           }
-          bg="#7A4495"
-          hoverBg="#7A4495"
+          bg="#6DCE96"
           rounded="circle"
+          textColor="#1C0F13"
           onClick={() => {
             localStorage.removeItem("startTime");
             setfinished();

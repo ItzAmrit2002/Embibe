@@ -38,7 +38,7 @@ const StudentProfile = () => {
         <Div d="flex" shadow="2" hoverShadow="3" h="24rem" w="22rem" rounded="lg" bg="#6DCE96" m={{ t: "3rem" }} p={{ t: "3rem" }} justify="space-between" align="center" className="main-card" flexDir="column" border="1px solid" borderColor="#94618e">
             <Div d="flex">
                 {/* <ToastContainer/> */}
-                <Text textWeight="1000" fontFamily="Montserrat" textSize="display1" textColor="#1C0F13">My Profile</Text>
+                <Text textWeight="1000" fontFamily="Montserrat" textSize="display1" textColor="#1C0F13">Your Profile</Text>
             </Div>
             <Div d="flex" bg="#CCF7E3" w="100%" h="80%" align="center" textAlign="center" justify="space-evenly" flexDir="column">
                 <Div d="flex" flexDir="column" justify="space-between">

@@ -38,7 +38,7 @@ const GivePaper = () => {
 
 
 	return (
-		<Div d="flex" bg="#DCFBE9" flexDir="column">
+		<Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" minH="100vh">
 			<SidebarStudent />
 			{/* <div className="loader">Loading...</div> */}
 
@@ -46,6 +46,7 @@ const GivePaper = () => {
 				className="main-page"
 				h="100vh"
 				flexGrow="1"
+				bg = "#DCFBE9"
 				minW="85%"
 			>
 				<Div textAlign="center"
