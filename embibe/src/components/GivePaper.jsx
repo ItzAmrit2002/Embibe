@@ -38,7 +38,7 @@ const GivePaper = () => {
 
 
 	return (
-		<Div d="flex" bg="#FCE2DB" flexDir="column">
+		<Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" minH="100vh">
 			<SidebarStudent />
 			{/* <div className="loader">Loading...</div> */}
 
@@ -46,6 +46,7 @@ const GivePaper = () => {
 				className="main-page"
 				h="100vh"
 				flexGrow="1"
+				bg = "#DCFBE9"
 				minW="85%"
 			>
 				<Div textAlign="center"
@@ -56,14 +57,14 @@ const GivePaper = () => {
 						fontFamily="Montserrat"
 						textWeight="700"
 						textSize="display3"
-						textColor="#121212">
+						textColor="#1C0F13">
 						Papers
 					</Text>
 					<Text
 						fontFamily="Montserrat"
 						textWeight="700"
 						textSize="display1"
-						textColor="#121212">
+						textColor="#1C0F13">
 						___
 					</Text>
 				</Div>

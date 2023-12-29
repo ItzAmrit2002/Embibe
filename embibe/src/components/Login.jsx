@@ -147,7 +147,7 @@ const Login = () => {
       }, []);
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }} >
+      <Grid container component="main" sx={{ height: '100vh' }} backgroundColor="#DCFBE9">
         <CssBaseline />
         <ToastContainer/>
         <Grid
@@ -191,7 +191,7 @@ const Login = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: '#cdf7e4' }}>
+            <Avatar sx={{ m: 1, bgcolor: '#DCFBE9' }}>
               <LockOutlinedIcon style={{ color: "green" }}/>
             </Avatar>
             <Typography component="h1" variant="h5" sx={{
@@ -205,7 +205,7 @@ const Login = () => {
                 required
                 fullWidth
                 style={{
-                    backgroundColor: "#cdf7e4"
+                    backgroundColor: "#DCFBE9"
                 }}
                 onChange={e => setEmail(e.target.value)}
                 id="email"
@@ -221,7 +221,7 @@ const Login = () => {
                 name="password"
                 label="Password"
                 style={{
-                    backgroundColor: "#cdf7e4"
+                    backgroundColor: "#DCFBE9"
                 }}
                 onChange={e => setPassword(e.target.value)}
                 type="password"

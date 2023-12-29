@@ -67,9 +67,9 @@ const Timer = ({ minutes, pid, sid, totalmarks }) => {
     <Div>
       <Text
         textSize="title"
-        fontFamily="Itim"
+        fontFamily="Poppins"
         m={{ r: "8%" }}
-        textColor="#FCE2DB"
+        textColor="#1C0F13"
       >
         Time remaining: {minutes - Math.ceil(time / 1000 / 60)} minutes,{" "}
         {60 - Math.round((time / 1000) % 60)} seconds.

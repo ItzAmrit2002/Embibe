@@ -49,7 +49,7 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     
   return (
     <>
-    <Div bg="#F4DECB" shadow="2" hoverShadow="3" m={{x:'1rem', y:'0.5rem'}} rounded="sm" p={{x:"2rem", y:"0.5rem"}} d="flex" flexDir="row" textWeight="800" align="center" w="98vw" justify="space-between" fontFamily="Raleway">
+    <Div bg="#6DCE96" shadow="2" hoverShadow="3" m={{x:'1rem', y:'0.5rem'}} rounded="sm" p={{x:"2rem", y:"0.5rem"}} d="flex" flexDir="row" textWeight="800" align="center" w="98vw" justify="space-between" fontFamily="Raleway">
         <Div d="flex" flexDir="row" justify=" space-around">
         <Text m={{r:'2.5rem'}}>
             Paper Name : {name}
@@ -73,7 +73,7 @@ const StatBox = ({pid,timeC,uid,marks,incorrect, correct, attempted}) => {
     </Div>
     <Collapse isOpen={showCollapse} w="100%">
                     <Div
-                    bg="gray100"
+                    bg="#ECFBFB"
                     border="1px solid"
                     borderColor="gray400"
                     rounded="lg"
