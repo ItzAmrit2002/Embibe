@@ -31,7 +31,7 @@ const SidebarStudent = () => {
 					fontFamily="Cedarville Cursive"
 					m={{ x: "2rem", y: "1rem" }}
 					textColor="#121212">
-					Embibe
+					TestHub
 				</Text>
 			</Div>
 			<Div d="flex" align="center" justify="space-around">

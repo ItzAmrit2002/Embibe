@@ -49,7 +49,7 @@ const Results = () => {
           textWeight="800"
           textColor="#f8eee7"
         >
-          Embibe
+          TestHub
         </Text>
       </Div>
 

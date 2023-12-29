@@ -27,8 +27,8 @@ function Copyright(props) {
     return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Embibe
+        <Link color="inherit" href="https://embibe.vercel.app/login">
+          TestHub
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -147,7 +147,7 @@ const Login = () => {
       }, []);
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }} backgroundColor="#DCFBE9">
+      <Grid container component="main" h="100vh" backgroundColor="#DCFBE9">
         <CssBaseline />
         <ToastContainer/>
         <Grid
@@ -177,7 +177,7 @@ const Login = () => {
                 cursor: 'pointer'
               }}
             >
-              Embibe
+              TestHub
             </Typography>
             <Lottie options={defaultOptions} height={width} width={width} />
         </Grid>

@@ -1,10 +1,10 @@
 import React from 'react'
 import Sidebar from './NavbarStudent'
-import { Div, Button, Text, Icon, Container, Row, Col } from "atomize";
+import { Div, Button, Text, Icon, Container, Row, Col, Modal, Input } from "atomize";
 import axios from 'axios';
 import { useEffect } from 'react';
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 const StudentProfile = () => {
   const [name, setName] = React.useState("");
@@ -20,6 +20,19 @@ const StudentProfile = () => {
   useEffect(() => {
     getDeets();
   }, []);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [pass1, setState1] = React.useState(false);
+  const [pass2, setState2] = React.useState(false);
+  const [pass3, setState3] = React.useState(false);
+
+
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
 
   const getDeets = async () => {
     let res = await axios.get("https://testhubbknd.onrender.com/api/user/getuser", config)
@@ -79,12 +92,115 @@ const StudentProfile = () => {
                 shadow="3"
                 textColor="#DCFBE9"
                 hoverShadow="4"
+                onClick={handleOpenModal}
               >
                 Change Password/Email
               </Button>
             </Div>
         </Div>
       </Container>
+      <Modal isOpen={isOpen} onClose={handleCloseModal} align="center" rounded="md" bg="#CCF7E3">
+      <Icon
+        name="Cross"
+        pos="absolute"
+        top="1rem"
+        right="1rem"
+        size="16px"
+        onClick={handleCloseModal}
+        cursor="pointer"
+      />
+      <Div d="flex" m={{ b: "2rem" }}>
+        <Icon
+          name="AlertSolid"
+          color="warning700"
+          m={{ t: "0.35rem", r: "0.5rem" }}
+        />
+        <Text p={{ l: "0.5rem", t: "0.25rem" }} textSize="subheader">
+          Do you really want to change your password?
+        </Text>
+      </Div>
+      <Div d="flex" flexDir="column" justify="space-between" m={{ b: "2rem" }}>
+      <Input
+        placeholder="Enter current Password"
+        type={pass1 ? "text" : "password"}
+        m={{ b: "10px" }}
+        suffix={
+          <Button
+            pos="absolute"
+            onClick={() => setState1(!pass1)}
+            bg="transparent"
+            w="3rem"
+            top="0"
+            right="0"
+            rounded={{ r: "md" }}
+          >
+            <Icon
+              name={pass1 ? "EyeSolid" : "Eye"}
+              color={pass1 ? "danger800" : "success800"}
+              size="16px"
+            />
+          </Button>
+        }
+      />
+            <Input
+        placeholder="Enter new Password"
+        m={{ b: "10px" }}
+        type={pass2 ? "text" : "password"}
+        suffix={
+          <Button
+            pos="absolute"
+            onClick={() => setState1(!pass2)}
+            bg="transparent"
+            w="3rem"
+            top="0"
+            right="0"
+            rounded={{ r: "md" }}
+          >
+            <Icon
+              name={pass2 ? "EyeSolid" : "Eye"}
+              color={pass2 ? "danger800" : "success800"}
+              size="16px"
+            />
+          </Button>
+        }
+      />       
+            <Input
+        placeholder="Confirm new Password"
+        m={{ b: "10px" }}
+        type={pass3 ? "text" : "password"}
+        suffix={
+          <Button
+            pos="absolute"
+            onClick={() => setState1(!pass3)}
+            bg="transparent"
+            w="3rem"
+            top="0"
+            right="0"
+            rounded={{ r: "md" }}
+          >
+            <Icon
+              name={pass3 ? "EyeSolid" : "Eye"}
+              color={pass3 ? "danger800" : "success800"}
+              size="16px"
+            />
+          </Button>
+        }
+      />              
+      </Div>
+      <Div d="flex" justify="flex-end">
+        <Button
+          onClick={handleCloseModal}
+          bg="gray200"
+          textColor="medium"
+          m={{ r: "1rem" }}
+        >
+          Cancel
+        </Button>
+        <Button onClick={handleCloseModal} bg="#2C666E">
+          Yes, Submit
+        </Button>
+      </Div>
+    </Modal>
     </Div>
   )
 }
