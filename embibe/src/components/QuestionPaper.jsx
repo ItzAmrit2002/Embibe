@@ -43,7 +43,7 @@ const QuestionPaper = () => {
         count: count
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   };
@@ -54,7 +54,7 @@ const QuestionPaper = () => {
         paperid: pid,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setQues(res.data);
         // navigate('/addquestion')
       })
@@ -65,7 +65,7 @@ const QuestionPaper = () => {
         paperid: pid,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setPaperName(res.data.name);
         setSubject(res.data.subject);
         setTime(res.data.time);
@@ -78,7 +78,7 @@ const QuestionPaper = () => {
         paper_id: pid,
       })
       .then((res) => {
-        console.log("totalmarks", res);
+        // console.log("totalmarks", res);
         setTotalmarks(res.data);
         // navigate('/addquestion')
       })
@@ -152,7 +152,7 @@ const QuestionPaper = () => {
         </Text>
 
         {ques.map((item, index) => {
-          console.log(item);
+          // console.log(item);
           // setTotalmarks(totalmarks + item.marks);
           return (
             <QuesDisplay

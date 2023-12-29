@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Div, Button, Text, Icon, Container } from "atomize";
 import "./QuestionCards.css";
 import useAuth from '../hooks/useAuth';
@@ -8,21 +8,51 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 const QuestionCards = ({ name, time, sub, marks, nq, id }) => {
-    const createMarks = async() => {
-        await axios.post('https://testhubbknd.onrender.com/api/tally/createmarks', {
-          paper_id: id,
-          user_id: auth.id})
-          .then((res) => {
-              console.log(res)
+    const [url, setUrl] = useState("abcd")
+    // const createMarks = async() => {
+    //     await axios.post('https://testhubbknd.onrender.com/api/tally/createmarks', {
+    //       paper_id: id,
+    //       user_id: auth.id})
+    //       .then((res) => {
+
+    //           console.log("Paper button clicked :"+res.data)
+    //           setUrl(res.data._id)
               
-          })
-          .catch(err =>{
-            toast.error(err.response.data, {
-              position: toast.POSITION.TOP_RIGHT
-            })
-             console.log(err)
-          })
-    }
+    //       })
+    //       .catch(err =>{
+    //         toast.error(err.response.data, {
+    //           position: toast.POSITION.TOP_RIGHT
+    //         })
+    //          console.log(err)
+    //       })
+    // }
+    const handleButtonClick = async () => {
+        try {
+          await createMarks();
+          console.log("url", url);
+          navigate(`/questionpaper/${id}/${auth.id}/${url}`);
+        } catch (err) {
+          toast.error(err.response.data, {
+            position: toast.POSITION.TOP_RIGHT
+          });
+          console.error(err);
+        }
+      };
+    
+      const createMarks = async () => {
+        console.log("create marks callled")
+        try {
+          const response = await axios.post('https://testhubbknd.onrender.com/api/tally/createmarks', {
+            paper_id: id,
+            user_id: auth.id
+          });
+          console.log("response", response)
+          setUrl(response.data._id);
+        } catch (err) {
+            console.log("create marks error", err)
+          throw err; // Re-throw the error to be caught in handleButtonClick
+        }
+      };
     const navigate = useNavigate();
     const { auth } = useAuth();
     return (
@@ -44,11 +74,13 @@ const QuestionCards = ({ name, time, sub, marks, nq, id }) => {
                     bg="rgba(244, 210, 170, 1)"
                     hoverShadow="4"
                     rounded="lg"
-                    onClick={() => {
-                        createMarks()
-                        navigate(`/questionpaper/${id}/${auth.id}`);
-                    }
-                    }
+                    // onClick={() => {
+                    //     createMarks()
+                    //     console.log("url"+url)
+                    //     navigate(`/questionpaper/${id}/${auth.id}/${url}`);
+                    // }
+                    // }
+                    onClick={handleButtonClick}
                     m={{ r: "1rem" }}
                 >
                     <Icon
