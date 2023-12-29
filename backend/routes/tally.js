@@ -184,8 +184,8 @@ router.post("/createmarks", async (req, res) => {
   
 
 router.post("/getmarks", async (req, res) => {
-	const { user_id, paper_id } = req.body;
-	const marks = await Marks.findOne({ userid: user_id, paperid: paper_id });
+	const { userid, mid } = req.body;
+    const marks = await Marks.find({ userid: userid, _id: mid, finished: true });
 	if (marks) {
 		res.status(200).send(marks);
 	} else {

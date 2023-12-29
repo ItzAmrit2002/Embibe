@@ -13,7 +13,7 @@ const Results = () => {
   const getMarks = async () => {
     try {
       const res = await axios.post(
-        "https://testhubbknd.onrender.com/api/student/getmarks",
+        "https://testhubbknd.onrender.com/api/tally/getmarks",
         {
           userid: auth.id,
           mid: mid

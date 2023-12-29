@@ -137,10 +137,10 @@ router.post("/setfinished", async (req, res) => {
 
 router.post("/getmarks", async (req, res) => {
   try {
-    const { userid, mid } = req.body;
+    const { userid} = req.body;
 
     // Query the Marks collection based on the provided userid and paperid
-    const marks = await Marks.find({ userid: userid, _id: mid, finished: true });
+    const marks = await Marks.find({ userid: userid, finished: true });
     console.log(userid);
     console.log(marks);
     res.status(200).json(marks);
