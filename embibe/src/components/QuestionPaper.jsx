@@ -34,19 +34,36 @@ const QuestionPaper = () => {
   useEffect(() => {
     getData();
   }, []);
-
-  const setfinished = async () => {
-    await axios
-      .post("https://testhubbknd.onrender.com/api/student/setfinished", {
-        paperid: pid,
-        userid: sid,
-        count: count
-      })
-      .then((res) => {
-        // console.log(res);
-      })
-      .catch((err) => console.log(err));
+  const handleButtonClick = async () => {
+    try {
+      const newId = await setfinished();
+      localStorage.removeItem("startTime");
+      navigate(`/results/${pid}/${sid}/${totalmarks}/${newId}`);
+      // navigate(`/questionpaper/${id}/${auth.id}/${newUrl}`);
+    } catch (err) {
+      console.error(err);
+    }
   };
+  const setfinished = async () => {
+    try {
+      const response = await axios.post(
+        "https://testhubbknd.onrender.com/api/student/setfinished",
+        {
+          paperid: pid,
+          userid: sid,
+          count: count
+        }
+      );
+  
+      console.log("setfinishedres", response);
+      return response.data._id;
+    } catch (err) {
+      console.error("Error setting finished:", err);
+      // Handle the error appropriately, e.g., display an error message or retry
+      throw err; // Re-throw the error if needed for further handling
+    }
+  };
+  
 
   const getData = async () => {
     await axios
@@ -186,11 +203,7 @@ const QuestionPaper = () => {
           bg="#6DCE96"
           rounded="circle"
           textColor="#1C0F13"
-          onClick={() => {
-            localStorage.removeItem("startTime");
-            setfinished();
-            navigate(`/results/${pid}/${sid}/${totalmarks}`);
-          }}
+          onClick={handleButtonClick}
           p={{ r: "1.5rem", l: "1rem" }}
           shadow="3"
           hoverShadow="4"

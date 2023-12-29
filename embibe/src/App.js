@@ -27,7 +27,7 @@ function App() {
         {auth.email && <Route path="/myprofile" element={<StudentProfile/>} />}
         {auth.email && <Route path="/givepaper" element={<GivePaper/>} />}
         {auth.email && <Route path="/questionpaper/:pid/:sid/:mid" element={<QuestionPaper/>}/>}
-        {auth.email && <Route path="/results/:pid/:sid/:totalmarks" element={<Results/>}/>}
+        {auth.email && <Route path="/results/:pid/:sid/:totalmarks/:mid" element={<Results/>}/>}
         {auth.admin && <Route path="/admin" element={<AdminDashboard/>} />}
         {auth.email && <Route path="/student" element={<StudentDashboard/>} />}
         {auth.admin && <Route path="/createpaper" element= {<CreatePaper/>} />}

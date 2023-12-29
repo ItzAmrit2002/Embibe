@@ -26,11 +26,39 @@ const QuestionCards = ({ name, time, sub, marks, nq, id }) => {
     //          console.log(err)
     //       })
     // }
+    
+    // const handleButtonClick = async () => {
+    //     try {
+    //       await createMarks();
+    //       console.log("url", url);
+    //       navigate(`/questionpaper/${id}/${auth.id}/${url}`);
+    //     } catch (err) {
+    //       toast.error(err.response.data, {
+    //         position: toast.POSITION.TOP_RIGHT
+    //       });
+    //       console.error(err);
+    //     }
+    //   };
+    
+    //   const createMarks = async () => {
+    //     console.log("create marks callled")
+    //     try {
+    //       const response = await axios.post('https://testhubbknd.onrender.com/api/tally/createmarks', {
+    //         paper_id: id,
+    //         user_id: auth.id
+    //       });
+    //       console.log("response", response)
+    //       setUrl(response.data._id); // Access the _id property within the data object
+    //     } catch (err) {
+    //         console.log("create marks error", err)
+    //       throw err; // Re-throw the error to be caught in handleButtonClick
+    //     }
+    //   };
     const handleButtonClick = async () => {
         try {
-          await createMarks();
-          console.log("url", url);
-          navigate(`/questionpaper/${id}/${auth.id}/${url}`);
+          const newUrl = await createMarks();
+          console.log("url", newUrl);
+          navigate(`/questionpaper/${id}/${auth.id}/${newUrl}`);
         } catch (err) {
           toast.error(err.response.data, {
             position: toast.POSITION.TOP_RIGHT
@@ -40,19 +68,21 @@ const QuestionCards = ({ name, time, sub, marks, nq, id }) => {
       };
     
       const createMarks = async () => {
-        console.log("create marks callled")
+        console.log("create marks called")
         try {
           const response = await axios.post('https://testhubbknd.onrender.com/api/tally/createmarks', {
             paper_id: id,
             user_id: auth.id
           });
           console.log("response", response)
-          setUrl(response.data._id);
+          setUrl(response.data._id); // Access the _id property within the data object
+          return response.data._id; // Return the _id
         } catch (err) {
             console.log("create marks error", err)
           throw err; // Re-throw the error to be caught in handleButtonClick
         }
       };
+    
     const navigate = useNavigate();
     const { auth } = useAuth();
     return (

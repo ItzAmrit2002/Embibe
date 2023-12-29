@@ -6,7 +6,7 @@ import PieCharts from "./PieCharts";
 import { useParams } from "react-router-dom";
 
 const Results = () => {
-  const { pid, sid, totalmarks } = useParams();
+  const { pid, sid, totalmarks, mid } = useParams();
   const { auth } = useAuth();
   const [papers, setPapers] = useState([]);
 
@@ -16,6 +16,7 @@ const Results = () => {
         "https://testhubbknd.onrender.com/api/student/getmarks",
         {
           userid: auth.id,
+          mid: mid
         }
       );
       console.log("Marks res= ", res);
