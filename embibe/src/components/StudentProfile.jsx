@@ -53,12 +53,6 @@ const StudentProfile = () => {
             position: toast.POSITION.TOP_RIGHT,
           });
         }
-        else
-        {
-          toast.error(res.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        }
       } 
       else{
         toast.error("New Password Confirm Mismatch, Try Again!", {
@@ -69,7 +63,7 @@ const StudentProfile = () => {
     catch(err)
     {
       console.log(err);
-      toast.error(err, {
+      toast.error(err.response.data.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

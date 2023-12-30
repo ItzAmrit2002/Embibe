@@ -101,10 +101,8 @@ router.put('/changepassword', async (req, res) => {
         return res.status(400).json({ message: 'Invalid Current Password' });
       }
       // Compare new password hash with provided password
-      const validPass2 = await bcrypt.compare(newPassword, userExists.password);
-  
-      if (!validPass2) {
-        return res.status(400).json({ message: 'New password same as current password' });
+      if (await bcrypt.compare(newPassword, userExists.password)) {
+        return res.status(400).json({ message: 'New password cannot be the same as current password' });
       }
       // Generate salt and hash the new password
   
