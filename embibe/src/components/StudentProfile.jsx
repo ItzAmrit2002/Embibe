@@ -39,37 +39,80 @@ const StudentProfile = () => {
     setIsOpen(false);
   };
   
-  const changePass = async() => {
-    try{
-      if(p2===p3){
-        let res = await axios.put("https://testhubbknd.onrender.com/api/user/changepassword", {
+  // const changePass = async() => {
+  //   try{
+  //     if(p2===p3){
+  //       let res = await axios.put("https://testhubbknd.onrender.com/api/user/changepassword", {
+  //         currentPassword: p1,
+  //         newPassword: p3,
+  //         email: email
+  //       })
+  //       console.log(res)
+  //       if(res.status==200){
+  //         toast.success("Password Chnaged", {
+  //           position: toast.POSITION.TOP_RIGHT,
+  //           autoClose: 1500
+  //         });
+  //       }
+  //     } 
+  //     else{
+  //       toast.error("New Password Confirm Mismatch, Try Again!", {
+  //         position: toast.POSITION.TOP_RIGHT,
+  //       });
+  //     }     
+  //   }
+  //   catch(err)
+  //   {
+  //     console.log(err);
+  //     toast.error(err.response.data.message, {
+  //       position: toast.POSITION.TOP_RIGHT,
+  //     });
+  //   }
+  //   setIsOpen(false);
+  // }
+  const changePass = async () => {
+    try {
+      if (p2 === p3) {
+        toast.promise(axios.put("https://testhubbknd.onrender.com/api/user/changepassword", {
           currentPassword: p1,
           newPassword: p3,
           email: email
-        })
-        console.log(res)
-        if(res.status==200){
-          toast.success("Password Chnaged", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        }
-      } 
-      else{
+        }), {
+          pending: "Changing password...",
+          success: {
+            render(){
+              return "Password changed successfully!"
+            },
+            // other options
+            autoClose: 1500
+          },
+          error: {
+            render({data}){
+              console.log(data)
+              return `${data.response.data.message}`
+            },
+            // other options
+            autoClose: 1500
+          },
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000, // Close success toasts after 1500ms
+        });
+      } else {
         toast.error("New Password Confirm Mismatch, Try Again!", {
           position: toast.POSITION.TOP_RIGHT,
         });
-      }     
-    }
-    catch(err)
-    {
-      console.log(err);
+      }
+    } catch (err) {
+      console.error(err);
       toast.error(err.response.data.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
+    } finally {
+      setIsOpen(false);
     }
-    setIsOpen(false);
-  }
-
+  };
+  
+  
   const getDeets = async () => {
     try{
     let res = await axios.get("https://testhubbknd.onrender.com/api/user/getuser", config)

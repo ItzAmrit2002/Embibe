@@ -40,6 +40,7 @@ const QuesDisplay = ({
 				if (res.status == 201) {
 					toast.success("Answer Submitted!", {
 						position: toast.POSITION.TOP_RIGHT,
+						autoClose: 1200
 					});
 					callback()
 				} else {
