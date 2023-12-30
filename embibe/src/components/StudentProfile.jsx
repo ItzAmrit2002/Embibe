@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from './NavbarStudent'
 import { Div, Button, Text, Icon, Container, Row, Col, Modal, Input } from "atomize";
 import axios from 'axios';
 import { useEffect } from 'react';
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom"; 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const StudentProfile = () => {
   const [name, setName] = React.useState("");
@@ -24,6 +26,9 @@ const StudentProfile = () => {
   const [pass1, setState1] = React.useState(false);
   const [pass2, setState2] = React.useState(false);
   const [pass3, setState3] = React.useState(false);
+  const [p1, setP1] = useState("")
+  const [p2, setP2] = useState("")
+  const [p3, setP3] = useState("")
 
 
   const handleOpenModal = () => {
@@ -33,16 +38,53 @@ const StudentProfile = () => {
   const handleCloseModal = () => {
     setIsOpen(false);
   };
+  
+  const changePass = async() => {
+    try{
+      let res = await axios.put("https://testhubbknd.onrender.com/api/user/changepassword", {
+        currentPassword: p1,
+        newPassword: p3,
+        email: email
+      })
+      console.log(res)
+      if(res.status==200){
+        toast.success("Answer Submitted!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+      else
+      {
+        toast.error("Invalid Password", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+    }
+    catch(err)
+    {
+      console.log(err);
+      toast.success(err, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+    setIsOpen(false);
+  }
 
   const getDeets = async () => {
+    try{
     let res = await axios.get("https://testhubbknd.onrender.com/api/user/getuser", config)
     if (res.request.status !== 200) {
       localStorage.removeItem("token_embibe");
       setAuth({});
       navigate("/login");
     }
+    console.log("profile res", res)
     setEmail(res.data.email)
     setName(res.data.Firstname + " " + res.data.Secondname)
+  }
+  catch(err)
+  {
+    console.log(err)
+  }
   };
   return (
     <Div d="flex" bg="#DCFBE9" flexDir="column" h="100vh">
@@ -53,31 +95,13 @@ const StudentProfile = () => {
                 {/* <ToastContainer/> */}
                 <Text textWeight="1000" fontFamily="Montserrat" textSize="display1" textColor="#1C0F13">Your Profile</Text>
             </Div>
+            <ToastContainer/>
             <Div d="flex" bg="#CCF7E3" w="100%" h="80%" align="center" textAlign="center" justify="space-evenly" flexDir="column">
                 <Div d="flex" flexDir="column" justify="space-between">
                     <Text textWeight="400" fontFamily="Poppins" textSize="title" textColor="#1C0F13" p={{  y: '1rem' }}>Email: {email}</Text>
                     <Text textWeight="400" fontFamily="Poppins" textSize="title" textColor="#1C0F13" p={{  y: '1rem' }}>Name: {name} </Text>
             
                 </Div>
-                {/* <Button
-                    h="2.5rem"
-                    w="2.5rem"
-                    bg="rgba(244, 210, 170, 1)"
-                    hoverShadow="4"
-                    rounded="lg"
-                    onClick={() => {
-                        // createMarks()
-                        // navigate(`/questionpaper/${id}/${auth.id}`);
-                    }
-                    }
-                    m={{ r: "1rem" }}
-                >
-                    <Icon
-                        name="RightArrow"
-                        size="30px"
-                        color="#121212"
-                    />
-                </Button> */}
                 <Button
                 prefix={
                   <Icon
@@ -124,6 +148,7 @@ const StudentProfile = () => {
         placeholder="Enter current Password"
         type={pass1 ? "text" : "password"}
         m={{ b: "10px" }}
+        onChange={(e)=> {setP1(e.target.value)}}
         suffix={
           <Button
             pos="absolute"
@@ -146,6 +171,7 @@ const StudentProfile = () => {
         placeholder="Enter new Password"
         m={{ b: "10px" }}
         type={pass2 ? "text" : "password"}
+        onChange={(e)=> {setP2(e.target.value)}}
         suffix={
           <Button
             pos="absolute"
@@ -168,6 +194,7 @@ const StudentProfile = () => {
         placeholder="Confirm new Password"
         m={{ b: "10px" }}
         type={pass3 ? "text" : "password"}
+        onChange={(e)=> {setP3(e.target.value)}}
         suffix={
           <Button
             pos="absolute"
@@ -196,7 +223,7 @@ const StudentProfile = () => {
         >
           Cancel
         </Button>
-        <Button onClick={handleCloseModal} bg="#2C666E">
+        <Button onClick={changePass} bg="#2C666E">
           Yes, Submit
         </Button>
       </Div>

@@ -84,6 +84,40 @@ router.post('/login', async(req,res) => {
 router.get('/getuser', protect, (req, res) => {
     res.status(200).json(req.user)
 })
+router.put('/changepassword', async (req, res) => {
+    try {
+      const { email, currentPassword, newPassword } = req.body;
+  
+      // Find user by email
+      const userExists = await User.findOne({ email });
+  
+      if (!userExists) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+      }
+  
+      // Compare current password hash with provided password
+      const validPass = await bcrypt.compare(currentPassword, userExists.password);
+  
+      if (!validPass) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+      }
+  
+      // Generate salt and hash the new password
+  
+      
+  const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+  
+      // Update user's password
+      userExists.password = hashedPassword;
+      await userExists.save();
+  
+      res.status(200).json({ message: 'Password changed successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
 //Generate JWT
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.ACCESS_TOKEN_SECRET,{
