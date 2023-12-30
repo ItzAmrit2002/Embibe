@@ -41,28 +41,35 @@ const StudentProfile = () => {
   
   const changePass = async() => {
     try{
-      let res = await axios.put("https://testhubbknd.onrender.com/api/user/changepassword", {
-        currentPassword: p1,
-        newPassword: p3,
-        email: email
-      })
-      console.log(res)
-      if(res.status==200){
-        toast.success("Answer Submitted!", {
+      if(p2===p3){
+        let res = await axios.put("https://testhubbknd.onrender.com/api/user/changepassword", {
+          currentPassword: p1,
+          newPassword: p3,
+          email: email
+        })
+        console.log(res)
+        if(res.status==200){
+          toast.success("Password Chnaged", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+        else
+        {
+          toast.error(res.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      } 
+      else{
+        toast.error("New Password Confirm Mismatch, Try Again!", {
           position: toast.POSITION.TOP_RIGHT,
         });
-      }
-      else
-      {
-        toast.error("Invalid Password", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
-      }
+      }     
     }
     catch(err)
     {
       console.log(err);
-      toast.success(err, {
+      toast.error(err, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }
@@ -175,7 +182,7 @@ const StudentProfile = () => {
         suffix={
           <Button
             pos="absolute"
-            onClick={() => setState1(!pass2)}
+            onClick={() => setState2(!pass2)}
             bg="transparent"
             w="3rem"
             top="0"
@@ -198,7 +205,7 @@ const StudentProfile = () => {
         suffix={
           <Button
             pos="absolute"
-            onClick={() => setState1(!pass3)}
+            onClick={() => setState3(!pass3)}
             bg="transparent"
             w="3rem"
             top="0"

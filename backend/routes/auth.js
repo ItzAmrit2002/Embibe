@@ -92,16 +92,20 @@ router.put('/changepassword', async (req, res) => {
       const userExists = await User.findOne({ email });
   
       if (!userExists) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(400).json({ message: 'Invalid email or password' });
       }
-  
       // Compare current password hash with provided password
       const validPass = await bcrypt.compare(currentPassword, userExists.password);
   
       if (!validPass) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(400).json({ message: 'Invalid Current Password' });
       }
+      // Compare new password hash with provided password
+      const validPass2 = await bcrypt.compare(newPassword, userExists.password);
   
+      if (!validPass2) {
+        return res.status(400).json({ message: 'New password same as current password' });
+      }
       // Generate salt and hash the new password
   
       
@@ -115,7 +119,7 @@ router.put('/changepassword', async (req, res) => {
       res.status(200).json({ message: 'Password changed successfully' });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Server error' });
+      res.status(400).json({ message: 'Server error' });
     }
   });
 //Generate JWT
