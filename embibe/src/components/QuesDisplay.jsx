@@ -122,7 +122,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsA(e.target.checked)}
 								checked={isA}
 								inactiveColor="#6DCE96"
-								activeColor="#6DCE96"
+								activeColor="#2C666E"
 								size="24px"
 							/>
 						</Label>
@@ -140,7 +140,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsB(e.target.checked)}
 								checked={isB}
 								inactiveColor="#6DCE96"
-								activeColor="#6DCE96"
+								activeColor="#2C666E"
 								size="24px"
 							/>
 						</Label>
@@ -158,7 +158,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsC(e.target.checked)}
 								checked={isC}
 								inactiveColor="#6DCE96"
-								activeColor="#6DCE96"
+								activeColor="#2C666E"
 								size="24px"
 							/>
 						</Label>
@@ -176,7 +176,7 @@ const QuesDisplay = ({
 								onChange={(e) => setIsD(e.target.checked)}
 								checked={isD}
 								inactiveColor="#6DCE96"
-								activeColor="#6DCE96"
+								activeColor="#2C666E"
 								size="24px"
 							/>
 						</Label>

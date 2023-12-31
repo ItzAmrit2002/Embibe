@@ -1,9 +1,9 @@
 .text-center{
-    border-bottom: 2px solid #49274a;
+    border-bottom: 2px solid #1C0F13;
     border-radius: 10px;
 }
 .text-marks{
-    border: 3px solid #49274a;
-    padding: 3px;
+    border: 3px solid #1C0F13;
+    padding: 10px;
     border-radius: 10px;
 }

@@ -183,7 +183,7 @@ const StudentProfile = () => {
           color="warning700"
           m={{ t: "0.35rem", r: "0.5rem" }}
         />
-        <Text p={{ l: "0.5rem", t: "0.25rem" }} textSize="subheader">
+        <Text p={{ l: "0.5rem", t: "0.25rem" }} textSize="subheader" fontFamily="Poppins" textWeight="600">
           Do you really want to change your password?
         </Text>
       </Div>
