@@ -11,7 +11,7 @@ const ResultsPage = () => {
   const [ques, setQues] = useState([]);
   const [paperName, setPaperName] = useState("");
   const [subject, setSubject] = useState("");
-  const { pid, sid, attemptid } = useParams();
+  const { sid, pid, attemptid } = useParams();
   const [count, setCount] = useState(0);
   const [marked, setMarked] = useState([]);
   const callback = () => {
@@ -35,7 +35,7 @@ const ResultsPage = () => {
       })
       .catch((err) => console.log(err));
     await axios
-      .post("https://testhubbknd.onrender.com/api/tally/getmarkedoptions", {
+      .get("http://localhost:8000/api/tally/getmarkedoptions", {
         attempt_id: attemptid,
         paper_id: pid,
         user_id: sid,
