@@ -8,7 +8,7 @@ const Question = require("../models/Question");
 // Get marked options for an attempt
 router.post("/getmarkedoptions", async (req, res) => {
   const { paper_id, user_id, attempt_id } = req.body;
-  const answers = await Answer.find({ _id: attempt_id, paper: paper_id, user: user_id });
+  const answers = await Answer.find({paper: paper_id, user: user_id });
   if (answers) {
     res.status(200).send(answers);
   } else {
