@@ -11,8 +11,7 @@ const ResultsPage = () => {
   const [ques, setQues] = useState([]);
   const [paperName, setPaperName] = useState("");
   const [subject, setSubject] = useState("");
-  const { pid, sid, totalmarks, newId } = useParams();
-  const [time, setTime] = useState(0);
+  const { pid, sid, attemptid } = useParams();
   const [count, setCount] = useState(0);
   const [marked, setMarked] = useState([]);
   const callback = () => {
@@ -36,11 +35,18 @@ const ResultsPage = () => {
       })
       .catch((err) => console.log(err));
     await axios
-      .get("https://testhubbknd.onrender.com/api/tally/getmarkedoptions")
+      .post("https://testhubbknd.onrender.com/api/tally/getmarkedoptions", {
+        attempt_id: attemptid,
+        paper_id: pid,
+        user_id: sid,
+      })
       .then((res) => {
         console.log(res);
         setMarked(res.data);
-      });
+        // navigate('/addquestion')
+      })
+      .catch((err) => console.log(err));
+
     await axios
       .post("https://testhubbknd.onrender.com/api/student/paperinfo", {
         paperid: pid,
@@ -49,7 +55,6 @@ const ResultsPage = () => {
         // console.log(res);
         setPaperName(res.data.name);
         setSubject(res.data.subject);
-        setTime(res.data.time);
         // navigate('/addquestion')
       })
       .catch((err) => console.log(err));
