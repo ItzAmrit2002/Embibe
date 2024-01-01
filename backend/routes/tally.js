@@ -4,18 +4,13 @@ const Paper = require("../models/Paper");
 const User = require("../models/User");
 const Answer = require("../models/Answer");
 const Question = require("../models/Question");
-
-// Get marked options for an attempt
-router.post("/getmarkedoptions", async (req, res) => {
-  const { paper_id, user_id, attempt_id } = req.body;
-  const answers = await Answer.find({paper: paper_id, user: user_id });
+router.get("/getmarkedoptions", async (req, res) => {
+  const { paper_id, user_id } = req.body;
+  const answers = await Answer.find({ userid: user_id, paperid: paper_id });
   if (answers) {
     res.status(200).send(answers);
-  } else {
-    res.status(400).send("No answers found");
   }
 });
-
 router.post("/tallymarks", async (req, res) => {
   const { paper_id, user_id, checkA, checkB, checkC, checkD, question_id } =
     req.body;
