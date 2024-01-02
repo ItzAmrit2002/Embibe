@@ -109,9 +109,10 @@ router.post("/postanswer", async (req, res) => {
     const savedQues = await answer.save();
     res.status(201).json({
       _id: answer.id,
-      question: answer.qid,
-      user: answer.sid,
-      paper: answer.pid,
+      marks: answer.marks,
+      question: answer.question,
+      user: answer.user,
+      paper: answer.paper,
     });
     return;
   } catch (err) {

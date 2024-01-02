@@ -8,7 +8,6 @@ import StudentStats from './components/StudentStats';
 import AdminDashboard from './components/AdminDashboard';
 import AddQuestion from './components/AddQuestion';
 import StudentDashboard from './components/StudentDashboard';
-import { RequireAuth } from './auth/requireAuth';
 import GivePaper from './components/GivePaper';
 import StudentProfile from './components/StudentProfile';
 import useAuth from './hooks/useAuth';

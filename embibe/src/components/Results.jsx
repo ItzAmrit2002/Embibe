@@ -109,7 +109,7 @@ const Results = () => {
                 <Col size="6">
                   <Div size={{ w: "50%", h: "50%" }}>
                     <PieCharts
-                      marks={item.attempted}
+                      attempted={item.attempted}
                       totalmarks={totalmarks}
                       heading={`Attempted`}
                     />

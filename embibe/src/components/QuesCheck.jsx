@@ -18,6 +18,10 @@ const QuesDisplay = ({
   checkB,
   checkC,
   checkD,
+  markA,
+  markB,
+  markC,
+  markD,
 }) => {
   const { auth } = useAuth();
   const { pid, sid } = useParams();
@@ -25,6 +29,10 @@ const QuesDisplay = ({
   const [isB, setIsB] = useState(false);
   const [isC, setIsC] = useState(false);
   const [isD, setIsD] = useState(false);
+  // const [isACorrect, setIsACorrect] = useState(false);
+  // const [isBCorrect, setIsBCorrect] = useState(false);
+  // const [isCCorrect, setIsCCorrect] = useState(false);
+  // const [isDCorrect, setIsDCorrect] = useState(false);
   const setCorrectOptions = () => {
     if (checkA) {
       setIsA(true);
@@ -38,6 +46,18 @@ const QuesDisplay = ({
     if (checkD) {
       setIsD(true);
     }
+    // if (checkA) {
+    //   setIsACorrect(true);
+    // }
+    // if (checkB) {
+    //   setIsBCorrect(true);
+    // }
+    // if (checkC) {
+    //   setIsCCorrect(true);
+    // }
+    // if (checkD) {
+    //   setIsDCorrect(true);
+    // }
   };
   useEffect(() => {
     setCorrectOptions();

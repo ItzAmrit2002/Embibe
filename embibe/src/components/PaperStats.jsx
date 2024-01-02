@@ -29,9 +29,7 @@ const ResultsPage = () => {
         paperid: pid,
       })
       .then((res) => {
-        // console.log(res);
         setQues(res.data);
-        // navigate('/addquestion')
       })
       .catch((err) => console.log(err));
     console.log("attemptid", attemptid);
@@ -42,8 +40,8 @@ const ResultsPage = () => {
         student_id: sid,
       })
       .then((res) => {
-        console.log(res);
         setMarked(res.data);
+        console.log("marked", marked);
       })
       .catch((err) => console.log(err));
 
@@ -58,6 +56,18 @@ const ResultsPage = () => {
         // navigate('/addquestion')
       })
       .catch((err) => console.log(err));
+    appendChecksToQues(marked, ques);
+  };
+  //
+  const appendChecksToQues = (marked, ques) => {
+    // Assuming marked and ques are objects
+    ques.forEach((item, index) => {
+      item["markA"] = marked[index].checkA;
+      item["markB"] = marked[index].checkB;
+      item["markC"] = marked[index].checkC;
+      item["markD"] = marked[index].checkD;
+    });
+    console.log(ques);
   };
 
   return (
@@ -134,7 +144,7 @@ const ResultsPage = () => {
           Your Answers
         </Text>
         {ques.map((item, index) => {
-          // console.log(item);
+          console.log("item", item);
           // setTotalmarks(totalmarks + item.marks);
           return (
             <QuesCheck
@@ -149,6 +159,10 @@ const ResultsPage = () => {
               checkB={item.checkB}
               checkC={item.checkC}
               checkD={item.checkD}
+              markA={item.markA}
+              markB={item.markB}
+              markC={item.markC}
+              markD={item.markD}
             />
           );
         })}
