@@ -22,7 +22,7 @@ const QuestionPaper = () => {
   const [ques, setQues] = useState([]);
   const [paperName, setPaperName] = useState("");
   const [subject, setSubject] = useState("");
-  const { pid, sid } = useParams();
+  const { pid, sid, mid } = useParams();
   const [time, setTime] = useState(0);
   const [count, setCount] = useState(0);
   const callback = () => {
@@ -205,6 +205,7 @@ const QuestionPaper = () => {
             <QuesDisplay
               question_dsc={item.question_dsc}
               marks={item.marks}
+              mid = {mid}
               slno={index + 1}
               optionA={item.optionA}
               optionB={item.optionB}

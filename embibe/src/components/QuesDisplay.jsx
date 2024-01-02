@@ -9,6 +9,7 @@ import axios from "axios";
 const QuesDisplay = ({
 	question_dsc,
 	marks,
+	mid,
 	slno,
 	optionA,
 	optionB,
@@ -31,6 +32,7 @@ const QuesDisplay = ({
 				pid: pid,
 				sid: sid,
 				qid: qid,
+				mid: mid,
 				checkA: isA,
 				checkB: isB,
 				checkC: isC,

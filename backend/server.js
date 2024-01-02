@@ -18,16 +18,16 @@ mongoose.connect(process.env.MONGO, () => {
 });
 
 
-const answers = mongoose.model("Answer"); // Replace 'Answer' with the actual model name
+// const answers = mongoose.model("Answer"); // Replace 'Answer' with the actual model name
 
-// Use the deleteMany method to delete all documents from the collection
-answers.deleteMany({}, (err) => {
-	if (err) {
-		console.error("Error deleting documents:", err);
-	} else {
-		console.log("All documents deleted successfully.");
-	}
-});
+// // Use the deleteMany method to delete all documents from the collection
+// answers.deleteMany({}, (err) => {
+// 	if (err) {
+// 		console.error("Error deleting documents:", err);
+// 	} else {
+// 		console.log("All documents deleted successfully.");
+// 	}
+// });
 
 const authRoute = require("./routes/auth");
 const paperRoute = require("./routes/createpaper");
