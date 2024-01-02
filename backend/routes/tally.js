@@ -4,10 +4,10 @@ const Paper = require("../models/Paper");
 const User = require("../models/User");
 const Answer = require("../models/Answer");
 const Question = require("../models/Question");
-router.get("/getmarkedoptions", async (req, res) => {
-  const { paper_id, user_id } = req.body;
-  console.log(paper_id, user_id);
-  const answers = await Answer.find({ userid: user_id, paperid: paper_id });
+router.post("/getmarkedoptions", async (req, res) => {
+  const { attempt_id, paper_id, student_id } = req.body;
+  console.log(attempt_id, paper_id, student_id);
+  const answers = await Answer.find({paperid: paper_id, userid: student_id });
   if (answers) {
     res.status(200).send(answers);
   }

@@ -35,7 +35,7 @@ const StudentStats = () => {
 
   useEffect(() => {
     getMarks();
-    console.log("hii");
+    // console.log("hii");
   }, []); // Empty dependency array removed
   return (
     <Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" minH="100vh">

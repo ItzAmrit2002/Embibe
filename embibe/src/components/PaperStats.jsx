@@ -11,7 +11,7 @@ const ResultsPage = () => {
   const [ques, setQues] = useState([]);
   const [paperName, setPaperName] = useState("");
   const [subject, setSubject] = useState("");
-  const { sid, pid, attemptid } = useParams();
+  const { attemptid, sid, pid } = useParams();
   const [count, setCount] = useState(0);
   const [marked, setMarked] = useState([]);
   const callback = () => {
@@ -34,16 +34,16 @@ const ResultsPage = () => {
         // navigate('/addquestion')
       })
       .catch((err) => console.log(err));
+    console.log("attemptid", attemptid);
     await axios
-      .get("http://localhost:8000/api/tally/getmarkedoptions", {
+      .post("http://localhost:8000/api/tally/getmarkedoptions", {
         attempt_id: attemptid,
         paper_id: pid,
-        user_id: sid,
+        student_id: sid,
       })
       .then((res) => {
         console.log(res);
         setMarked(res.data);
-        // navigate('/addquestion')
       })
       .catch((err) => console.log(err));
 
@@ -108,7 +108,7 @@ const ResultsPage = () => {
             bg="#6DCE96"
             rounded="circle"
             textColor="#1C0F13"
-            onClick={() => navigate(`/questionpaper/${pid}/${sid}`)}
+            onClick={() => navigate(`/givepaper`)}
             p={{ r: "1.5rem", l: "1rem" }}
             shadow="3"
             hoverShadow="4"

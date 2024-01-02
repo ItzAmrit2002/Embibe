@@ -93,7 +93,7 @@ const StatBox = ({
             cursor="pointer"
             onClick={() => {
               // Also pass the attempt id, i.e. _id
-              navigate(`/stats/${auth.id}/${pid}`);
+              navigate(`/stats/${attemptId}/${auth.id}/${pid}`);
             }}
           />
           <Icon
