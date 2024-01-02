@@ -12,6 +12,7 @@ router.post("/getmarkedoptions", async (req, res) => {
     paper: paper_id,
     user: student_id,
   });
+  console.log(answers);
   if (answers) {
     res.status(200).send(answers);
   }

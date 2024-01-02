@@ -9,6 +9,7 @@ import Lottie from "react-lottie";
 import patterns from "../assets/pattern_dots.json";
 const ResultsPage = () => {
   const [ques, setQues] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [paperName, setPaperName] = useState("");
   const [subject, setSubject] = useState("");
   const { attemptid, sid, pid } = useParams();
@@ -24,52 +25,60 @@ const ResultsPage = () => {
   }, []);
 
   const getData = async () => {
-    await axios
-      .post("https://testhubbknd.onrender.com/api/student/getquestions", {
-        paperid: pid,
-      })
-      .then((res) => {
-        setQues(res.data);
-      })
-      .catch((err) => console.log(err));
-    console.log("attemptid", attemptid);
-    await axios
-      .post("http://localhost:8000/api/tally/getmarkedoptions", {
-        attempt_id: attemptid,
-        paper_id: pid,
-        student_id: sid,
-      })
-      .then((res) => {
-        setMarked(res.data);
-        console.log("marked", marked);
-      })
-      .catch((err) => console.log(err));
+    try {
+      const quesResponse = await axios.post(
+        "https://testhubbknd.onrender.com/api/student/getquestions",
+        {
+          paperid: pid,
+        }
+      );
+      const markedResponse = await axios.post(
+        "http://localhost:8000/api/tally/getmarkedoptions",
+        {
+          attempt_id: attemptid,
+          paper_id: pid,
+          student_id: sid,
+        }
+      );
+      const paperInfoResponse = await axios.post(
+        "https://testhubbknd.onrender.com/api/student/paperinfo",
+        {
+          paperid: pid,
+        }
+      );
 
-    await axios
-      .post("https://testhubbknd.onrender.com/api/student/paperinfo", {
-        paperid: pid,
-      })
-      .then((res) => {
-        // console.log(res);
-        setPaperName(res.data.name);
-        setSubject(res.data.subject);
-        // navigate('/addquestion')
-      })
-      .catch((err) => console.log(err));
-    appendChecksToQues(marked, ques);
+      setQues(quesResponse.data);
+      setMarked(markedResponse.data);
+      setPaperName(paperInfoResponse.data.name);
+      setSubject(paperInfoResponse.data.subject);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+      // Handle errors appropriately, e.g., display an error message to the user
+    }
   };
   //
-  const appendChecksToQues = (marked, ques) => {
+  const appendChecksToQues = async (marked, ques) => {
     // Assuming marked and ques are objects
     ques.forEach((item, index) => {
-      item["markA"] = marked[index].checkA;
-      item["markB"] = marked[index].checkB;
-      item["markC"] = marked[index].checkC;
-      item["markD"] = marked[index].checkD;
+      item["markA"] =
+        marked[index] !== undefined ? marked[index].checkA : false;
+      item["markB"] =
+        marked[index] !== undefined ? marked[index].checkB : false;
+      item["markC"] =
+        marked[index] !== undefined ? marked[index].checkC : false;
+      item["markD"] =
+        marked[index] !== undefined ? marked[index].checkD : false;
     });
-    console.log(ques);
   };
 
+  useEffect(() => {
+    if (ques.length > 0 && marked.length > 0) {
+      console.log("ques", ques);
+      console.log("marked", marked);
+      appendChecksToQues(marked, ques);
+      setLoading(false);
+    }
+  }, [ques, marked]);
   return (
     <Div bg="#DCFBE9" h="100%" overflow="auto">
       <Div
@@ -143,29 +152,41 @@ const ResultsPage = () => {
         >
           Your Answers
         </Text>
-        {ques.map((item, index) => {
-          console.log("item", item);
-          // setTotalmarks(totalmarks + item.marks);
-          return (
-            <QuesCheck
-              question_dsc={item.question_dsc}
-              marks={item.marks}
-              slno={index + 1}
-              optionA={item.optionA}
-              optionB={item.optionB}
-              optionC={item.optionC}
-              optionD={item.optionD}
-              checkA={item.checkA}
-              checkB={item.checkB}
-              checkC={item.checkC}
-              checkD={item.checkD}
-              markA={item.markA}
-              markB={item.markB}
-              markC={item.markC}
-              markD={item.markD}
-            />
-          );
-        })}
+        {!loading ? (
+          ques.map((item, index) => {
+            console.log("item", item.markA);
+            // setTotalmarks(totalmarks + item.marks);
+            return (
+              <QuesCheck
+                question_dsc={item.question_dsc}
+                marks={item.marks}
+                slno={index + 1}
+                optionA={item.optionA}
+                optionB={item.optionB}
+                optionC={item.optionC}
+                optionD={item.optionD}
+                checkA={item.checkA}
+                checkB={item.checkB}
+                checkC={item.checkC}
+                checkD={item.checkD}
+                markA={item.markA}
+                markB={item.markB}
+                markC={item.markC}
+                markD={item.markD}
+              />
+            );
+          })
+        ) : (
+          <Div d="flex" justify="center" align="center" h="100vh">
+          <Text
+            textSize="display1"
+            fontFamily="Poppins"
+            textWeight="500"
+            m={{ t: "3rem" }}
+            textColor="#1C0F13"
+          >Loading</Text>
+          </Div>
+        )}
       </Div>
     </Div>
   );

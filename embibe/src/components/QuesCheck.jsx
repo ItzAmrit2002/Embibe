@@ -29,35 +29,37 @@ const QuesDisplay = ({
   const [isB, setIsB] = useState(false);
   const [isC, setIsC] = useState(false);
   const [isD, setIsD] = useState(false);
-  // const [isACorrect, setIsACorrect] = useState(false);
-  // const [isBCorrect, setIsBCorrect] = useState(false);
-  // const [isCCorrect, setIsCCorrect] = useState(false);
-  // const [isDCorrect, setIsDCorrect] = useState(false);
+  const [isACorrect, setIsACorrect] = useState(false);
+  const [isBCorrect, setIsBCorrect] = useState(false);
+  const [isCCorrect, setIsCCorrect] = useState(false);
+  const [isDCorrect, setIsDCorrect] = useState(false);
   const setCorrectOptions = () => {
-    if (checkA) {
+    console.log("markA", markA);
+    console.log("checkA", checkA);
+    if (markA) {
       setIsA(true);
     }
-    if (checkB) {
+    if (markB) {
       setIsB(true);
     }
-    if (checkC) {
+    if (markC) {
       setIsC(true);
     }
-    if (checkD) {
+    if (markD) {
       setIsD(true);
     }
-    // if (checkA) {
-    //   setIsACorrect(true);
-    // }
-    // if (checkB) {
-    //   setIsBCorrect(true);
-    // }
-    // if (checkC) {
-    //   setIsCCorrect(true);
-    // }
-    // if (checkD) {
-    //   setIsDCorrect(true);
-    // }
+    if (checkA) {
+      setIsACorrect(true);
+    }
+    if (checkB) {
+      setIsBCorrect(true);
+    }
+    if (checkC) {
+      setIsCCorrect(true);
+    }
+    if (checkD) {
+      setIsDCorrect(true);
+    }
   };
   useEffect(() => {
     setCorrectOptions();
