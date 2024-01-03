@@ -130,7 +130,7 @@ const StudentProfile = () => {
         }), {
           pending: "Changing name...",
           success: {
-            render(){
+            rendera (){
               return "Name updated successfully!"
             },
             // other options
@@ -155,6 +155,7 @@ const StudentProfile = () => {
       });
     } finally {
       setIsOpen2(false);
+      getDeets()
     }
   };
   
