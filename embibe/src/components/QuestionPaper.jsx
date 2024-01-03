@@ -22,7 +22,7 @@ const QuestionPaper = () => {
   const [ques, setQues] = useState([]);
   const [paperName, setPaperName] = useState("");
   const [subject, setSubject] = useState("");
-  const { pid, sid } = useParams();
+  const { pid, sid, mid } = useParams();
   const [time, setTime] = useState(0);
   const [count, setCount] = useState(0);
   const callback = () => {
@@ -51,10 +51,10 @@ const QuestionPaper = () => {
         {
           paperid: pid,
           userid: sid,
-          count: count
+          count: count,
         }
       );
-  
+
       console.log("setfinishedres", response);
       return response.data._id;
     } catch (err) {
@@ -63,7 +63,6 @@ const QuestionPaper = () => {
       throw err; // Re-throw the error if needed for further handling
     }
   };
-  
 
   const getData = async () => {
     await axios
@@ -105,7 +104,7 @@ const QuestionPaper = () => {
   // 	setTotalmarks(totalmarks + ques[i].marks);
   //   }
   return (
-    <Div bg="#CCF7E3" h="100%" overflow="auto">
+    <Div bg="#DCFBE9" h="100%" overflow="auto">
       <Div
         d="flex"
         shadow="2"
@@ -129,6 +128,37 @@ const QuestionPaper = () => {
         >
           {paperName} ({subject})
         </Text>
+        <Div
+          d="flex"
+          pos="absolute"
+          right="50%"
+          transform="translate(50%, 0)"
+          flexDir="column"
+          justify="center"
+          align="center"
+          textAlign="center"
+          m={{ y: "1rem" }}
+        >
+          <Button
+            prefix={
+              <Icon
+                name="Logout"
+                size="16px"
+                color="#1C0F13"
+                m={{ r: "0.5rem" }}
+              />
+            }
+            bg="#6DCE96"
+            rounded="circle"
+            textColor="#1C0F13"
+            onClick={handleButtonClick}
+            p={{ r: "1.5rem", l: "1rem" }}
+            shadow="3"
+            hoverShadow="4"
+          >
+            Finish Test
+          </Button>
+        </Div>
         <Timer minutes={time} pid={pid} sid={sid} totalmarks={totalmarks} />
       </Div>
       {/* <QuesDisplay />
@@ -175,6 +205,7 @@ const QuestionPaper = () => {
             <QuesDisplay
               question_dsc={item.question_dsc}
               marks={item.marks}
+              mid = {mid}
               slno={index + 1}
               optionA={item.optionA}
               optionB={item.optionB}
@@ -186,30 +217,6 @@ const QuestionPaper = () => {
             />
           );
         })}
-      </Div>
-      <Div></Div>
-      <Div
-        d="flex"
-        flexDir="column"
-        justify="center"
-        align="center"
-        textAlign="center"
-        m={{ b: "1.5rem" }}
-      >
-        <Button
-          prefix={
-            <Icon name="Logout" size="16px" color="#1C0F13" m={{ r: "0.5rem" }} />
-          }
-          bg="#6DCE96"
-          rounded="circle"
-          textColor="#1C0F13"
-          onClick={handleButtonClick}
-          p={{ r: "1.5rem", l: "1rem" }}
-          shadow="3"
-          hoverShadow="4"
-        >
-          Finish Test
-        </Button>
       </Div>
     </Div>
   );

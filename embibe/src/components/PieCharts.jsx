@@ -8,22 +8,23 @@ const PieCharts = ({ marks, totalmarks, heading }) => {
     return (
         <Div
             d="flex"
-            bg="#f4decb"
+            bg="#CCF7E3"
             h="12%"
             w="55%"
             align="center"
             m="4rem"
             shadow="3"
             border="1px solid"
-            borderColor="#94618e"
+            borderColor="#6E7E85"
             rounded="lg"
             flexDir="column"
         >
-            <Div bg="#94618e" w="100%" rounded="md" shadow="3" textAlign="center" pos="relative" top="0%">
+            <Div bg="#6DCE96" w="100%" rounded="md" shadow="3" textAlign="center" pos="relative" top="0%">
                 <Text
-                    fontFamily="Itim"
-                    textSize="display2"
-                    textColor="#f8eee7"
+                    fontFamily="Poppins"
+                    
+                    textSize="display1"
+                    textColor="#1C0F13"
                     w="100%"
                 >
                     {heading}
@@ -37,12 +38,12 @@ const PieCharts = ({ marks, totalmarks, heading }) => {
                         { key: 'Score', data: `${marks}` },
                         { key: 'Total', data: `${totalmarks}` },
                     ]}
-                    series={<PieArcSeries colorScheme={["#94618e", "#f8eee7"]} />}
+                    series={<PieArcSeries colorScheme={["#2C666E", "#f8eee7"]} />}
                 />
                 <Text
-                    fontFamily="Itim"
+                    fontFamily="Poppins"
                     textSize="display1"
-                    textColor="#49274a"
+                    textColor="#1C0F13"
                     textWeight="100"
                     className="text-marks"
                     m={{ x: "1rem" }}

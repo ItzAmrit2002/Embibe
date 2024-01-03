@@ -35,14 +35,20 @@ const StudentStats = () => {
 
   useEffect(() => {
     getMarks();
-    console.log("hii");
+    // console.log("hii");
   }, []); // Empty dependency array removed
   return (
     <Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" minH="100vh">
       <Sidebar />
 
       <Div d="flex" align="center" justify="center" flexDir="column" w="100%">
-        <Div d = "flex" flexDir="column" align="center" justify="space-around" w="100%">
+        <Div
+          d="flex"
+          flexDir="column"
+          align="center"
+          justify="space-around"
+          w="100%"
+        >
           <Text
             m={{ t: "2%" }}
             fontFamily="Montserrat"
@@ -66,6 +72,7 @@ const StudentStats = () => {
           // setTotalmarks(totalmarks + item.marks);
           return item.updatedAt && item.finished ? (
             <StatBox
+              attemptid={item._id}
               pid={item.paperid}
               timeC={item.updatedAt}
               marks={item.marks}

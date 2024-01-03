@@ -8,7 +8,6 @@ import StudentStats from './components/StudentStats';
 import AdminDashboard from './components/AdminDashboard';
 import AddQuestion from './components/AddQuestion';
 import StudentDashboard from './components/StudentDashboard';
-import { RequireAuth } from './auth/requireAuth';
 import GivePaper from './components/GivePaper';
 import StudentProfile from './components/StudentProfile';
 import useAuth from './hooks/useAuth';
@@ -35,7 +34,7 @@ function App() {
         {auth.admin && <Route path = '/addquestion/:id' element={<CreateQues/>} />}
         {auth.admin && <Route path="/viewpaper" element={<ViewPapers/>} />}
         {auth.email && <Route path="/stats" element={<StudentStats/>} />}
-        {auth.email && <Route path="/stats/:sid/:pid" element={<PaperStats/>}/>}
+        {auth.email && <Route path="/stats/:attemptid/:sid/:pid" element={<PaperStats/>}/>}
         
         <Route path="*" element={<Navigate to={auth.email? '/student' : 'login'}/>} />
       </Routes>

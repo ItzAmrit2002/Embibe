@@ -86,7 +86,7 @@ const QuestionCards = ({ name, time, sub, marks, nq, id }) => {
     const navigate = useNavigate();
     const { auth } = useAuth();
     return (
-        <Div d="flex" shadow="2" hoverShadow="3" h="24rem" w="22rem" rounded="lg" bg="#6DCE96" m={{ t: "3rem" }} p={{ t: "3rem" }} justify="space-between" align="center" className="main-card" flexDir="column" border="1px solid" borderColor="#94618e">
+        <Div d="flex" shadow="2" hoverShadow="3" h="24rem" w="22rem" rounded="lg" bg="#6DCE96" m={{ t: "3rem" }} p={{ t: "3rem" }} justify="space-between" align="center" className="main-card" flexDir="column" border="1px solid" borderColor="#2c666eff">
             <Div d="flex">
                 <ToastContainer/>
                 <Text textWeight="1000" fontFamily="Montserrat" textSize="display1" textColor="#1C0F13">{name}</Text>

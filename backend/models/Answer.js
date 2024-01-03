@@ -12,6 +12,10 @@ const answerSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Question'
     },
+    marks: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Marks'
+    },
     checkA: {
         type: Boolean,
         required: [true, 'Please add a Boolean value']

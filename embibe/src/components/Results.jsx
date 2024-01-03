@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import { Container, Div, Text, Row, Col } from "atomize";
+import { Container, Div, Text, Row, Col, Button, Icon } from "atomize";
 import axios from "axios";
 import PieCharts from "./PieCharts";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Results = () => {
   const { pid, sid, totalmarks, mid } = useParams();
   const { auth } = useAuth();
   const [papers, setPapers] = useState([]);
+  const navigate = useNavigate();
 
   const getMarks = async () => {
     try {
@@ -25,16 +27,19 @@ const Results = () => {
       console.error("Error fetching marks:", err);
     }
   };
-
+  const goHome = () => {
+    // Navigate to givepaper
+    navigate('/givepaper')
+  };
   useEffect(() => {
     getMarks();
   }, []);
 
   return (
-    <Div d="flex" bg="#FCE2DB" flexDir="column" h="100%" overflow="visible">
+    <Div d="flex" bg="#DCFBE9" flexDir="column" h="100%" overflow="visible">
       <Div
         d="flex"
-        bg="#94618e"
+        bg="#6DCE96"
         h="100%"
         w="100%"
         align="center"
@@ -43,11 +48,21 @@ const Results = () => {
         shadow="3"
         p="1rem"
       >
+        <Button
+        pos = "absolute"
+        left = "3%"
+        bg = "#6DCE96"
+        shadow = "3"
+        border = "1px solid"
+        onClick={goHome}
+        >
+          <Icon name="LeftArrow" size="20px" color="#1C0F13" />
+        </Button>
         <Text
           fontFamily="Cedarville Cursive"
           textSize="display3"
           textWeight="800"
-          textColor="#f8eee7"
+          textColor="#1C0F13"
         >
           TestHub
         </Text>
@@ -71,9 +86,9 @@ const Results = () => {
           >
             <Text
               textSize="display3"
-              fontFamily="Itim"
+              fontFamily="Poppins"
               textWeight="500"
-              textColor="#333"
+              textColor="#1C0F13"
               textAlign="center"
             >
               Results
@@ -94,7 +109,7 @@ const Results = () => {
                 <Col size="6">
                   <Div size={{ w: "50%", h: "50%" }}>
                     <PieCharts
-                      marks={item.attempted}
+                      attempted={item.attempted}
                       totalmarks={totalmarks}
                       heading={`Attempted`}
                     />

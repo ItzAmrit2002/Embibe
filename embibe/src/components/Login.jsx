@@ -68,7 +68,7 @@ const Login = () => {
           password: password})
           .then((res) => {
               console.log(res)
-              if(res.status == 200)
+              if(res.status === 200)
               {
                 const Firstname = res.data.Firstname;
                 const Secondname = res.data.Secondname;
@@ -105,7 +105,7 @@ const Login = () => {
             },
           }
           axios.get('https://testhubbknd.onrender.com/api/user/getuser', config).then(res => {
-            if(res.status == 200)
+            if(res.status === 200)
             {
               console.log("persistent login possible");
               // setAuth

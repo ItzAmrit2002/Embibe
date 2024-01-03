@@ -90,8 +90,8 @@ router.get("/getpapers", async (req, res) => {
 });
 
 router.post("/postanswer", async (req, res) => {
-  const { pid, sid, qid, checkA, checkB, checkC, checkD } = req.body;
-  if (!pid || !sid || !qid) {
+  const { pid, sid, qid, mid, checkA, checkB, checkC, checkD } = req.body;
+  if (!pid || !sid || !qid || !mid) {
     res.status(400).send("Please enter all the fields");
     return;
   }
@@ -100,6 +100,7 @@ router.post("/postanswer", async (req, res) => {
       paper: pid,
       question: qid,
       user: sid,
+      marks: mid,
       checkA: checkA,
       checkB: checkB,
       checkC: checkC,
@@ -108,9 +109,10 @@ router.post("/postanswer", async (req, res) => {
     const savedQues = await answer.save();
     res.status(201).json({
       _id: answer.id,
-      question: answer.qid,
-      user: answer.sid,
-      paper: answer.pid,
+      marks: answer.marks,
+      question: answer.question,
+      user: answer.user,
+      paper: answer.paper,
     });
     return;
   } catch (err) {
