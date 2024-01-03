@@ -23,12 +23,15 @@ const StudentProfile = () => {
     getDeets();
   }, []);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen2, setIsOpen2] = React.useState(false);
   const [pass1, setState1] = React.useState(false);
   const [pass2, setState2] = React.useState(false);
   const [pass3, setState3] = React.useState(false);
   const [p1, setP1] = useState("")
   const [p2, setP2] = useState("")
   const [p3, setP3] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [secondName, setSecondName] = useState("")
 
 
   const handleOpenModal = () => {
@@ -37,6 +40,13 @@ const StudentProfile = () => {
 
   const handleCloseModal = () => {
     setIsOpen(false);
+  };
+  const handleOpenModal2 = () => {
+    setIsOpen2(true);
+  };
+
+  const handleCloseModal2= () => {
+    setIsOpen2(false);
   };
   
   // const changePass = async() => {
@@ -111,6 +121,42 @@ const StudentProfile = () => {
       setIsOpen(false);
     }
   };
+  const changeName = async () => {
+    try {
+        toast.promise(axios.put("https://testhubbknd.onrender.com/api/user/changename", {
+          firstname: firstName,
+          secondname: secondName,
+          email: email
+        }), {
+          pending: "Changing name...",
+          success: {
+            render(){
+              return "Name updated successfully!"
+            },
+            // other options
+            autoClose: 1500
+          },
+          error: {
+            render({data}){
+              console.log(data)
+              return `${data.response.data.message}`
+            },
+            // other options
+            autoClose: 1500
+          },
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000, // Close success toasts after 1500ms
+        });
+      
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response.data.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } finally {
+      setIsOpen2(false);
+    }
+  };
   
   
   const getDeets = async () => {
@@ -163,6 +209,24 @@ const StudentProfile = () => {
                 onClick={handleOpenModal}
               >
                 Change Password/Email
+              </Button>
+              <Button
+                prefix={
+                  <Icon
+                    name="Edit"
+                    size="16px"
+                    color="#DCFBE9"
+                    m={{ r: "1rem" }}
+                  />
+                }
+                bg="#2C666E"
+                rounded="lg"
+                shadow="3"
+                textColor="#DCFBE9"
+                hoverShadow="4"
+                onClick={handleOpenModal2}
+              >
+                Change Name
               </Button>
             </Div>
         </Div>
@@ -268,6 +332,54 @@ const StudentProfile = () => {
           Cancel
         </Button>
         <Button onClick={changePass} bg="#2C666E">
+          Yes, Submit
+        </Button>
+      </Div>
+    </Modal>
+    <Modal isOpen={isOpen2} onClose={handleCloseModal2} align="center" rounded="md" bg="#CCF7E3">
+      <Icon
+        name="Cross"
+        pos="absolute"
+        top="1rem"
+        right="1rem"
+        size="16px"
+        onClick={handleCloseModal2}
+        cursor="pointer"
+      />
+      <Div d="flex" m={{ b: "2rem" }}>
+        <Icon
+          name="AlertSolid"
+          color="warning700"
+          m={{ t: "0.35rem", r: "0.5rem" }}
+        />
+        <Text p={{ l: "0.5rem", t: "0.25rem" }} textSize="subheader">
+          Do you really want to change your name?
+        </Text>
+      </Div>
+      <Div d="flex" flexDir="column" justify="space-between" m={{ b: "2rem" }}>
+      <Input
+        placeholder="Enter new First Name"
+        type="text"
+        m={{ b: "10px" }}
+        onChange={(e)=> {setFirstName(e.target.value)}}
+      />
+            <Input
+        placeholder="Enter new Second Name"
+        m={{ b: "10px" }}
+        type="text"
+        onChange={(e)=> {setSecondName(e.target.value)}}
+      />                   
+      </Div>
+      <Div d="flex" justify="flex-end">
+        <Button
+          onClick={handleCloseModal2}
+          bg="gray200"
+          textColor="medium"
+          m={{ r: "1rem" }}
+        >
+          Cancel
+        </Button>
+        <Button onClick={changeName} bg="#2C666E">
           Yes, Submit
         </Button>
       </Div>

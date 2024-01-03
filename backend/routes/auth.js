@@ -120,6 +120,27 @@ router.put('/changepassword', async (req, res) => {
       res.status(400).json({ message: 'Server error' });
     }
   });
+router.put('/changename', async (req, res) => {
+    try {
+      const { email, firstname, secondname } = req.body;
+  
+      // Find user by email
+      const userExists = await User.findOne({ email });
+  
+      if (!userExists) {
+        return res.status(400).json({ message: 'Invalid email' });
+      }
+      
+      userExists.Firstname = firstname;
+      userExists.secondname = secondname;
+      await userExists.save();
+  
+      res.status(200).json({ message: 'Name updated successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: 'Server error' });
+    }
+  });
 //Generate JWT
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.ACCESS_TOKEN_SECRET,{
