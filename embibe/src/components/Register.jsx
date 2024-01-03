@@ -16,6 +16,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Copyright(props) {
     return (
@@ -54,27 +57,63 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        //const data = new FormData(event.currentTarget);
-        // const fname = data.get('fname')
-        // const lname = data.get('lname')
-        // const email = data.get('email')
-        // const password = data.get('password')
-        axios.post('https://testhubbknd.onrender.com/api/user/register', {
-            firstname: fname,
-            secondname: lname,
-            email: email,
-            password: password})
-            .then((res) => {
-                console.log(res)
-                if(res.status === 201)
-                {
-                    navigate('/login')
-                }
-            })
-            .catch(err => console.log(err))
-    };
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     //const data = new FormData(event.currentTarget);
+    //     // const fname = data.get('fname')
+    //     // const lname = data.get('lname')
+    //     // const email = data.get('email')
+    //     // const password = data.get('password')
+    //     axios.post('https://testhubbknd.onrender.com/api/user/register', {
+    //         firstname: fname,
+    //         secondname: lname,
+    //         email: email,
+    //         password: password})
+    //         .then((res) => {
+    //             console.log(res)
+    //             if(res.status === 201)
+    //             {
+    //                 navigate('/login')
+    //             }
+    //         })
+    //         .catch(err => console.log(err))
+    // };
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+  // Assuming you've already extracted form data into fname, lname, email, password
+
+  toast.promise(
+    axios.post("https://testhubbknd.onrender.com/api/user/register", {
+      firstname: fname,
+      secondname: lname,
+      email: email,
+      password: password,
+    }),
+    {
+      pending: "Registering...",
+      success: {
+        render({data}){
+            
+        if (data.status === 201) {
+            setTimeout(() => {
+                navigate("/login");
+            }, 1600);
+          
+          return "Registration successful, Please Login now";
+        } 
+    },
+    autoClose: 1400
+      },
+      error: {
+        render({data}){
+        return "Registration failed, try again!";
+      }},
+    }
+  );
+};
+
 
     const [width, setWidth] = useState(550)
 
@@ -102,6 +141,7 @@ const Register = () => {
         <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ height: '100vh' }} spacing={0}>
                 <CssBaseline />
+                <ToastContainer/>
                 <Grid
                     item
                     spacing={0}

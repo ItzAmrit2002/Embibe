@@ -32,6 +32,7 @@ const StudentProfile = () => {
   const [p3, setP3] = useState("")
   const [firstName, setFirstName] = useState("")
   const [secondName, setSecondName] = useState("")
+  const [isLoading, setLoading] = useState(true)
 
 
   const handleOpenModal = () => {
@@ -130,7 +131,8 @@ const StudentProfile = () => {
         }), {
           pending: "Changing name...",
           success: {
-            rendera (){
+            render(){
+              getDeets()
               return "Name updated successfully!"
             },
             // other options
@@ -155,28 +157,68 @@ const StudentProfile = () => {
       });
     } finally {
       setIsOpen2(false);
-      getDeets()
+      // getDeets()
     }
   };
   
   
-  const getDeets = async () => {
-    try{
-    let res = await axios.get("https://testhubbknd.onrender.com/api/user/getuser", config)
-    if (res.request.status !== 200) {
-      localStorage.removeItem("token_embibe");
-      setAuth({});
-      navigate("/login");
-    }
-    console.log("profile res", res)
-    setEmail(res.data.email)
-    setName(res.data.Firstname + " " + res.data.Secondname)
+  // const getDeets = async () => {
+  //   try{
+  //   let res = await axios.get("https://testhubbknd.onrender.com/api/user/getuser", config)
+  //   if (res.request.status !== 200) {
+  //     localStorage.removeItem("token_embibe");
+  //     setAuth({});
+  //     navigate("/login");
+  //   }
+  //   console.log("profile res", res)
+  //   setEmail(res.data.email)
+  //   setName(res.data.Firstname + " " + res.data.Secondname)
+  // }
+  // catch(err)
+  // {
+  //   console.log(err)
+  // }
+  // };
+
+const getDeets = async () => {
+  try {
+    toast.promise(
+      axios.get("https://testhubbknd.onrender.com/api/user/getuser", config),
+      {
+        pending: "Fetching user details...",
+        success: {
+          render({data}){
+            console.log(data)
+          if (data.status !== 200) {
+            localStorage.removeItem("token_embibe");
+            setAuth({});
+            navigate("/login");
+            toast.error("Authentication failed. Please log in again.");
+            return; // Exit early if authentication fails
+          }
+          setEmail(data.data.email);
+          setName(data.data.Firstname + " " + data.data.Secondname);
+          setLoading(false)
+          return "User details fetched successfully!";
+        },
+        autoClose: 1700
+        },
+        error:  {
+          render({data})
+          {
+          console.error(data);
+          return "Failed to fetch user details. Please try again.";
+          }
+        },
+      }
+    );
+  } catch (err) {
+    console.error(err);
+    toast.error("An unexpected error occurred.");
   }
-  catch(err)
-  {
-    console.log(err)
-  }
-  };
+};
+
+  
   return (
     <Div d="flex" bg="#DCFBE9" flexDir="column" h="100vh">
       <Sidebar />
@@ -187,7 +229,10 @@ const StudentProfile = () => {
                 <Text textWeight="1000" fontFamily="Montserrat" textSize="display1" textColor="#1C0F13">Your Profile</Text>
             </Div>
             <ToastContainer/>
-            <Div d="flex" bg="#CCF7E3" w="100%" h="80%" align="center" textAlign="center" justify="space-evenly" flexDir="column">
+            {isLoading? <Div d="flex" bg="#CCF7E3" w="100%" h="80%" align="center" textAlign="center" justify="center" flexDir="column">
+            <Text textWeight="400" fontFamily="Poppins" textSize="title" textColor="#1C0F13" p={{  y: '1rem' }}>Loading</Text>
+            <Icon name="Loading2" size="50px" color="#121212" />
+            </Div> : <Div d="flex" bg="#CCF7E3" w="100%" h="80%" align="center" textAlign="center" justify="space-evenly" flexDir="column">
                 <Div d="flex" flexDir="column" justify="space-between">
                     <Text textWeight="400" fontFamily="Poppins" textSize="title" textColor="#1C0F13" p={{  y: '1rem' }}>Email: {email}</Text>
                     <Text textWeight="400" fontFamily="Poppins" textSize="title" textColor="#1C0F13" p={{  y: '1rem' }}>Name: {name} </Text>
@@ -229,7 +274,7 @@ const StudentProfile = () => {
               >
                 Change Name
               </Button>
-            </Div>
+            </Div>}
         </Div>
       </Container>
       <Modal isOpen={isOpen} onClose={handleCloseModal} align="center" rounded="md" bg="#CCF7E3">

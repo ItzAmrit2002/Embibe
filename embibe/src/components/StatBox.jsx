@@ -23,6 +23,7 @@ const StatBox = ({
   const [subject, setSubject] = useState("");
   const navigate = useNavigate();
   const [paperDetails, setPaperDetails] = useState({});
+  const [isLoading, setLoading] = useState(true)
   const getPaper = async () => {
     try {
       setAttemptId(attemptid);
@@ -36,6 +37,7 @@ const StatBox = ({
       setName(res.data.name);
       setSubject(res.data.subject);
       console.log("Stats res= ", res.data);
+      
     } catch (err) {
       console.error("Error fetching paper:", err);
       // Handle the error appropriately
@@ -50,6 +52,7 @@ const StatBox = ({
         }
       );
       setPaperDetails(res.data);
+      setLoading(false)
       console.log("Paper res= ", res.data);
     } catch (err) {
       console.error("Error fetching paper details:", err);
@@ -79,7 +82,10 @@ const StatBox = ({
         justify="space-between"
         fontFamily="Raleway"
       >
-        <Div d="flex" flexDir="row" justify=" space-around">
+        {isLoading? <Div d="flex" align="center" textAlign="center" justify="center" flexDir="row">
+            <Text textWeight="400" fontFamily="Poppins" textSize="20px" textColor="#1C0F13" p={{  y: '1rem' }}>Loading</Text>
+            <Icon name="Loading2" size="20px" color="#121212" />
+            </Div>:<><Div d="flex" flexDir="row" justify=" space-around">
           <Text m={{ r: "2.5rem" }}>Paper Name : {name}</Text>
           <Text m={{ r: "2.5rem" }}>
             Submitted At : {new Date(timeC).toLocaleString()}
@@ -105,7 +111,7 @@ const StatBox = ({
               setCollapse(!showCollapse);
             }}
           />
-        </Div>
+        </Div></>}
       </Div>
       <Collapse isOpen={showCollapse} w="100%">
         <Div

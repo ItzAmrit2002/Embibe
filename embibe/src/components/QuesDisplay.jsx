@@ -27,43 +27,89 @@ const QuesDisplay = ({
 	const [submitted, setSubmitted] = useState(false);
 
 	const handlesubmit = async() => {
-		await axios
-			.post("https://testhubbknd.onrender.com/api/student/postanswer", {
-				pid: pid,
-				sid: sid,
-				qid: qid,
-				mid: mid,
-				checkA: isA,
-				checkB: isB,
-				checkC: isC,
-				checkD: isD,
-			})
-			.then((res) => {
-				if (res.status == 201) {
-					toast.success("Answer Submitted!", {
-						position: toast.POSITION.TOP_RIGHT,
-						autoClose: 1200
-					});
-					callback()
-				} else {
-					toast.error("Answer Submission Failed", {
-						position: toast.POSITION.TOP_RIGHT,
-					});
-				}
-				console.log(res);
-				setSubmitted(true);
+		// await axios
+		// 	.post("https://testhubbknd.onrender.com/api/student/postanswer", {
+		// 		pid: pid,
+		// 		sid: sid,
+		// 		qid: qid,
+		// 		mid: mid,
+		// 		checkA: isA,
+		// 		checkB: isB,
+		// 		checkC: isC,
+		// 		checkD: isD,
+		// 	})
+		// 	.then((res) => {
+		// 		if (res.status == 201) {
+		// 			toast.success("Answer Submitted!", {
+		// 				position: toast.POSITION.TOP_RIGHT,
+		// 				autoClose: 1200
+		// 			});
+		// 			callback()
+		// 		} else {
+		// 			toast.error("Answer Submission Failed", {
+		// 				position: toast.POSITION.TOP_RIGHT,
+		// 			});
+		// 		}
+		// 		console.log(res);
+		// 		setSubmitted(true);
 
+		// 		// setId(res.data._id);
+		// 		// setOpen(true);
+		// 		// navigate('/addquestion')
+		// 	})
+		// 	.catch((err) =>{ 
+		// 		toast.error("Answer Submission Failed", {
+		// 			position: toast.POSITION.TOP_RIGHT
+		// 		  })
+		// 		  console.log("error")
+		// 		console.log(err)
+		// 	});
+		toast.promise(
+			axios.post("https://testhubbknd.onrender.com/api/student/postanswer", {
+			  pid: pid,
+			  sid: sid,
+			  qid: qid,
+			  mid: mid,
+			  checkA: isA,
+			  checkB: isB,
+			  checkC: isC,
+			  checkD: isD,
+			}),
+			{
+			  pending: "Submitting answer...",
+			  success: {
+				render({data}){
+				if (data.status === 201) {
+					console.log(data);
+				setSubmitted(true);
+				callback();
+				  return "Answer Submitted!"
+				}
+				// } else {
+				//   toast.error("Answer Submission Failed", {
+				// 	position: toast.POSITION.TOP_RIGHT,
+				//   });
+				// }
+			},
+			autoClose: 1500
+				
+		  
 				// setId(res.data._id);
 				// setOpen(true);
 				// navigate('/addquestion')
-			})
-			.catch((err) =>{ 
-				toast.error("Answer Submission Failed", {
-					position: toast.POSITION.TOP_RIGHT
-				  })
-				  console.log("error")
-				console.log(err)
-			});
+			  },
+			  error: {
+				render({data})
+				{
+					console.error("error");
+					  console.error(data);
+					return "Answer Submission Failed!"
+					  
+				}
+				
+			  },
+			}
+		  );
 			
 		await axios.post('https://testhubbknd.onrender.com/api/tally/tallymarks', {
           paper_id: pid,

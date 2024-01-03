@@ -4,15 +4,21 @@ import { Div, Button, Text, Icon, Container, Row, Col } from "atomize";
 import QuestionCards from "./QuestionCards";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useAuth from "../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import "./GivePaper.css"
 
 const GivePaper = () => {
 
+	const {auth} = useAuth();
 
 	const [count, setCount] = useState(0);
 	const [marks, setMarks] = useState(0);
 	const [nq, setNq] = useState(0);
 	const [result, setResult] = useState([]);
+	const [isLoading, setLoading] = useState(true)
+
 
 	useEffect(() => {
 		getData();
@@ -27,14 +33,45 @@ const GivePaper = () => {
 		setCount(res.data)
 	};
 
-	const getData = async () => {
-		let res = await axios.get("https://testhubbknd.onrender.com/api/student/getpapers");
-		console.log(res.data)
-		setResult(res.data.papers);
-		setMarks(res.data.rep);
-		setNq(res.data.rex);
+	// const getData = async () => {
+	// 	let res = await axios.get("https://testhubbknd.onrender.com/api/student/getpapers");
+	// 	console.log(res.data)
+	// 	setResult(res.data.papers);
+	// 	setMarks(res.data.rep);
+	// 	setNq(res.data.rex);
 
-	};
+	// };
+	const getData = async () => {
+		try {
+		  toast.promise(
+			axios.get("https://testhubbknd.onrender.com/api/student/getpapers"),
+			{
+			  pending: "Fetching papers...",
+			  success: {
+				render({data}){
+					console.log(data.data);
+					setResult(data.data.papers);
+					setMarks(data.data.rep);
+					setNq(data.data.rex);
+					setLoading(false)
+					return `Welcome ${auth.Firstname}`;
+				},
+				autoClose: 1700
+			  },
+			  error: {
+				render({data})
+				{
+				console.error(data.response.data.message);
+				return "Failed to fetch papers. Please try again.";
+				}
+			  },
+			}
+		  );
+		} catch (err) {
+		  console.error(err);
+		  toast.error("An unexpected error occurred.");
+		}
+	  };
 
 
 	return (
@@ -49,7 +86,18 @@ const GivePaper = () => {
 				bg = "#DCFBE9"
 				minW="85%"
 			>
-				<Div textAlign="center"
+				<ToastContainer/>
+			{isLoading ? <Div d="flex" bg="#CCF7E3" w="100%" h="80%" align="center" textAlign="center" justify="center" flexDir="column">
+            <Text
+						m={{ t: "2%" }}
+						fontFamily="Montserrat"
+						textWeight="700"
+						textSize="display3"
+						textColor="#1C0F13">
+						Loading
+					</Text>
+            <Icon name="Loading2" size="50px" color="#121212" />
+            </Div> :<> <Div textAlign="center"
 					align="center"
 					justify="center">
 					<Text
@@ -89,7 +137,7 @@ const GivePaper = () => {
 						)
 					})}
 
-				</Row>
+				</Row></>}
 			</Container>
 		</Div >
 	);

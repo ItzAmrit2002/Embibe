@@ -33,7 +33,7 @@ const ResultsPage = () => {
         }
       );
       const markedResponse = await axios.post(
-        "http://localhost:8000/api/tally/getmarkedoptions",
+        "https://testhubbknd.onrender.com/api/tally/getmarkedoptions",
         {
           attempt_id: attemptid,
           paper_id: pid,

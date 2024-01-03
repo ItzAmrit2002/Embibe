@@ -54,40 +54,84 @@ const Login = () => {
            preserveAspectRatio: "xMidYMid slice",
         },
      };
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const data = new FormData(event.currentTarget);
+    //     if(email === 'Admin' && password === 'Admin'){
+    //         setAuth({admin: 'Admin'});
+    //         localStorage.setItem('token_embibe', 'Admin');
+    //         navigate('/admin');
+    //     }
+    //     else{
+    //     axios.post('https://testhubbknd.onrender.com/api/user/login', {
+    //       email: email,
+    //       password: password})
+    //       .then((res) => {
+    //           console.log(res)
+    //           if(res.status === 200)
+    //           {
+    //             const Firstname = res.data.Firstname;
+    //             const Secondname = res.data.Secondname;
+    //             const token = res.data.token;
+    //             const email = res.data.email;
+    //             const id = res.data._id
+    //               setAuth({Firstname, Secondname, token, email, id});
+    //               localStorage.setItem('token_embibe', token);
+    //               navigate('/givepaper')
+    //           }
+    //       })
+    //       .catch(err =>{
+    //         toast.error(err.response.data, {
+    //           position: toast.POSITION.TOP_RIGHT
+    //         })
+    //          console.log(err)
+    //       })
+    //     }
+    //   };
+
     const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        if(email === 'Admin' && password === 'Admin'){
-            setAuth({admin: 'Admin'});
-            localStorage.setItem('token_embibe', 'Admin');
-            navigate('/admin');
-        }
-        else{
-        axios.post('https://testhubbknd.onrender.com/api/user/login', {
-          email: email,
-          password: password})
-          .then((res) => {
-              console.log(res)
-              if(res.status === 200)
-              {
-                const Firstname = res.data.Firstname;
-                const Secondname = res.data.Secondname;
-                const token = res.data.token;
-                const email = res.data.email;
-                const id = res.data._id
-                  setAuth({Firstname, Secondname, token, email, id});
-                  localStorage.setItem('token_embibe', token);
-                  navigate('/givepaper')
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+    
+      if (email === "Admin" && password === "Admin") {
+        setAuth({ admin: "Admin" });
+        localStorage.setItem("token_embibe", "Admin");
+        navigate("/admin");
+      } else {
+        toast.promise(
+          axios.post("https://testhubbknd.onrender.com/api/user/login", {
+            email: email,
+            password: password,
+          }),
+          {
+            pending: "Logging in...",
+            success: {
+              render({data}){
+              if (data.status === 200) {
+                const { Firstname, Secondname, token, email, _id: id } = data.data;
+                setAuth({ Firstname, Secondname, token, email, id });
+                localStorage.setItem("token_embibe", token);
+                setTimeout(() => {
+                  navigate("/givepaper");
+                }, 1500);
+                return "Login successful!";
+                
+                
               }
-          })
-          .catch(err =>{
-            toast.error(err.response.data, {
-              position: toast.POSITION.TOP_RIGHT
-            })
-             console.log(err)
-          })
-        }
-      };
+              
+              },
+              autoClose: 1300
+            },
+            error: {
+              render({data}){
+                
+              return `Wrong email or password`
+            },
+            },
+          }
+        );
+      }
+    };
     
       const [width, setWidth] = useState(550)
 
