@@ -132,7 +132,7 @@ router.put('/changename', async (req, res) => {
       }
       
       userExists.Firstname = firstname;
-      userExists.secondname = secondname;
+      userExists.Secondname = secondname;
       await userExists.save();
   
       res.status(200).json({ message: 'Name updated successfully' });
