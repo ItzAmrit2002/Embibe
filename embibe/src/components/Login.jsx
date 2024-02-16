@@ -174,8 +174,24 @@ const Login = () => {
           setWidth(750)
         }
 
-        window.addEventListener("resize", () => {
-        if(window.innerWidth < 900)
+        // window.addEventListener("resize", () => {
+        // if(window.innerWidth < 900)
+        // {
+        //     setWidth(0)
+        // }
+        // if(window.innerWidth > 900 && window.innerWidth <= 1400)
+        // {
+        //     setWidth(550)
+        // }
+        // if(window.innerWidth > 1400)
+        // {
+        //   setWidth(750)
+        // }
+        //   });
+      }, []);
+      useEffect(() => {
+        const handleResize = () => {
+          if(window.innerWidth < 900)
         {
             setWidth(0)
         }
@@ -187,8 +203,15 @@ const Login = () => {
         {
           setWidth(750)
         }
-          });
-      }, []);
+        };
+      
+        window.addEventListener('resize', handleResize);
+      
+        // Cleanup event listener
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, [window.innerWidth]);
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" h="100vh" backgroundColor="#DCFBE9">
