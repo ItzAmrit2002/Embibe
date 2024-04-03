@@ -26,9 +26,6 @@ This README.md file serves as documentation for the TestHub project repository. 
 
 To get started with TestHub, follow the instructions provided in the repository's documentation. Make sure to meet the prerequisites and set up the environment as required.
 
-## License
-
-TestHub is licensed under [INSERT LICENSE HERE]. Refer to the LICENSE.md file in the repository for more details.
 
 ## Contributors
 
