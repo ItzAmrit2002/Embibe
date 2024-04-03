@@ -32,4 +32,4 @@ TestHub is licensed under [INSERT LICENSE HERE]. Refer to the LICENSE.md file in
 
 ## Contributors
 
-- [List of contributors]
+- Amnubhab Khanra
